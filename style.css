@@ -5,23 +5,23 @@
 ========================================================= */
 
 :root {
-    --mint: #63e6c2;
-    --mint-bright: #8ff3d8;
-    --mint-soft: #dffbf4;
-    --mint-dark: #27b99a;
+    --mint: #63F5D1;
+    --mint-bright: #B6FFE9;
+    --mint-soft: #DDFBF6;
+    --mint-dark: #19C7A5;
 
-    --blue: #2563eb;
-    --blue-light: #60a5fa;
+    --blue: #6C63FF;
+    --blue-light: #38BDF8;
 
-    --navy: #071a33;
-    --navy-2: #0d2747;
-    --navy-3: #12375f;
+    --navy: #050816;
+    --navy-2: #0B1230;
+    --navy-3: #111B4D;
 
-    --white: #ffffff;
-    --off-white: #f5fffc;
+    --white: #FFFFFF;
+    --off-white: #F6F9FF;
 
-    --text: #11253d;
-    --muted: #698096;
+    --text: #E7ECFF;
+    --muted: #9AA7C7;
 
     --border: rgba(99, 230, 194, 0.22);
 
@@ -61,7 +61,10 @@ body {
         sans-serif;
 
     color: var(--text);
-    background: var(--off-white);
+    background:
+        radial-gradient(circle at 15% 10%, rgba(108, 99, 255, 0.08), transparent 28%),
+        radial-gradient(circle at 85% 55%, rgba(56, 189, 248, 0.06), transparent 25%),
+        #060916;
 
     line-height: 1.7;
 
@@ -2481,4 +2484,199 @@ a {
         transition-duration: 0.01ms !important;
     }
 }
+
 ```
+/* =========================================================
+   SPACE / AURORA ENHANCEMENTS
+========================================================= */
+
+body {
+    background-color: #060916;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    opacity: .55;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(99,245,209,.55) 0 1px, transparent 1.5px);
+    background-size: 145px 145px, 230px 230px;
+    background-position: 10px 20px, 80px 120px;
+    animation: starDrift 28s linear infinite;
+}
+
+body::after {
+    background:
+        radial-gradient(circle at 15% 25%, rgba(108,99,255,.12), transparent 25%),
+        radial-gradient(circle at 85% 75%, rgba(56,189,248,.10), transparent 28%);
+    filter: blur(35px);
+}
+
+.site-header {
+    border-color: rgba(99,245,209,.28);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(108,99,255,.08);
+}
+
+.hero-section,
+.page-hero {
+    background:
+        radial-gradient(circle at 78% 22%, rgba(108,99,255,.28), transparent 28%),
+        radial-gradient(circle at 18% 78%, rgba(99,245,209,.10), transparent 24%),
+        radial-gradient(circle at 55% 45%, rgba(56,189,248,.08), transparent 30%),
+        linear-gradient(135deg, #030511 0%, #080D24 48%, #10184A 100%);
+}
+
+.hero-section::before {
+    border-color: rgba(99,245,209,.08);
+    box-shadow: 0 0 90px rgba(108,99,255,.08);
+}
+
+.hero-section::after {
+    background: rgba(108,99,255,.16);
+    filter: blur(35px);
+}
+
+.profile-frame {
+    background:
+        conic-gradient(
+            from 0deg,
+            #63F5D1,
+            #38BDF8,
+            #6C63FF,
+            #C084FC,
+            #63F5D1
+        );
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        0 0 70px rgba(108,99,255,.20),
+        0 0 35px rgba(99,245,209,.12);
+}
+
+.profile-frame::after {
+    content: "";
+    position: absolute;
+    inset: -28px;
+    border: 1px solid rgba(56,189,248,.18);
+    border-radius: 50%;
+    animation: rotateSlowReverse 14s linear infinite;
+}
+
+.floating-card {
+    background: rgba(7,10,28,.68);
+    border-color: rgba(99,245,209,.24);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 25px rgba(108,99,255,.08);
+}
+
+.feature-card,
+.info-box,
+.timeline-content,
+.highlight-card,
+.hobby-card,
+.contact-card {
+    background:
+        linear-gradient(145deg, rgba(18,25,55,.94), rgba(8,12,30,.96));
+    border-color: rgba(148,163,184,.12);
+    box-shadow:
+        0 18px 55px rgba(0,0,0,.24),
+        inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.feature-card h3,
+.hobby-card h3,
+.timeline-content h3,
+.highlight-card h3,
+.info-box strong,
+.contact-card strong,
+.section-heading h2,
+.about-grid h2,
+.profile-information h2,
+.contact-intro h2 {
+    color: #F1F5FF;
+}
+
+.feature-card p,
+.section-heading p,
+.lead-text,
+.about-text,
+.hobby-card p,
+.timeline-content p,
+.highlight-card p,
+.contact-intro > p,
+.info-box span,
+.contact-card small {
+    color: #9AA7C7;
+}
+
+.soft-section {
+    background:
+        radial-gradient(circle at 10% 20%, rgba(99,245,209,.06), transparent 25%),
+        #080C20;
+}
+
+.section-label,
+.section-heading h2 span,
+.about-grid h2 span,
+.profile-information h2 span,
+.contact-intro h2 span,
+.page-hero h1 span {
+    color: #63F5D1;
+}
+
+.feature-card::after,
+.hobby-card::before {
+    background:
+        radial-gradient(circle, rgba(99,245,209,.13), transparent 68%);
+}
+
+.feature-card.featured,
+.cta-card,
+.quote-card {
+    background:
+        radial-gradient(circle at 80% 20%, rgba(99,245,209,.13), transparent 25%),
+        radial-gradient(circle at 15% 80%, rgba(108,99,255,.16), transparent 28%),
+        linear-gradient(145deg, #080B20, #11184A);
+}
+
+.btn-primary,
+.btn-white {
+    background:
+        linear-gradient(135deg, #63F5D1, #38BDF8 55%, #6C63FF);
+    color: #050816;
+    box-shadow:
+        0 12px 35px rgba(56,189,248,.18),
+        0 0 30px rgba(99,245,209,.10);
+}
+
+.timeline::before,
+.hobby-line {
+    background:
+        linear-gradient(180deg, #63F5D1, #38BDF8, #6C63FF);
+}
+
+.timeline-dot {
+    background: #63F5D1;
+    border-color: #0B1230;
+}
+
+.site-footer {
+    background:
+        radial-gradient(circle at 80% 20%, rgba(108,99,255,.14), transparent 25%),
+        linear-gradient(135deg, #02030B, #070B20);
+}
+
+@keyframes starDrift {
+    from { transform: translateY(0); }
+    to { transform: translateY(145px); }
+}
