@@ -3,40 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Theme Portfolio</title>
+    <title>Space Theme - Upgraded</title>
+    <!-- นำเข้าฟอนต์ Kanit จาก Google Fonts ให้ตัวหนังสือสวยและใหญ่ขึ้น -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           ROOT / VARIABLES (SPACE THEME)
+           ROOT / VARIABLES (SPACE THEME COLORS)
         ========================================= */
         :root {
-            --space-dark: #050814;
-            --space-light: #0d1326;
-            --neon-blue: #00d2ff;
-            --neon-purple: #9d4edd;
+            --space-dark: #030510;
+            --space-light: #0b1129;
+            --neon-cyan: #00f0ff;
+            --neon-purple: #b026ff;
             --neon-pink: #ff007f;
-            --star-glow: #fdfd96;
+            --star-glow: #ffffff;
 
+            /* สีตัวอักษรธีมอวกาศ */
+            --text-main: #e0f2fe; /* สีฟ้าอ่อนสว่างๆ สำหรับเนื้อหาหลัก */
+            --text-highlight: #7dd3fc; /* สีฟ้าเข้มขึ้นมานิดหน่อย */
             --white: #ffffff;
-            --text: #e2e8f0;
-            --text-light: #94a3b8;
             
-            --border: rgba(255, 255, 255, 0.1);
-            --background: var(--space-dark);
-            --dark: #000000;
-
-            --shadow-sm: 0 4px 15px rgba(0, 210, 255, 0.15);
-            --shadow-md: 0 8px 25px rgba(157, 78, 221, 0.25);
-            --shadow-lg: 0 15px 40px rgba(255, 0, 127, 0.3);
-
-            --radius-sm: 12px;
-            --radius-md: 20px;
-            --radius-lg: 32px;
-
-            --container: 1180px;
+            --border-glow: rgba(0, 240, 255, 0.3);
+            --bg-glass: rgba(11, 17, 41, 0.65);
         }
 
         /* =========================================
-           RESET & BODY (ANIMATED STARFIELD)
+           RESET & BODY
         ========================================= */
         * {
             margin: 0;
@@ -44,24 +36,21 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: "Segoe UI", "Noto Sans Thai", Tahoma, Arial, sans-serif;
-            color: var(--text);
-            background-color: var(--background);
+            font-family: 'Kanit', sans-serif; /* ใช้ฟอนต์ Kanit */
+            font-size: 18px; /* ขยายขนาดฟอนต์เริ่มต้น */
+            color: var(--text-main);
+            background-color: var(--space-dark);
             background-image:
                 radial-gradient(1px 1px at 25px 5px, rgba(255,255,255,0.8), transparent),
                 radial-gradient(1px 1px at 50px 25px, rgba(255,255,255,0.6), transparent),
                 radial-gradient(2px 2px at 125px 20px, rgba(255,255,255,0.9), transparent),
-                radial-gradient(1.5px 1.5px at 50px 75px, var(--neon-blue), transparent),
-                radial-gradient(2px 2px at 15px 125px, var(--neon-purple), transparent),
-                radial-gradient(1.5px 1.5px at 110px 80px, rgba(255,255,255,0.7), transparent);
+                radial-gradient(1.5px 1.5px at 50px 75px, var(--neon-cyan), transparent);
             background-size: 200px 200px;
             animation: driftSpace 100s linear infinite;
-            line-height: 1.7;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
@@ -70,679 +59,278 @@
             100% { background-position: 1000px 1000px; }
         }
 
-        img { display: block; max-width: 100%; }
         a { color: inherit; text-decoration: none; }
-        button, a { -webkit-tap-highlight-color: transparent; }
 
         /* =========================================
-           COMMON
+           TYPOGRAPHY (ขยายขนาดตัวหนังสือ)
         ========================================= */
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            text-shadow: 0 0 15px rgba(176, 38, 255, 0.4);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--neon-cyan);
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.15rem; /* ขยายเนื้อหาให้อ่านง่าย */
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        /* เทคนิคสีอักษรไล่สี (Gradient Text) */
+        .text-gradient {
+            background: linear-gradient(to right, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
+        }
+
         .container {
-            width: min(100% - 40px, var(--container));
+            width: min(100% - 40px, 1200px);
             margin: 0 auto;
         }
 
-        .section { padding: 110px 0; position: relative; }
-
-        .soft-section {
-            background: rgba(13, 19, 38, 0.7);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .centered {
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-heading { max-width: 720px; margin-bottom: 55px; }
-
-        .section-heading h2, .about-grid h2 {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: 1.2;
-            margin: 10px 0 18px;
-            letter-spacing: -1px;
-            color: var(--white);
-        }
-
-        .section-heading h2 span, .about-grid h2 span, 
-        .profile-information h2 span, .contact-intro h2 span, 
-        .page-hero h1 span {
-            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple), var(--neon-pink));
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
-        }
-
-        .section-heading p { color: var(--text-light); font-size: 1.05rem; }
-
-        .section-label {
-            display: inline-block;
-            color: var(--neon-blue);
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        .light-label { color: var(--neon-purple); }
+        .section { padding: 120px 0; position: relative; }
 
         /* =========================================
-           NAVIGATION
+           STARS IN CONTENT (ดาวขยับได้ในเนื้อหา)
         ========================================= */
-        .site-header {
+        .content-star {
+            position: absolute;
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: twinkleContent 3s infinite alternate ease-in-out;
+            text-shadow: 0 0 10px var(--neon-cyan);
+            z-index: 5;
+        }
+
+        .star-pink { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); animation-duration: 2s; }
+        .star-purple { color: var(--neon-purple); text-shadow: 0 0 10px var(--neon-purple); animation-duration: 4s; }
+
+        @keyframes twinkleContent {
+            0% { transform: scale(0.8) translateY(0); opacity: 0.3; }
+            50% { transform: scale(1.2) translateY(-10px) rotate(15deg); opacity: 1; }
+            100% { transform: scale(0.8) translateY(0); opacity: 0.3; }
+        }
+
+        /* =========================================
+           DATA FRAMES (กรอบจัดหมวดหมู่ข้อมูล)
+        ========================================= */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .data-frame {
+            position: relative;
+            background: var(--bg-glass);
+            border: 2px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15), inset 0 0 15px rgba(0, 240, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .data-frame:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(176, 38, 255, 0.3), inset 0 0 20px rgba(176, 38, 255, 0.1);
+            border-color: var(--neon-purple);
+        }
+
+        .frame-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px dashed rgba(255,255,255,0.2);
+            padding-bottom: 15px;
+        }
+
+        .frame-icon {
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .data-list {
+            list-style: none;
+        }
+
+        .data-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-highlight);
+        }
+
+        .data-list li::before {
+            content: "🚀";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1rem;
+        }
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(176, 38, 255, 0.6);
+        }
+
+        /* =========================================
+           HEADER & HERO
+        ========================================= */
+        .header {
+            padding: 20px 0;
+            text-align: center;
+            background: rgba(3, 5, 16, 0.8);
+            border-bottom: 2px solid var(--neon-purple);
+            box-shadow: 0 0 20px rgba(176, 38, 255, 0.3);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            background: rgba(5, 8, 20, 0.6);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .navbar {
-            min-height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: var(--white);
-        }
-
-        .logo > span:last-child > span { color: var(--neon-blue); }
-
-        .logo-mark {
-            width: 38px; height: 38px;
-            display: grid; place-items: center;
-            color: var(--white);
-            background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .nav-links { display: flex; align-items: center; gap: 6px; }
-
-        .nav-links a {
-            position: relative;
-            padding: 9px 14px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: color 0.25s ease, background 0.25s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.05);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        .nav-links a.active::after {
-            content: "";
-            position: absolute;
-            left: 14px; right: 14px; bottom: 3px;
-            height: 2px;
-            background: var(--neon-blue);
-            border-radius: 10px;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        /* =========================================
-           HERO SECTION
-        ========================================= */
-        .hero-section {
-            position: relative;
-            min-height: calc(100vh - 76px);
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background: 
-                radial-gradient(circle at 85% 20%, rgba(157, 78, 221, 0.2), transparent 40%),
-                radial-gradient(circle at 10% 80%, rgba(0, 210, 255, 0.15), transparent 40%);
-        }
-
-        .hero-grid {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            align-items: center;
-            gap: 70px;
-            padding: 80px 0;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 13px;
-            color: var(--neon-blue);
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 100px;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
-        }
-
-        .hero-content h1 {
-            margin: 22px 0;
-            color: var(--white);
-            font-size: clamp(3rem, 6vw, 5.4rem);
-            line-height: 1.02;
-            letter-spacing: -3px;
-        }
-
-        .hero-description {
-            max-width: 590px;
-            color: var(--text-light);
-            font-size: 1.08rem;
-        }
-
-        .hero-buttons { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
-
-        .btn {
-            min-height: 50px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 0 22px;
-            border-radius: 14px;
-            font-size: 0.9rem;
-            font-weight: 750;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            cursor: pointer;
-        }
-
-        .btn:hover { transform: translateY(-3px); }
-
-        .btn-primary {
-            color: var(--white);
-            background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
-            box-shadow: var(--shadow-sm);
-            border: none;
-        }
-
-        .btn-primary:hover { box-shadow: var(--shadow-md); }
-
-        .btn-secondary {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(5px);
-        }
-
-        .btn-secondary:hover { 
-            border-color: var(--neon-blue); 
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); 
-        }
-
-        .hero-mini-stats { display: flex; gap: 35px; margin-top: 50px; }
-
-        .mini-stat strong { color: var(--white); font-size: 1.5rem; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
-        .mini-stat span { color: var(--text-light); font-size: 0.72rem; }
-
-        .hero-visual { position: relative; min-height: 560px; display: grid; place-items: center; }
-
-        .profile-frame {
-            position: relative;
-            z-index: 3;
-            width: min(370px, 75vw);
-            padding: 12px;
-            background: rgba(13, 19, 38, 0.6);
-            border: 2px solid var(--neon-blue);
-            border-radius: 45% 45% 40% 40%;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
-            transform: rotate(3deg);
+            z-index: 100;
             backdrop-filter: blur(10px);
         }
 
-        .profile-frame img {
-            width: 100%;
-            aspect-ratio: 0.86;
-            object-fit: cover;
-            border-radius: 40% 40% 36% 36%;
+        .header h2 { margin: 0; font-size: 2rem; }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
         }
 
-        .profile-badge {
-            position: absolute;
-            z-index: 5;
-            top: 28px; right: -35px;
-            display: flex; align-items: center; gap: 8px;
-            padding: 10px 16px;
-            color: var(--white);
-            background: rgba(5, 8, 20, 0.8);
-            border: 1px solid var(--neon-purple);
-            border-radius: 100px;
-            box-shadow: var(--shadow-md);
-            font-size: 0.75rem; font-weight: 800;
-            backdrop-filter: blur(5px);
-        }
-
-        .profile-badge span { color: var(--neon-pink); }
-
-        .profile-orbit {
-            position: absolute;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: spinOrbit 30s linear infinite;
-        }
-
-        @keyframes spinOrbit {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .orbit-one { width: 470px; height: 470px; border-color: rgba(0, 210, 255, 0.3); box-shadow: 0 0 20px rgba(0, 210, 255, 0.1) inset; }
-        .orbit-two { width: 600px; height: 600px; opacity: 0.4; border-color: rgba(157, 78, 221, 0.4); animation-direction: reverse; }
-
-        .floating-card {
-            position: absolute;
-            z-index: 6;
-            display: flex; align-items: center; gap: 12px;
-            padding: 13px 17px;
-            background: rgba(13, 19, 38, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            backdrop-filter: blur(10px);
-            animation: floatSpace 4s ease-in-out infinite;
-        }
-
-        @keyframes floatSpace {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(2deg); }
-        }
-
-        .floating-card-top { top: 90px; left: 5px; border-left: 2px solid var(--neon-blue); }
-        .floating-card-bottom { right: 0; bottom: 90px; animation-delay: 1s; border-right: 2px solid var(--neon-purple); }
-
-        .floating-icon {
-            width: 38px; height: 38px;
-            display: grid; place-items: center;
-            background: rgba(0, 210, 255, 0.15);
-            border-radius: 11px;
-            color: var(--neon-blue);
-        }
-
-        .floating-card strong { color: var(--white); font-size: 0.82rem; }
-        .floating-card small { color: var(--text-light); font-size: 0.68rem; }
-
-        /* =========================================
-           FEATURES
-        ========================================= */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .feature-card {
-            position: relative;
-            padding: 32px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 210, 255, 0.5);
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
-        }
-
-        .feature-card.featured {
-            background: linear-gradient(145deg, rgba(13, 71, 161, 0.4), rgba(157, 78, 221, 0.4));
-            border-color: var(--neon-purple);
-            box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
-        }
-
-        .feature-card > span {
-            position: absolute;
-            top: 25px; right: 28px;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 0.72rem; font-weight: 800;
-        }
-
-        .feature-icon {
-            width: 55px; height: 55px;
-            display: grid; place-items: center;
-            margin-bottom: 25px;
-            background: rgba(0, 210, 255, 0.1);
-            color: var(--neon-blue);
-            border-radius: 16px;
-            font-size: 1.4rem;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-        }
-
-        .featured .feature-icon {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--white);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-        }
-
-        .feature-card h3 { margin-bottom: 10px; font-size: 1.25rem; color: var(--white); }
-        .feature-card p { min-height: 75px; color: var(--text-light); font-size: 0.9rem; }
-        .featured p { color: rgba(255, 255, 255, 0.78); }
-
-        .feature-card a {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--neon-blue);
-            font-size: 0.8rem; font-weight: 800;
-        }
-        .featured a { color: var(--neon-pink); }
-
-        /* =========================================
-           CTA SECTION
-        ========================================= */
-        .cta-section { padding: 35px 0 110px; }
-
-        .cta-card {
-            display: flex; align-items: center; justify-content: space-between; gap: 35px;
-            padding: 50px 55px;
-            color: var(--white);
-            background: radial-gradient(circle at 80% 20%, rgba(255, 0, 127, 0.3), transparent 40%),
-                        linear-gradient(135deg, rgba(5, 8, 20, 0.9), rgba(157, 78, 221, 0.5));
-            border: 1px solid rgba(255, 0, 127, 0.3);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(15px);
-        }
-
-        .cta-card h2 { margin: 8px 0; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.2; }
-        .cta-card p { color: rgba(255, 255, 255, 0.75); }
-
-        /* =========================================
-           FOOTER
-        ========================================= */
-        .site-footer {
-            background: #02040a;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: rgba(255, 255, 255, 0.7);
-            padding-top: 60px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 0.6fr;
-            gap: 80px;
-            padding-bottom: 50px;
-        }
-
-        .footer-logo { color: var(--white); }
-        .footer-logo > span:last-child > span { color: var(--neon-blue); }
-        .footer-description { max-width: 400px; margin-top: 18px; font-size: 0.82rem; }
-        .footer-grid h3 { margin-bottom: 15px; color: var(--white); font-size: 0.85rem; }
-        .footer-links { display: grid; gap: 7px; }
-        .footer-links a { width: fit-content; font-size: 0.78rem; transition: color 0.2s ease; }
-        .footer-links a:hover { color: var(--white); text-shadow: 0 0 8px var(--neon-blue); }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.68rem;
-        }
-
-        /* =========================================
-           MOVING SPACE STICKERS & EMOJIS
-        ========================================= */
-        .space-sticker {
-            position: absolute;
-            z-index: 10;
-            font-size: 2rem;
-            pointer-events: none;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-        }
-
-        .sticker-twinkle {
-            animation: floatSpace 3s ease-in-out infinite, pulseGlow 2s alternate infinite;
-        }
-
-        .sticker-rocket {
-            animation: flyRocket 15s linear infinite;
-        }
-
-        .sticker-ufo {
-            animation: hoverUFO 6s ease-in-out infinite;
-        }
-
-        @keyframes pulseGlow {
-            from { opacity: 0.5; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 20px var(--star-glow)); }
-        }
-
-        @keyframes flyRocket {
-            0% { transform: translate(-100px, 100px) rotate(45deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translate(calc(100vw + 100px), -500px) rotate(45deg); opacity: 0; }
-        }
-
-        @keyframes hoverUFO {
-            0%, 100% { transform: translate(0, 0) rotate(-5deg); }
-            25% { transform: translate(20px, -15px) rotate(5deg); }
-            50% { transform: translate(0px, -30px) rotate(-2deg); }
-            75% { transform: translate(-20px, -10px) rotate(3deg); }
-        }
-
-        /* =========================================
-           RESPONSIVE
-        ========================================= */
-        @media (max-width: 950px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 35px; }
-            .hero-content { display: flex; flex-direction: column; align-items: center; }
-            .feature-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 680px) {
-            .feature-grid { grid-template-columns: 1fr; }
-            .cta-card { flex-direction: column; align-items: flex-start; padding: 35px 25px; }
-            .btn { width: 100%; }
-            .hero-buttons { width: 100%; flex-direction: column; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- =========================================
-       NAVIGATION
-    ========================================= -->
-    <header class="site-header">
-        <div class="container navbar">
-            <a href="#" class="logo">
-                <div class="logo-mark">🚀</div>
-                <span>SPACE<span>PORT</span></span>
-            </a>
-            <nav class="nav-links">
-                <a href="#" class="active">หน้าแรก</a>
-                <a href="#features">ฟีเจอร์</a>
-                <a href="#about">เกี่ยวกับ</a>
-                <a href="#contact">ติดต่อ</a>
-            </nav>
-        </div>
+    <!-- แถบเมนูด้านบน -->
+    <header class="header">
+        <h2>🚀 SPACE<span class="text-gradient">PORTAL</span></h2>
     </header>
 
-    <!-- =========================================
-       HERO SECTION WITH STICKERS
-    ========================================= -->
-    <section class="hero-section">
-        <!-- สติกเกอร์อวกาศขยับได้ (Space Stickers) -->
-        <div class="space-sticker sticker-twinkle" style="top: 15%; left: 8%;">✨</div>
-        <div class="space-sticker sticker-twinkle" style="top: 25%; right: 12%; font-size: 1.5rem; animation-delay: 1s;">⭐</div>
-        <div class="space-sticker sticker-ufo" style="bottom: 15%; left: 10%; font-size: 2.8rem;">🛸</div>
-        <div class="space-sticker sticker-rocket" style="bottom: 10%; left: 0;">🚀</div>
-        <div class="space-sticker sticker-twinkle" style="top: 75%; right: 8%; font-size: 2.2rem; animation-delay: 0.5s;">🪐</div>
+    <!-- ส่วนหัว (Hero Section) -->
+    <section class="section hero">
+        <div class="container relative">
+            <!-- ดาวตกแต่งในเนื้อหาส่วนหัว -->
+            <div class="content-star" style="top: 10%; left: 10%; font-size: 2rem;">✦</div>
+            <div class="content-star star-pink" style="top: 20%; right: 15%; font-size: 3rem;">✧</div>
 
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="eyebrow">
-                    <span>🌌</span> WELCOME TO THE FUTURE
-                </div>
-                <h1>สำรวจจักรวาล<span>แห่งความเป็นไปได้</span></h1>
-                <p class="hero-description">
-                    ก้าวข้ามขีดจำกัดเดิมๆ ด้วยดีไซน์สไตล์อวกาศล้ำสมัย สัมผัสประสบการณ์การท่องเว็บที่ตอบสนองรวดเร็วและสวยงามตระการตา
-                </p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">เริ่มต้นเดินทาง 🚀</a>
-                    <a href="#" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
-                </div>
-                <div class="hero-mini-stats">
-                    <div class="mini-stat">
-                        <strong>99.9%</strong>
-                        <span>Uptime บนอวกาศ</span>
-                    </div>
-                    <div class="mini-stat">
-                        <strong>100+</strong>
-                        <span>ภารกิจสำเร็จ</span>
-                    </div>
-                    <div class="mini-stat">
-                        <strong>24/7</strong>
-                        <span>การสื่อสารไร้สาย</span>
-                    </div>
-                </div>
+            <h1>ระบบฐานข้อมูล <br> <span class="text-gradient">ระดับจักรวาล</span></h1>
+            <p style="max-width: 800px; margin: 20px auto; font-size: 1.3rem;">
+                ยินดีต้อนรับสู่ศูนย์กลางการจัดเก็บข้อมูล ข้อมูลทั้งหมดถูกจัดหมวดหมู่ไว้อย่างเป็นระเบียบ 
+                ภายใต้กรอบการป้องกันด้วยระบบความปลอดภัยขั้นสูงสุด อ่านง่าย ชัดเจน และล้ำสมัย
+            </p>
+            <button class="btn">เริ่มต้นการสำรวจ 🛰️</button>
+        </div>
+    </section>
+
+    <!-- ส่วนข้อมูลที่จัดหมวดหมู่ในกรอบ (Categorized Data Frames) -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>หมวดหมู่ข้อมูล <span class="text-gradient">SYSTEM CORE</span></h2>
+                <p>ข้อมูลเฉพาะกิจถูกแยกประเภทไว้ในกรอบ Glassmorphism เพื่อความสะดวกในการวิเคราะห์</p>
             </div>
 
-            <div class="hero-visual">
-                <div class="profile-orbit orbit-one"></div>
-                <div class="profile-orbit orbit-two"></div>
+            <div class="data-grid">
                 
-                <div class="profile-frame">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" alt="Space Visualization">
-                </div>
+                <!-- กรอบข้อมูลที่ 1 -->
+                <div class="data-frame">
+                    <!-- ดาวตกแต่งในกรอบเนื้อหา -->
+                    <div class="content-star star-purple" style="top: 10px; right: 20px;">★</div>
+                    <div class="content-star" style="bottom: 20px; left: 10px;">✧</div>
 
-                <div class="profile-badge">
-                    <span>STATUS</span> READY FOR LAUNCH
-                </div>
-
-                <div class="floating-card floating-card-top">
-                    <div class="floating-icon">📡</div>
-                    <div>
-                        <strong>ระบบสัญญาณ</strong>
-                        <small>เชื่อมต่อเสถียร 100%</small>
+                    <div class="frame-header">
+                        <span class="frame-icon">🧠</span>
+                        <h3>ระบบประมวลผล (AI Core)</h3>
                     </div>
+                    <p>แกนกลางการคิดคำนวณของยานแม่ จัดการกับบิ๊กดาต้าด้วยความเร็วแสง</p>
+                    <ul class="data-list">
+                        <li><strong>สถานะคอร์:</strong> ทำงานเต็มประสิทธิภาพ 100%</li>
+                        <li><strong>อัตราซิงค์ข้อมูล:</strong> 10.5 Terabytes / วินาที</li>
+                        <li><strong>ระบบสำรองไฟ:</strong> พลังงานควอนตัม (เสถียร)</li>
+                    </ul>
                 </div>
 
-                <div class="floating-card floating-card-bottom">
-                    <div class="floating-icon">👨‍🚀</div>
-                    <div>
-                        <strong>นักนักสำรวจ</strong>
-                        <small>พร้อมออกปฏิบัติการ</small>
+                <!-- กรอบข้อมูลที่ 2 -->
+                <div class="data-frame">
+                    <!-- ดาวตกแต่งในกรอบเนื้อหา -->
+                    <div class="content-star" style="top: 50%; right: -10px; font-size: 2rem;">✦</div>
+                    <div class="content-star star-pink" style="bottom: 10px; right: 40px;">★</div>
+
+                    <div class="frame-header">
+                        <span class="frame-icon">🗺️</span>
+                        <h3>ระบบนำทาง (Navigation)</h3>
                     </div>
+                    <p>ระบบแผนที่ดาวที่ครอบคลุมทุกกาแล็กซี ค้นหาเส้นทางที่ปลอดภัยที่สุด</p>
+                    <ul class="data-list">
+                        <li><strong>พิกัดปัจจุบัน:</strong> Sector 7G, ทางช้างเผือก</li>
+                        <li><strong>ความเร็วเดินทาง:</strong> Warp Factor 9.9</li>
+                        <li><strong>โหมดนำทาง:</strong> ออโต้ไพลอต (วิเคราะห์สิ่งกีดขวาง)</li>
+                    </ul>
                 </div>
+
+                <!-- กรอบข้อมูลที่ 3 -->
+                <div class="data-frame">
+                    <!-- ดาวตกแต่งในกรอบเนื้อหา -->
+                    <div class="content-star star-pink" style="top: -15px; left: 40px; font-size: 1.8rem;">✧</div>
+                    <div class="content-star star-purple" style="bottom: 30px; right: 30px;">✦</div>
+
+                    <div class="frame-header">
+                        <span class="frame-icon">🛡️</span>
+                        <h3>เกราะป้องกัน (Deflector)</h3>
+                    </div>
+                    <p>สนามพลังแม่เหล็กไฟฟ้าขั้นสูง ป้องกันรังสีคอสมิกและวัตถุแปลกปลอม</p>
+                    <ul class="data-list">
+                        <li><strong>ความหนาแน่นสนามพลัง:</strong> ระดับสูงสุด (Level 5)</li>
+                        <li><strong>อุณหภูมิภายนอก:</strong> -270°C (ปกติตามสุญญากาศ)</li>
+                        <li><strong>ตรวจจับการโจมตี:</strong> ไม่พบความเสี่ยงในรัศมี 1,000 ปีแสง</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </section>
-
-    <!-- =========================================
-       FEATURES SECTION
-    ========================================= -->
-    <section class="section soft-section" id="features">
-        <div class="container">
-            <div class="section-heading centered">
-                <span class="section-label">FEATURES</span>
-                <h2>ฟีเจอร์ระดับ<span>กาแล็กซี</span></h2>
-                <p>นวัตกรรมที่ออกแบบมาเพื่อนำพาโปรเจกต์ของคุณไปให้ไกลกว่าขอบฟ้าเดิม</p>
-            </div>
-
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <span>01</span>
-                    <div class="feature-icon">⚡</div>
-                    <h3>ความเร็วแสง</h3>
-                    <p>ดาวน์โหลดและแสดงผลได้อย่างรวดเร็ว ไร้การหน่วง ประดุจการเดินทางด้วยความเร็วแสง</p>
-                    <a href="#">อ่านเพิ่มเติม &rarr;</a>
-                </div>
-
-                <div class="feature-card featured">
-                    <span>02</span>
-                    <div class="feature-icon">🛡️</div>
-                    <h3>เกราะป้องกันเข้มงวด</h3>
-                    <p>ระบบรักษาความปลอดภัยหนาแน่น เปรียบเสมือนเกราะสนามพลังป้องกันภัยคุกคามทุกประเภท</p>
-                    <a href="#">อ่านเพิ่มเติม &rarr;</a>
-                </div>
-
-                <div class="feature-card">
-                    <span>03</span>
-                    <div class="feature-icon">🛰️</div>
-                    <h3>เชื่อมต่อไร้ขีดจำกัด</h3>
-                    <p>รองรับทุกอุปกรณ์และการทำงานร่วมกันทั่วโลกอย่างไร้รอยต่อผ่านระบบคลาวด์อวกาศ</p>
-                    <a href="#">อ่านเพิ่มเติม &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =========================================
-       CTA SECTION
-    ========================================= -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <div>
-                    <span class="section-label light-label">JOIN US NOW</span>
-                    <h2>พร้อมที่จะทะยานสู่จักรวาลแล้วหรือยัง?</h2>
-                    <p>เริ่มเดินทางไปกับเราวันนี้เพื่อรับคำปรึกษาและข้อเสนอสุดพิเศษสำหรับยานแม่ของคุณ</p>
-                </div>
-                <a href="#" class="btn btn-primary">ติดต่อศูนย์ควบคุม 👨‍🚀</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- =========================================
-       FOOTER
-    ========================================= -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#" class="logo footer-logo">
-                        <div class="logo-mark">🚀</div>
-                        <span>SPACE<span>PORT</span></span>
-                    </a>
-                    <p class="footer-description">
-                        ผู้ให้บริการโซลูชันแห่งอนาคต นำพาธุรกิจและนักพัฒนาเดินทางทะยานสู่เป้าหมายอย่างไร้ขีดจำกัด
-                    </p>
-                </div>
-                <div>
-                    <h3>ลิงก์ด่วน</h3>
-                    <div class="footer-links">
-                        <a href="#">เกี่ยวกับเรา</a>
-                        <a href="#">แผนการเดินทาง</a>
-                        <a href="#">รายงานการบิน</a>
-                        <a href="#">ศูนย์ช่วยเหลือ</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SPACEPORT. All rights reserved.</p>
-                <p>Designed for Space Explorers</p>
-            </div>
-        </div>
-    </footer>
 
 </body>
 </html>
