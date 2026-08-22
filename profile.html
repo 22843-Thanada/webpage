@@ -1,160 +1,149 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ประวัติส่วนตัวของนักเรียน">
-    <title>My Portfolio | ประวัติส่วนตัว</title>
 
-    <link rel="stylesheet" href="style.css">
+    <title>Galaxy Portfolio | หน้าหลัก</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar container">
+    <!-- =========================
+         STAR BACKGROUND
+    ========================== -->
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">P</span>
-                <span>My<span>Portfolio</span></span>
+    <div class="stars"></div>
+    <div class="stars stars-2"></div>
+    <div class="stars stars-3"></div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            ✦ GALAXY
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html" class="active">
+                หน้าหลัก
             </a>
 
-            <div class="nav-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html" class="active">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
+            <a href="about.html">
+                ตัวฉัน
+            </a>
+
+            <a href="skills.html">
+                ทักษะ
+            </a>
+
+            <a href="projects.html">
+                ผลงาน
+            </a>
+
+            <a href="contact.html">
+                ติดต่อ
+            </a>
 
         </nav>
+
+
+        <button id="menuBtn" class="menu-btn">
+            ☰
+        </button>
+
     </header>
+
+
+    <!-- =========================
+         MOBILE MENU
+    ========================== -->
+
+    <div id="mobileMenu" class="mobile-menu">
+
+        <a href="index.html">
+            🏠 หน้าหลัก
+        </a>
+
+        <a href="about.html">
+            👤 ตัวฉัน
+        </a>
+
+        <a href="skills.html">
+            ⚡ ทักษะ
+        </a>
+
+        <a href="projects.html">
+            🚀 ผลงาน
+        </a>
+
+        <a href="contact.html">
+            📡 ติดต่อ
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
 
     <main>
 
-        <!-- Page Hero -->
-        <section class="page-hero">
-            <div class="container page-hero-content">
+        <section class="hero">
 
-                <span class="section-label">01 / PROFILE</span>
+            <div class="hero-content">
 
-                <h1>ประวัติ<span>ส่วนตัว</span></h1>
-
-                <p>
-                    มาทำความรู้จักตัวฉัน
-                    และเรื่องราวเล็ก ๆ ที่ทำให้ฉันเป็นฉันในวันนี้
+                <p class="small-title">
+                    ✦ WELCOME TO MY UNIVERSE ✦
                 </p>
 
-            </div>
-        </section>
+                <h1>
+                    MY
+                    <span>GALAXY</span>
+                    PORTFOLIO
+                </h1>
 
-        <!-- Profile Section -->
-        <section class="section">
-            <div class="container">
+                <p class="hero-description">
+                    ยินดีต้อนรับเข้าสู่จักรวาลส่วนตัวของฉัน
+                    ที่รวมตัวตน ความสามารถ และผลงานเอาไว้
+                </p>
 
-                <div class="profile-layout">
 
-                    <div class="large-profile-image">
-                        <div class="image-label">ABOUT ME</div>
+                <div class="hero-buttons">
 
-                        <img
-                            src="https://placehold.co/600x750/E3F2FD/0D47A1?text=My+Photo"
-                            alt="รูปภาพประวัติส่วนตัวของฉัน"
-                        >
-                    </div>
+                    <a href="about.html" class="btn primary">
+                        🚀 สำรวจตัวฉัน
+                    </a>
 
-                    <div class="profile-information">
-
-                        <span class="section-label">WHO AM I?</span>
-
-                        <h2>
-                            สวัสดี! ฉันคือ
-                            <span>[ด.ญ.ฐาณดา ล้อลำเลียง]</span>
-                        </h2>
-
-                        <p class="lead-text">
-                            ฉันเป็นนักเรียนชั้นมัธยมศึกษาปีที่ 3
-                            ที่ชอบเรียนรู้สิ่งใหม่ ๆ และสนใจเรื่อง
-                            เทคโนโลยีและการสร้างสรรค์ผลงาน
-                        </p>
-
-                        <div class="info-grid">
-
-                            <div class="info-box">
-                                <span>ชื่อ-นามสกุล</span>
-                                <strong>[ด.ญ.ฐาณดา ล้อลำเลียง]</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>ชื่อเล่น</span>
-                                <strong>[อิ่มเอม]</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>อายุ</span>
-                                <strong>[กรอกอายุ] ปี</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>วันเกิด</span>
-                                <strong>[3 มิถุนายน พ.ศ. 2554]</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>โรงเรียน</span>
-                                <strong>[โรงเรียนจอมทอง]</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>ระดับชั้น</span>
-                                <strong>ม.3/[2]</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>จังหวัด</span>
-                                <strong>[เชียงใหม่]</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>วิชาที่ชอบ</span>
-                                <strong>[วิทยาศาสตร์]</strong>
-                            </div>
-
-                        </div>
-
-                    </div>
+                    <a href="projects.html" class="btn secondary">
+                        ✦ ดูผลงาน
+                    </a>
 
                 </div>
 
             </div>
-        </section>
 
-        <!-- About Me -->
-        <section class="section soft-section">
 
-            <div class="container about-grid">
+            <!-- PLANET -->
 
-                <div>
-                    <span class="section-label">ABOUT ME</span>
-                    <h2>เกี่ยวกับ<span>ฉัน</span></h2>
+            <div class="planet-area">
+
+                <div class="planet-ring"></div>
+
+                <div class="planet">
+                    🌍
                 </div>
 
-                <div class="about-text">
-
-                    <p>
-                        ฉันเชื่อว่าการเรียนรู้ไม่ได้เกิดขึ้นเฉพาะ
-                        ในห้องเรียน แต่ยังเกิดขึ้นจากการทดลอง
-                        การลงมือทำ และการค้นหาสิ่งที่ตัวเองสนใจ
-                    </p>
-
-                    <p>
-                        ในเวลาว่าง ฉันชอบทำกิจกรรมที่ช่วยให้ได้
-                        ฝึกความคิดสร้างสรรค์ และเรียนรู้เทคโนโลยี
-                        ใหม่ ๆ เพื่อพัฒนาตัวเองอยู่เสมอ
-                    </p>
-
-                </div>
+                <div class="planet-glow"></div>
 
             </div>
 
@@ -162,43 +151,9 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
 
-        <div class="container footer-grid">
-
-            <div>
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">P</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-
-                <p class="footer-description">
-                    เว็บไซต์ Portfolio ส่วนตัว
-                    ของนักเรียนชั้นมัธยมศึกษาปีที่ 3
-                </p>
-            </div>
-
-            <div>
-                <h3>Navigation</h3>
-
-                <div class="footer-links">
-                    <a href="index.html">หน้าแรก</a>
-                    <a href="profile.html">ประวัติส่วนตัว</a>
-                    <a href="education.html">การศึกษา</a>
-                    <a href="hobby.html">งานอดิเรก</a>
-                    <a href="contact.html">ติดต่อ</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container footer-bottom">
-            <p>© 2026 [กรอกชื่อ] • Student Portfolio</p>
-            <p>Made with HTML & CSS</p>
-        </div>
-
-    </footer>
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>
