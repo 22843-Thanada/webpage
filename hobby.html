@@ -1,263 +1,185 @@
 <!DOCTYPE html>
 <html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="งานอดิเรกและความสนใจของนักเรียน">
-    <title>My Portfolio | งานอดิเรก</title>
 
-    <link rel="stylesheet" href="style.css">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Galaxy Portfolio | ทักษะ</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar container">
+<div class="stars"></div>
+<div class="stars stars-2"></div>
+<div class="stars stars-3"></div>
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">P</span>
-                <span>My<span>Portfolio</span></span>
-            </a>
 
-            <div class="nav-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html" class="active">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        ✦ GALAXY
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">หน้าหลัก</a>
+
+        <a href="about.html">ตัวฉัน</a>
+
+        <a href="skills.html" class="active">
+            ทักษะ
+        </a>
+
+        <a href="projects.html">
+            ผลงาน
+        </a>
+
+        <a href="contact.html">
+            ติดต่อ
+        </a>
+
+    </nav>
+
+    <button id="menuBtn" class="menu-btn">
+        ☰
+    </button>
+
+</header>
+
+
+<div id="mobileMenu" class="mobile-menu">
+
+    <a href="index.html">🏠 หน้าหลัก</a>
+    <a href="about.html">👤 ตัวฉัน</a>
+    <a href="skills.html">⚡ ทักษะ</a>
+    <a href="projects.html">🚀 ผลงาน</a>
+    <a href="contact.html">📡 ติดต่อ</a>
+
+</div>
+
+
+<main>
+
+<section class="page-section">
+
+    <div class="section-title">
+
+        <span>✦ MY ABILITIES ✦</span>
+
+        <h1>
+            ทักษะ
+        </h1>
+
+        <p>
+            ความสามารถที่ฉันกำลังพัฒนา
+        </p>
+
+    </div>
+
+
+    <div class="skills-grid">
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                🌐
             </div>
 
-        </nav>
-    </header>
-
-    <main>
-
-        <!-- Page Hero -->
-        <section class="page-hero hobby-hero">
-            <div class="container page-hero-content">
-
-                <span class="section-label">03 / HOBBY</span>
-
-                <h1>สิ่งที่ฉัน<span>ชอบ</span></h1>
-
-                <p>
-                    งานอดิเรกคือพื้นที่ที่ทำให้ฉันได้สนุก
-                    ผ่อนคลาย และค้นพบความสนใจใหม่ ๆ
-                </p>
-
-            </div>
-        </section>
-
-        <!-- Hobby Cards -->
-        <section class="section">
-
-            <div class="container">
-
-                <div class="section-heading centered">
-                    <span class="section-label">MY INTERESTS</span>
-                    <h2>งานอดิเรกและ<span>ความสนใจ</span></h2>
-                    <p>
-                        กิจกรรมเหล่านี้คือสิ่งที่ฉันชอบใช้เวลา
-                        ในการเรียนรู้และสนุกกับมัน
-                    </p>
-                </div>
-
-                <div class="hobby-grid">
-
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon">🎮</div>
-
-                        <span class="hobby-number">01</span>
-
-                        <h3>เกม</h3>
-
-                        <p>
-                            ชอบเล่นเกมเพื่อความสนุก
-                            และฝึกการคิดวิเคราะห์
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-label">
-                            Entertainment
-                        </span>
-
-                    </article>
-
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon">⚽</div>
-
-                        <span class="hobby-number">02</span>
-
-                        <h3>กีฬา</h3>
-
-                        <p>
-                            ชอบทำกิจกรรมกีฬาเพื่อออกกำลังกาย
-                            และใช้เวลาร่วมกับเพื่อน
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-label">
-                            Activity
-                        </span>
-
-                    </article>
-
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon">🎵</div>
-
-                        <span class="hobby-number">03</span>
-
-                        <h3>เพลง</h3>
-
-                        <p>
-                            ฟังเพลงในเวลาว่างเพื่อผ่อนคลาย
-                            และสร้างแรงบันดาลใจ
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-label">
-                            Music
-                        </span>
-
-                    </article>
-
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon">🎬</div>
-
-                        <span class="hobby-number">04</span>
-
-                        <h3>ภาพยนตร์</h3>
-
-                        <p>
-                            ชอบชมภาพยนตร์และเรื่องราวต่าง ๆ
-                            เพื่อความบันเทิง
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-label">
-                            Movies
-                        </span>
-
-                    </article>
-
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon">💻</div>
-
-                        <span class="hobby-number">05</span>
-
-                        <h3>เทคโนโลยี</h3>
-
-                        <p>
-                            สนใจคอมพิวเตอร์ เว็บไซต์
-                            และการเรียนรู้เทคโนโลยีใหม่ ๆ
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-label">
-                            Technology
-                        </span>
-
-                    </article>
-
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon">📷</div>
-
-                        <span class="hobby-number">06</span>
-
-                        <h3>การถ่ายภาพ</h3>
-
-                        <p>
-                            สนใจการถ่ายภาพและการเก็บบันทึก
-                            ช่วงเวลาที่น่าสนใจ
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-label">
-                            Creative
-                        </span>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Quote -->
-        <section class="quote-section">
-
-            <div class="container">
-
-                <div class="quote-card">
-
-                    <span class="quote-mark">“</span>
-
-                    <blockquote>
-                        ทุกความสนใจสามารถกลายเป็น
-                        จุดเริ่มต้นของการเรียนรู้สิ่งใหม่
-                    </blockquote>
-
-                    <span class="quote-mark quote-end">”</span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-
-        <div class="container footer-grid">
-
-            <div>
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">P</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-
-                <p class="footer-description">
-                    เว็บไซต์ Portfolio ส่วนตัว
-                    ของนักเรียนชั้นมัธยมศึกษาปีที่ 3
-                </p>
-            </div>
-
-            <div>
-                <h3>Navigation</h3>
-
-                <div class="footer-links">
-                    <a href="index.html">หน้าแรก</a>
-                    <a href="profile.html">ประวัติส่วนตัว</a>
-                    <a href="education.html">การศึกษา</a>
-                    <a href="hobby.html">งานอดิเรก</a>
-                    <a href="contact.html">ติดต่อ</a>
-                </div>
+            <h2>
+                HTML
+            </h2>
+
+            <p>
+                โครงสร้างเว็บไซต์
+            </p>
+
+            <div class="skill-bar">
+                <span style="width: 90%;"></span>
             </div>
 
         </div>
 
-        <div class="container footer-bottom">
-            <p>© 2026 [กรอกชื่อ] • Student Portfolio</p>
-            <p>Made with HTML & CSS</p>
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                🎨
+            </div>
+
+            <h2>
+                CSS
+            </h2>
+
+            <p>
+                การออกแบบและตกแต่งเว็บไซต์
+            </p>
+
+            <div class="skill-bar">
+                <span style="width: 85%;"></span>
+            </div>
+
         </div>
 
-    </footer>
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                ⚡
+            </div>
+
+            <h2>
+                JavaScript
+            </h2>
+
+            <p>
+                เพิ่มลูกเล่นและ Interactive
+            </p>
+
+            <div class="skill-bar">
+                <span style="width: 75%;"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                🪐
+            </div>
+
+            <h2>
+                UI Design
+            </h2>
+
+            <p>
+                ออกแบบหน้าตาเว็บไซต์
+            </p>
+
+            <div class="skill-bar">
+                <span style="width: 80%;"></span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>
+
+
+<script src="js/script.js"></script>
 
 </body>
+
 </html>
