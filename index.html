@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
@@ -50,23 +49,36 @@ background-attachment:fixed;
 cursor:crosshair;
 }
 
+/* =========================================================
+   STAR BACKGROUND
+========================================================= */
+
 body:before{
 content:"";
 position:fixed;
 inset:0;
 z-index:-100;
 pointer-events:none;
+
 background-image:
 radial-gradient(#fff 1px,transparent 1.5px),
 radial-gradient(#00f6ff 1px,transparent 1.5px),
 radial-gradient(#9147ff 1px,transparent 1.7px),
 radial-gradient(#ff3cac 1px,transparent 1.6px);
-background-size:65px 65px,130px 130px,210px 210px,310px 310px;
+
+background-size:
+65px 65px,
+130px 130px,
+210px 210px,
+310px 310px;
+
 opacity:.65;
+
 animation:deepStars 45s linear infinite;
 }
 
 @keyframes deepStars{
+
 to{
 background-position:
 600px 900px,
@@ -74,11 +86,12 @@ background-position:
 700px -500px,
 -800px 300px;
 }
+
 }
 
-/* =========================
+/* =========================================================
    NEBULA
-========================= */
+========================================================= */
 
 .nebula{
 position:fixed;
@@ -93,7 +106,13 @@ width:650px;
 height:650px;
 left:-250px;
 top:5%;
-background:radial-gradient(circle,rgba(0,246,255,.2),rgba(0,100,255,.08),transparent 70%);
+background:
+radial-gradient(
+circle,
+rgba(0,246,255,.2),
+rgba(0,100,255,.08),
+transparent 70%
+);
 animation:nebulaOne 15s ease-in-out infinite alternate;
 }
 
@@ -102,7 +121,13 @@ width:800px;
 height:800px;
 right:-350px;
 top:20%;
-background:radial-gradient(circle,rgba(145,71,255,.22),rgba(255,60,172,.08),transparent 70%);
+background:
+radial-gradient(
+circle,
+rgba(145,71,255,.22),
+rgba(255,60,172,.08),
+transparent 70%
+);
 animation:nebulaTwo 18s ease-in-out infinite alternate;
 }
 
@@ -111,7 +136,13 @@ width:700px;
 height:700px;
 left:35%;
 bottom:-350px;
-background:radial-gradient(circle,rgba(255,60,172,.16),rgba(0,246,255,.08),transparent 70%);
+background:
+radial-gradient(
+circle,
+rgba(255,60,172,.16),
+rgba(0,246,255,.08),
+transparent 70%
+);
 animation:nebulaThree 20s ease-in-out infinite alternate;
 }
 
@@ -133,9 +164,9 @@ transform:translate(80px,-150px) scale(1.2);
 }
 }
 
-/* =========================
+/* =========================================================
    GALAXY RING
-========================= */
+========================================================= */
 
 .galaxyRing{
 position:fixed;
@@ -146,11 +177,14 @@ top:48%;
 transform:translate(-50%,-50%) rotate(-18deg);
 border-radius:50%;
 border:2px solid rgba(0,246,255,.08);
+
 box-shadow:
 0 0 60px rgba(0,246,255,.08),
 inset 0 0 60px rgba(145,71,255,.06);
+
 z-index:-80;
 pointer-events:none;
+
 animation:galaxySpin 35s linear infinite;
 }
 
@@ -169,14 +203,18 @@ border-color:rgba(255,60,172,.08);
 }
 
 @keyframes galaxySpin{
+
 to{
-transform:translate(-50%,-50%) rotate(342deg);
-}
+transform:
+translate(-50%,-50%)
+rotate(342deg);
 }
 
-/* =========================
+}
+
+/* =========================================================
    MOUSE GLOW
-========================= */
+========================================================= */
 
 #mouseGlow{
 position:fixed;
@@ -185,7 +223,9 @@ height:350px;
 border-radius:50%;
 pointer-events:none;
 z-index:9998;
+
 transform:translate(-50%,-50%);
+
 background:
 radial-gradient(
 circle,
@@ -194,102 +234,17 @@ rgba(145,71,255,.12),
 rgba(255,60,172,.05),
 transparent 68%
 );
+
 mix-blend-mode:screen;
-transition:left .05s linear,top .05s linear;
+
+transition:
+left .05s linear,
+top .05s linear;
 }
 
-/* =========================
-   MOUSE TRAIL
-========================= */
-
-.mouseStar{
-position:fixed;
-pointer-events:none;
-z-index:9997;
-font-size:14px;
-filter:
-drop-shadow(0 0 5px currentColor)
-drop-shadow(0 0 12px currentColor);
-animation:mouseStarFly .9s ease-out forwards;
-}
-
-@keyframes mouseStarFly{
-0%{
-opacity:1;
-transform:translate(-50%,-50%) scale(1.2) rotate(0);
-}
-100%{
-opacity:0;
-transform:
-translate(
-calc(-50% + var(--mx)),
-calc(-50% + var(--my))
-)
-rotate(240deg)
-scale(.05);
-}
-}
-
-/* =========================
-   CLICK STARS
-========================= */
-
-.clickStar{
-position:fixed;
-pointer-events:none;
-z-index:10001;
-font-size:22px;
-filter:
-drop-shadow(0 0 5px currentColor)
-drop-shadow(0 0 14px currentColor)
-drop-shadow(0 0 25px currentColor);
-animation:clickStarFly 1.25s cubic-bezier(.1,.8,.2,1) forwards;
-}
-
-@keyframes clickStarFly{
-0%{
-opacity:1;
-transform:translate(-50%,-50%) scale(.2) rotate(0);
-}
-100%{
-opacity:0;
-transform:
-translate(
-calc(-50% + var(--cx)),
-calc(-50% + var(--cy))
-)
-scale(.05)
-rotate(600deg);
-}
-}
-
-.ripple{
-position:fixed;
-width:20px;
-height:20px;
-border:2px solid var(--cyan);
-border-radius:50%;
-pointer-events:none;
-z-index:10000;
-transform:translate(-50%,-50%);
-box-shadow:
-0 0 15px var(--cyan),
-0 0 30px var(--purple),
-0 0 50px var(--pink);
-animation:ripple .8s ease-out forwards;
-}
-
-@keyframes ripple{
-to{
-width:220px;
-height:220px;
-opacity:0;
-}
-}
-
-/* =========================
+/* =========================================================
    FLOATING STARS
-========================= */
+========================================================= */
 
 .stars{
 position:fixed;
@@ -300,7 +255,10 @@ z-index:2;
 
 .star{
 position:absolute;
-animation:starFloat 4s ease-in-out infinite;
+
+animation:
+starFloat 4s ease-in-out infinite;
+
 filter:
 drop-shadow(0 0 5px white)
 drop-shadow(0 0 12px var(--cyan));
@@ -315,23 +273,30 @@ drop-shadow(0 0 12px var(--cyan));
 .s7{right:30%;top:80%;font-size:30px;animation-delay:1.2s}
 
 @keyframes starFloat{
+
 0%,100%{
 transform:translateY(0) rotate(0);
 opacity:.55;
 }
+
 50%{
-transform:translateY(-25px) rotate(15deg);
+transform:
+translateY(-25px)
+rotate(15deg);
+
 opacity:1;
+
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 18px var(--cyan))
 drop-shadow(0 0 30px var(--purple));
 }
+
 }
 
-/* =========================
+/* =========================================================
    ZODIAC
-========================= */
+========================================================= */
 
 .zodiac{
 position:fixed;
@@ -346,22 +311,37 @@ position:absolute;
 font-size:34px;
 opacity:.3;
 color:#dff;
+
 text-shadow:
 0 0 5px #fff,
 0 0 12px var(--cyan),
 0 0 25px var(--purple);
-animation:zodiacPulse 5s ease-in-out infinite;
+
+animation:
+zodiacPulse 5s ease-in-out infinite;
 }
 
 .zodiac span:after{
 content:"";
+
 position:absolute;
+
 width:65px;
 height:1px;
-background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+
+background:
+linear-gradient(
+90deg,
+transparent,
+var(--cyan),
+transparent
+);
+
 left:25px;
 top:20px;
+
 transform:rotate(25deg);
+
 opacity:.4;
 }
 
@@ -379,22 +359,26 @@ opacity:.4;
 .z12{right:7%;bottom:7%;animation-delay:4.5s}
 
 @keyframes zodiacPulse{
+
 0%,100%{
 opacity:.18;
 transform:scale(.9);
 }
+
 50%{
 opacity:.6;
 transform:scale(1.08);
 }
+
 }
 
-/* =========================
+/* =========================================================
    PLANETS
-========================= */
+========================================================= */
 
 .spacePlanet,
-.saturn{
+.saturn,
+.extraPlanet{
 position:fixed;
 border-radius:50%;
 pointer-events:none;
@@ -402,7 +386,8 @@ z-index:1;
 }
 
 .spacePlanet{
-animation:planetFloat 8s ease-in-out infinite;
+animation:
+planetFloat 8s ease-in-out infinite;
 }
 
 .planetBlue{
@@ -410,8 +395,17 @@ width:75px;
 height:75px;
 top:20%;
 left:-20px;
+
 background:
-radial-gradient(circle at 30% 25%,#fff,#56eaff 15%,#267aff 45%,#16206e 75%,#050512);
+radial-gradient(
+circle at 30% 25%,
+#fff,
+#56eaff 15%,
+#267aff 45%,
+#16206e 75%,
+#050512
+);
+
 box-shadow:
 0 0 20px var(--cyan),
 0 0 50px rgba(0,246,255,.4);
@@ -422,9 +416,18 @@ width:55px;
 height:55px;
 right:7%;
 top:43%;
+
 background:
-radial-gradient(circle at 30% 25%,#ffd9ff,#b967ff 30%,#6425c9 65%,#15062d);
-box-shadow:0 0 25px var(--purple);
+radial-gradient(
+circle at 30% 25%,
+#ffd9ff,
+#b967ff 30%,
+#6425c9 65%,
+#15062d
+);
+
+box-shadow:
+0 0 25px var(--purple);
 }
 
 .planetYellow{
@@ -432,34 +435,59 @@ width:42px;
 height:42px;
 left:11%;
 bottom:18%;
+
 background:
-radial-gradient(circle at 30% 25%,#fff,#ffe45c 30%,#ff9d00 70%,#501600);
-box-shadow:0 0 20px var(--yellow);
+radial-gradient(
+circle at 30% 25%,
+#fff,
+#ffe45c 30%,
+#ff9d00 70%,
+#501600
+);
+
+box-shadow:
+0 0 20px var(--yellow);
 }
 
 @keyframes planetFloat{
+
 0%,100%{
 transform:translateY(0) rotate(0);
 }
+
 50%{
-transform:translateY(-35px) rotate(180deg);
-}
+transform:
+translateY(-35px)
+rotate(180deg);
 }
 
-/* =========================
-   SATURN
-========================= */
+}
+
+/* =========================================================
+   BIG BLUE SATURN
+========================================================= */
 
 .saturn{
 right:2%;
 bottom:8%;
+
 width:100px;
 height:100px;
+
 background:
-radial-gradient(circle at 30% 25%,#fff,#55eaff 20%,#168dff 48%,#3420a8 75%,#05051b);
+radial-gradient(
+circle at 30% 25%,
+#fff,
+#55eaff 20%,
+#168dff 48%,
+#3420a8 75%,
+#05051b
+);
+
 box-shadow:
 0 0 25px var(--cyan),
 0 0 55px rgba(0,246,255,.55);
+
 animation:
 saturnFloat 7s ease-in-out infinite,
 saturnColor 8s linear infinite;
@@ -467,52 +495,175 @@ saturnColor 8s linear infinite;
 
 .saturn:before{
 content:"";
+
 position:absolute;
+
 width:165px;
 height:45px;
+
 left:-33px;
 top:28px;
-border:6px solid rgba(100,230,255,.7);
+
+border:
+6px solid rgba(100,230,255,.7);
+
 border-radius:50%;
+
 transform:rotate(-15deg);
+
 box-shadow:
 0 0 15px var(--cyan),
 0 0 35px rgba(145,71,255,.5);
-animation:ringColor 8s linear infinite;
+
+animation:
+ringColor 8s linear infinite;
 }
 
 @keyframes saturnFloat{
+
 50%{
-transform:translateY(-25px) rotate(8deg);
+transform:
+translateY(-25px)
+rotate(8deg);
 }
+
 }
 
 @keyframes saturnColor{
+
 0%{filter:hue-rotate(0deg)}
 25%{filter:hue-rotate(80deg)}
 50%{filter:hue-rotate(170deg)}
 75%{filter:hue-rotate(260deg)}
 100%{filter:hue-rotate(360deg)}
+
 }
 
 @keyframes ringColor{
+
 0%{filter:hue-rotate(0deg)}
 50%{filter:hue-rotate(180deg)}
 100%{filter:hue-rotate(360deg)}
+
 }
 
-/* =========================
+/* =========================================================
+   EXTRA BLUE PLANET NEXT TO SATURN
+========================================================= */
+
+.extraPlanet{
+right:13%;
+bottom:18%;
+
+width:72px;
+height:72px;
+
+background:
+radial-gradient(
+circle at 28% 25%,
+#ffffff,
+#8cf5ff 13%,
+#00c8ff 32%,
+#3974ff 55%,
+#17206c 80%,
+#030512
+);
+
+box-shadow:
+0 0 18px #fff,
+0 0 35px var(--cyan),
+0 0 70px rgba(0,246,255,.7);
+
+animation:
+extraPlanetFloat 5s ease-in-out infinite;
+}
+
+.extraPlanet:before{
+content:"";
+
+position:absolute;
+
+width:105px;
+height:28px;
+
+left:-17px;
+top:22px;
+
+border:
+3px solid rgba(0,246,255,.65);
+
+border-radius:50%;
+
+transform:rotate(18deg);
+
+box-shadow:
+0 0 15px var(--cyan);
+}
+
+.extraPlanet:after{
+content:"✦ ✧";
+
+position:absolute;
+
+left:-35px;
+top:-35px;
+
+font-size:18px;
+
+color:white;
+
+text-shadow:
+0 0 10px var(--cyan),
+0 0 20px var(--purple);
+
+animation:
+miniStars 2s ease-in-out infinite alternate;
+}
+
+@keyframes extraPlanetFloat{
+
+0%,100%{
+transform:
+translateY(0)
+rotate(0);
+}
+
+50%{
+transform:
+translateY(-25px)
+rotate(180deg);
+}
+
+}
+
+@keyframes miniStars{
+
+to{
+transform:
+scale(1.5)
+rotate(20deg);
+opacity:.5;
+}
+
+}
+
+/* =========================================================
    UFO
-========================= */
+========================================================= */
 
 .ufo{
 position:fixed;
 right:-140px;
 top:18%;
+
 font-size:65px;
+
 z-index:8;
 pointer-events:none;
-animation:ufoFly 14s linear infinite;
+
+animation:
+ufoFly 14s linear infinite;
+
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 15px var(--cyan))
@@ -521,35 +672,67 @@ drop-shadow(0 0 35px var(--purple));
 
 .ufo:after{
 content:"";
+
 position:absolute;
+
 width:80px;
 height:35px;
+
 left:18px;
 top:55px;
-background:linear-gradient(to bottom,rgba(0,246,255,.7),transparent);
+
+background:
+linear-gradient(
+to bottom,
+rgba(0,246,255,.7),
+transparent
+);
+
 filter:blur(8px);
-transform:perspective(100px) rotateX(55deg);
+
+transform:
+perspective(100px)
+rotateX(55deg);
 }
 
 @keyframes ufoFly{
-0%{transform:translate(0,0) rotate(-5deg)}
-25%{transform:translate(-25vw,90px) rotate(8deg)}
-50%{transform:translate(-55vw,-70px) rotate(-8deg)}
-75%{transform:translate(-85vw,100px) rotate(5deg)}
-100%{transform:translate(-125vw,-50px) rotate(-5deg)}
+
+0%{
+transform:translate(0,0) rotate(-5deg);
 }
 
-/* =========================
-   🐱‍🚀 SPACE CATS
-========================= */
+25%{
+transform:translate(-25vw,90px) rotate(8deg);
+}
+
+50%{
+transform:translate(-55vw,-70px) rotate(-8deg);
+}
+
+75%{
+transform:translate(-85vw,100px) rotate(5deg);
+}
+
+100%{
+transform:translate(-125vw,-50px) rotate(-5deg);
+}
+
+}
+
+/* =========================================================
+   SPACE CATS
+========================================================= */
 
 .spaceCat{
 position:fixed;
 right:-150px;
 top:58%;
+
 font-size:70px;
+
 z-index:7;
 pointer-events:none;
+
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 20px var(--cyan))
@@ -557,77 +740,97 @@ drop-shadow(0 0 35px var(--purple));
 }
 
 .spaceCat.cat1{
-animation:catFly1 17s linear infinite;
+animation:
+catFly1 17s linear infinite;
 }
 
 .spaceCat.cat2{
 top:35%;
 font-size:52px;
-animation:catFly2 22s linear infinite;
+animation:
+catFly2 22s linear infinite;
 animation-delay:4s;
 }
 
 .spaceCat.cat3{
 top:78%;
 font-size:45px;
-animation:catFly3 14s linear infinite;
+animation:
+catFly3 14s linear infinite;
 animation-delay:8s;
 }
 
 @keyframes catFly1{
+
 0%{
 transform:translate(0,0) rotate(-5deg);
 }
+
 20%{
 transform:translate(-25vw,-70px) rotate(8deg);
 }
+
 40%{
 transform:translate(-50vw,50px) rotate(-8deg);
 }
+
 65%{
 transform:translate(-80vw,-80px) rotate(8deg);
 }
+
 100%{
 transform:translate(-125vw,20px) rotate(-5deg);
 }
+
 }
 
 @keyframes catFly2{
+
 0%{
 transform:translate(0,0) rotate(8deg);
 }
+
 30%{
 transform:translate(-35vw,90px) rotate(-8deg);
 }
+
 60%{
 transform:translate(-75vw,-80px) rotate(10deg);
 }
+
 100%{
 transform:translate(-135vw,40px) rotate(-5deg);
 }
+
 }
 
 @keyframes catFly3{
+
 0%{
 transform:translate(0,0) rotate(-10deg);
 }
+
 50%{
 transform:translate(-70vw,-120px) rotate(12deg);
 }
+
 100%{
 transform:translate(-140vw,50px) rotate(-8deg);
 }
+
 }
 
-/* =========================
+/* =========================================================
    ROCKET
-========================= */
+========================================================= */
 
 .rocket{
 position:fixed;
 z-index:10;
 pointer-events:none;
+
 font-size:58px;
+
 filter:
 drop-shadow(0 0 5px white)
 drop-shadow(0 0 15px var(--cyan))
@@ -636,94 +839,146 @@ drop-shadow(0 0 30px var(--pink));
 
 .rocket:after{
 content:"";
+
 position:absolute;
+
 width:22px;
 height:65px;
+
 left:19px;
 bottom:-48px;
-border-radius:50% 50% 65% 65%;
-background:
-linear-gradient(to bottom,#fff,#ffe45c 20%,#ff8c00 50%,#ff2b00 75%,transparent);
-filter:blur(3px);
-animation:engineFire .12s ease-in-out infinite alternate;
-}
 
-.rocket:before{
-content:"";
-position:absolute;
-width:55px;
-height:55px;
-left:3px;
-bottom:-40px;
-border-radius:50%;
+border-radius:
+50% 50% 65% 65%;
+
 background:
-radial-gradient(circle,rgba(255,228,92,.8),rgba(255,60,0,.3),transparent 70%);
-filter:blur(8px);
-animation:engineGlow .18s ease-in-out infinite alternate;
+linear-gradient(
+to bottom,
+#fff,
+#ffe45c 20%,
+#ff8c00 50%,
+#ff2b00 75%,
+transparent
+);
+
+filter:blur(3px);
+
+animation:
+engineFire .12s ease-in-out infinite alternate;
 }
 
 @keyframes engineFire{
-from{height:45px;opacity:.7}
-to{height:75px;opacity:1}
+
+from{
+height:45px;
+opacity:.7;
 }
 
-@keyframes engineGlow{
-from{transform:scale(.8)}
-to{transform:scale(1.25)}
+to{
+height:75px;
+opacity:1;
+}
+
 }
 
 .rocket1{
 left:-120px;
 top:30%;
-animation:rocketFly1 11s linear infinite;
+animation:
+rocketFly1 11s linear infinite;
 }
 
 .rocket2{
 right:-120px;
 top:70%;
 font-size:48px;
-animation:rocketFly2 14s linear infinite;
+animation:
+rocketFly2 14s linear infinite;
 }
 
 .rocket3{
 left:20%;
 bottom:-100px;
 font-size:42px;
-animation:rocketFly3 10s linear infinite;
+animation:
+rocketFly3 10s linear infinite;
 }
 
 @keyframes rocketFly1{
-0%{transform:translate(0,0) rotate(25deg)}
-50%{transform:translate(55vw,-150px) rotate(25deg)}
-100%{transform:translate(120vw,-300px) rotate(25deg)}
+
+0%{
+transform:translate(0,0) rotate(25deg);
+}
+
+50%{
+transform:
+translate(55vw,-150px)
+rotate(25deg);
+}
+
+100%{
+transform:
+translate(120vw,-300px)
+rotate(25deg);
+}
+
 }
 
 @keyframes rocketFly2{
-0%{transform:translate(0,0) rotate(-25deg)}
-50%{transform:translate(-55vw,-100px) rotate(-25deg)}
-100%{transform:translate(-125vw,-200px) rotate(-25deg)}
+
+0%{
+transform:translate(0,0) rotate(-25deg);
+}
+
+50%{
+transform:
+translate(-55vw,-100px)
+rotate(-25deg);
+}
+
+100%{
+transform:
+translate(-125vw,-200px)
+rotate(-25deg);
+}
+
 }
 
 @keyframes rocketFly3{
+
 0%{
-transform:translateY(0) rotate(-20deg);
+transform:
+translateY(0)
+rotate(-20deg);
 opacity:0;
 }
-10%{opacity:1}
+
+10%{
+opacity:1;
+}
+
 100%{
-transform:translateY(-120vh) rotate(-20deg);
+transform:
+translateY(-120vh)
+rotate(-20deg);
 opacity:0;
 }
+
 }
 
 .rocket4{
 position:fixed;
 right:-100px;
 top:8%;
+
 font-size:38px;
+
 z-index:9;
 pointer-events:none;
-animation:rocket4Fly 18s linear infinite;
+
+animation:
+rocket4Fly 18s linear infinite;
+
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 20px var(--cyan));
@@ -731,149 +986,259 @@ drop-shadow(0 0 20px var(--cyan));
 
 .rocket4:after{
 content:"";
+
 position:absolute;
+
 width:15px;
 height:55px;
+
 left:12px;
 bottom:-40px;
-background:linear-gradient(to bottom,white,#ffe45c,#ff3c00,transparent);
+
+background:
+linear-gradient(
+to bottom,
+white,
+#ffe45c,
+#ff3c00,
+transparent
+);
+
 border-radius:50%;
 filter:blur(3px);
 }
 
 @keyframes rocket4Fly{
+
 0%{
-transform:translate(0,0) rotate(-30deg);
+transform:
+translate(0,0)
+rotate(-30deg);
 }
+
 100%{
-transform:translate(-125vw,55vh) rotate(-30deg);
+transform:
+translate(-125vw,55vh)
+rotate(-30deg);
 }
+
 }
 
 /* =========================================================
-   🌠 EPIC METEOR SHOWER
+   🌠 NEW METEOR SYSTEM
+   ขวาบน -> ซ้ายล่าง
 ========================================================= */
 
-.meteor{
+.meteorLayer{
 position:fixed;
-width:5px;
-height:170px;
-border-radius:50%;
-z-index:9995;
+inset:0;
+
+z-index:9990;
+
 pointer-events:none;
+
+overflow:hidden;
+}
+
+.meteor{
+position:absolute;
+
+left:0;
+top:0;
+
+width:4px;
+
+height:190px;
+
+border-radius:999px;
+
+transform-origin:
+center center;
+
 background:
 linear-gradient(
 to bottom,
-white 0%,
-#ffffff 8%,
-var(--cyan) 35%,
-var(--purple) 65%,
-transparent 100%
+rgba(255,255,255,0),
+#ffffff 10%,
+#00f6ff 35%,
+#398cff 58%,
+#9147ff 75%,
+rgba(255,60,172,0)
 );
+
 box-shadow:
-0 0 8px white,
-0 0 18px var(--cyan),
-0 0 35px var(--purple),
-0 0 60px rgba(255,60,172,.7);
-transform-origin:center;
-animation:meteorFall var(--meteor-speed,1.8s) linear forwards;
+0 0 7px #fff,
+0 0 18px #00f6ff,
+0 0 35px #398cff,
+0 0 55px #9147ff;
+
+opacity:0;
+
+will-change:
+transform,
+opacity;
 }
 
 .meteor.pink{
 background:
 linear-gradient(
 to bottom,
-white,
+rgba(255,255,255,0),
 #fff,
-var(--pink),
-var(--purple),
-transparent
+#ff3cac,
+#9147ff,
+rgba(255,60,172,0)
 );
+
 box-shadow:
-0 0 8px white,
-0 0 20px var(--pink),
-0 0 40px var(--purple),
-0 0 70px rgba(255,60,172,.8);
+0 0 8px #fff,
+0 0 20px #ff3cac,
+0 0 45px #9147ff;
 }
 
 .meteor.gold{
 background:
 linear-gradient(
 to bottom,
-white,
-var(--yellow),
+rgba(255,255,255,0),
+#fff,
+#ffe45c,
 #ff8c00,
-transparent
+rgba(255,60,0,0)
 );
+
 box-shadow:
-0 0 10px white,
-0 0 25px var(--yellow),
-0 0 45px #ff8c00;
+0 0 8px #fff,
+0 0 22px #ffe45c,
+0 0 40px #ff8c00;
 }
 
-@keyframes meteorFall{
+/*
+   เส้นทางหลัก:
+   เริ่มจากด้านขวาบน
+   พุ่งไปทางซ้ายล่าง
+*/
+
+@keyframes meteorMove{
+
 0%{
-transform:
-translate(0,-250px)
-rotate(-25deg)
-scale(.45);
 opacity:0;
-}
-8%{opacity:1}
-100%{
+
 transform:
-translate(var(--meteor-x),110vh)
-rotate(-25deg)
-scale(1.25);
-opacity:0;
-}
+translate3d(
+var(--startX),
+var(--startY),
+0
+)
+rotate(-52deg)
+scale(.35);
 }
 
-/* =========================
+8%{
+opacity:1;
+}
+
+70%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+
+transform:
+translate3d(
+calc(var(--startX) - var(--travelX)),
+calc(var(--startY) + var(--travelY)),
+0
+)
+rotate(-52deg)
+scale(1.15);
+}
+
+}
+
+/* =========================================================
    ALIEN
-========================= */
+========================================================= */
 
 .alien{
 position:fixed;
-z-index:9996;
+
+z-index:9995;
+
 pointer-events:none;
+
 font-size:42px;
+
 filter:
 drop-shadow(0 0 8px #55ff55)
 drop-shadow(0 0 20px #00ff55);
-animation:alienFall 3s linear forwards;
+
+animation:
+alienFall 3s linear forwards;
 }
 
 @keyframes alienFall{
+
 0%{
 top:-100px;
-transform:translateX(0) rotate(0) scale(.6);
+
+transform:
+translateX(0)
+rotate(0)
+scale(.6);
+
 opacity:0;
-}
-10%{opacity:1}
-50%{
-transform:translateX(120px) rotate(180deg) scale(1);
-}
-100%{
-top:110vh;
-transform:translateX(-180px) rotate(500deg) scale(.8);
-opacity:0;
-}
 }
 
-/* =========================
+10%{
+opacity:1;
+}
+
+50%{
+transform:
+translateX(120px)
+rotate(180deg)
+scale(1);
+}
+
+100%{
+top:110vh;
+
+transform:
+translateX(-180px)
+rotate(500deg)
+scale(.8);
+
+opacity:0;
+}
+
+}
+
+/* =========================================================
    LOADER
-========================= */
+========================================================= */
 
 #loader{
 position:fixed;
 inset:0;
+
 z-index:999999;
+
 display:grid;
 place-items:center;
+
 background:
-radial-gradient(circle at center,#11174b 0%,#05051a 45%,#01020b 100%);
-transition:opacity .45s ease,visibility .45s ease;
+radial-gradient(
+circle at center,
+#11174b 0%,
+#05051a 45%,
+#01020b 100%
+);
+
+transition:
+opacity .45s ease,
+visibility .45s ease;
 }
 
 #loader.hide{
@@ -890,28 +1255,46 @@ text-align:center;
 .loaderPlanet{
 width:90px;
 height:90px;
+
 margin:auto;
+
 border-radius:50%;
+
 background:
-radial-gradient(circle at 30% 25%,#fff 0%,#55eaff 18%,#6540ef 58%,#09021d 100%);
+radial-gradient(
+circle at 30% 25%,
+#fff 0%,
+#55eaff 18%,
+#6540ef 58%,
+#09021d 100%
+);
+
 box-shadow:
 0 0 25px var(--cyan),
 0 0 60px var(--purple);
-animation:loaderSpin 1.2s linear infinite;
+
+animation:
+loaderSpin 1.2s linear infinite;
 }
 
 @keyframes loaderSpin{
-to{transform:rotate(360deg)}
+to{
+transform:rotate(360deg);
+}
 }
 
 .loaderTitle{
 margin-top:18px;
-font-size:clamp(1.8rem,7vw,3.2rem);
+
+font-size:
+clamp(1.8rem,7vw,3.2rem);
+
 font-weight:950;
 }
 
 .loaderText{
 margin-top:8px;
+
 color:var(--cyan);
 font-weight:800;
 }
@@ -919,58 +1302,96 @@ font-weight:800;
 .loaderBar{
 width:min(270px,80vw);
 height:5px;
+
 margin:18px auto 0;
+
 overflow:hidden;
+
 border-radius:999px;
-background:rgba(255,255,255,.1);
+
+background:
+rgba(255,255,255,.1);
 }
 
 .loaderBar i{
 display:block;
+
 width:0;
 height:100%;
+
 border-radius:999px;
-background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
-animation:loadFast .7s ease-out forwards;
+
+background:
+linear-gradient(
+90deg,
+var(--cyan),
+var(--purple),
+var(--pink)
+);
+
+animation:
+loadFast .7s ease-out forwards;
 }
 
 @keyframes loadFast{
-to{width:100%}
+to{
+width:100%;
+}
 }
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header{
 position:sticky;
 top:0;
+
 z-index:500;
-background:rgba(2,3,13,.75);
-border-bottom:1px solid var(--border);
-backdrop-filter:blur(20px);
+
+background:
+rgba(2,3,13,.75);
+
+border-bottom:
+1px solid var(--border);
+
+backdrop-filter:
+blur(20px);
 }
 
 nav{
 min-height:72px;
+
 display:flex;
+
 align-items:center;
+
 justify-content:space-between;
 }
 
 .container{
-width:min(calc(100% - 32px),var(--max));
+width:
+min(
+calc(100% - 32px),
+var(--max)
+);
+
 margin:auto;
 }
 
 .logo{
 border:0;
 background:none;
+
 color:#fff;
+
 font-weight:950;
 font-size:1.3rem;
+
 cursor:pointer;
-text-shadow:0 0 15px var(--cyan);
+
+text-shadow:
+0 0 15px var(--cyan);
 }
 
 .logo b{
@@ -979,7 +1400,9 @@ color:var(--cyan);
 
 .nav{
 display:flex;
+
 gap:4px;
+
 list-style:none;
 }
 
@@ -987,19 +1410,29 @@ list-style:none;
 .mobileBtn{
 border:0;
 background:transparent;
+
 color:var(--soft);
+
 cursor:pointer;
+
 padding:10px 12px;
+
 border-radius:12px;
+
 font-weight:850;
+
 transition:.25s;
 }
 
 .nav button:hover,
 .nav button.active{
 color:var(--cyan);
-background:rgba(0,246,255,.08);
-box-shadow:0 0 20px rgba(0,246,255,.15);
+
+background:
+rgba(0,246,255,.08);
+
+box-shadow:
+0 0 20px rgba(0,246,255,.15);
 }
 
 .mobileBtn{
@@ -1009,7 +1442,9 @@ font-size:1.6rem;
 
 .mobileMenu{
 display:none;
-padding:8px 0 14px;
+
+padding:
+8px 0 14px;
 }
 
 .mobileMenu.open{
@@ -1018,18 +1453,27 @@ display:block;
 
 .mobileMenu button{
 width:100%;
+
 text-align:left;
-border:1px solid var(--border);
-background:rgba(255,255,255,.04);
+
+border:
+1px solid var(--border);
+
+background:
+rgba(255,255,255,.04);
+
 color:#fff;
+
 padding:13px;
+
 border-radius:12px;
+
 margin-top:6px;
 }
 
-/* =========================
+/* =========================================================
    PAGE
-========================= */
+========================================================= */
 
 main{
 position:relative;
@@ -1038,9 +1482,15 @@ z-index:20;
 
 .page{
 display:none;
-min-height:calc(100vh - 72px);
-padding:80px 0 100px;
-animation:pageIn .5s ease;
+
+min-height:
+calc(100vh - 72px);
+
+padding:
+80px 0 100px;
+
+animation:
+pageIn .5s ease;
 }
 
 .page.active{
@@ -1048,42 +1498,65 @@ display:block;
 }
 
 @keyframes pageIn{
+
 from{
 opacity:0;
 transform:translateY(20px);
 }
+
 to{
 opacity:1;
 transform:none;
 }
+
 }
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
-min-height:calc(100vh - 72px);
+min-height:
+calc(100vh - 72px);
+
 display:grid;
-grid-template-columns:1.05fr .95fr;
+
+grid-template-columns:
+1.05fr .95fr;
+
 gap:55px;
+
 align-items:center;
 }
 
 .eyebrow{
 display:inline-block;
-padding:8px 16px;
-border:1px solid var(--cyan);
+
+padding:
+8px 16px;
+
+border:
+1px solid var(--cyan);
+
 border-radius:999px;
+
 color:var(--cyan);
-background:rgba(0,246,255,.07);
-box-shadow:0 0 25px rgba(0,246,255,.2);
+
+background:
+rgba(0,246,255,.07);
+
+box-shadow:
+0 0 25px rgba(0,246,255,.2);
+
 font-weight:900;
 }
 
 .hero h1{
-font-size:clamp(3rem,7vw,6.5rem);
+font-size:
+clamp(3rem,7vw,6.5rem);
+
 line-height:1.03;
+
 margin:20px 0;
 }
 
@@ -1098,66 +1571,111 @@ var(--pink),
 var(--yellow),
 var(--cyan)
 );
+
 background-size:300% auto;
+
 -webkit-background-clip:text;
 background-clip:text;
+
 color:transparent;
-animation:gradientMove 6s linear infinite;
+
+animation:
+gradientMove 6s linear infinite;
 }
 
 @keyframes gradientMove{
-to{background-position:300% center}
+
+to{
+background-position:300% center;
+}
+
 }
 
 .hero p,
 .lead{
 color:var(--soft);
+
 font-size:1.12rem;
+
 max-width:720px;
 }
 
 .actions{
 display:flex;
+
 gap:12px;
+
 flex-wrap:wrap;
+
 margin-top:28px;
 }
 
 .btn{
-border:1px solid var(--cyan);
+border:
+1px solid var(--cyan);
+
 border-radius:14px;
-padding:12px 20px;
+
+padding:
+12px 20px;
+
 text-decoration:none;
+
 font-weight:900;
+
 cursor:pointer;
+
 color:#fff;
-background:linear-gradient(135deg,var(--purple),var(--blue));
-box-shadow:0 0 25px rgba(0,246,255,.2);
+
+background:
+linear-gradient(
+135deg,
+var(--purple),
+var(--blue)
+);
+
+box-shadow:
+0 0 25px rgba(0,246,255,.2);
+
 transition:.25s;
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.03);
-box-shadow:0 0 40px rgba(0,246,255,.45);
+transform:
+translateY(-5px)
+scale(1.03);
+
+box-shadow:
+0 0 40px rgba(0,246,255,.45);
 }
 
 .btn.alt{
-background:rgba(0,0,0,.25);
+background:
+rgba(0,0,0,.25);
+
 color:var(--cyan);
 }
 
 .planetBox{
 min-height:470px;
+
 display:grid;
+
 place-items:center;
+
 position:relative;
 }
 
 .heroPlanet{
-width:min(360px,70vw);
+width:
+min(360px,70vw);
+
 aspect-ratio:1;
+
 border-radius:50%;
+
 position:relative;
+
 background:
 radial-gradient(
 circle at 30% 23%,
@@ -1168,58 +1686,89 @@ circle at 30% 23%,
 #17072f 82%,
 #020108
 );
+
 box-shadow:
 0 0 35px var(--cyan),
 0 0 90px rgba(145,71,255,.55),
 0 0 150px rgba(255,60,172,.22),
 inset -45px -35px 70px #000;
-animation:heroPlanet 6s ease-in-out infinite;
+
+animation:
+heroPlanet 6s ease-in-out infinite;
 }
 
 .heroPlanet:before{
 content:"";
+
 position:absolute;
+
 width:145%;
 height:35%;
+
 left:-22%;
 top:34%;
-border:3px solid rgba(255,255,255,.55);
+
+border:
+3px solid rgba(255,255,255,.55);
+
 border-radius:50%;
+
 transform:rotate(-17deg);
-box-shadow:0 0 25px var(--cyan);
+
+box-shadow:
+0 0 25px var(--cyan);
 }
 
 .heroPlanet:after{
 content:"";
+
 position:absolute;
+
 inset:-45px;
-border:1px dashed rgba(0,246,255,.45);
+
+border:
+1px dashed rgba(0,246,255,.45);
+
 border-radius:50%;
-animation:orbit 16s linear infinite;
+
+animation:
+orbit 16s linear infinite;
 }
 
 @keyframes heroPlanet{
+
 50%{
-transform:translateY(-20px) rotate(4deg);
+transform:
+translateY(-20px)
+rotate(4deg);
 }
+
 }
 
 @keyframes orbit{
-to{transform:rotate(360deg)}
+
+to{
+transform:rotate(360deg);
 }
 
-/* =========================
+}
+
+/* =========================================================
    TITLES / GRID
-========================= */
+========================================================= */
 
 .title{
 text-align:center;
+
 margin-bottom:48px;
 }
 
 .title h2{
-font-size:clamp(2.3rem,5vw,4.2rem);
+font-size:
+clamp(2.3rem,5vw,4.2rem);
+
 line-height:1.1;
+
 margin-bottom:12px;
 }
 
@@ -1229,60 +1778,96 @@ color:var(--soft);
 
 .grid{
 display:grid;
+
 gap:22px;
 }
 
 .two{
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:
+repeat(2,1fr);
 }
 
 .three{
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:
+repeat(3,1fr);
 }
 
 .four{
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:
+repeat(4,1fr);
 }
 
-/* =========================
-   CARDS
-========================= */
+/* =========================================================
+   NEON CARDS
+========================================================= */
 
 .card{
 position:relative;
+
 overflow:hidden;
+
 background:
-linear-gradient(145deg,rgba(18,25,62,.92),rgba(7,9,28,.94));
-border:1px solid var(--border);
+linear-gradient(
+145deg,
+rgba(18,25,62,.92),
+rgba(7,9,28,.94)
+);
+
+border:
+1px solid rgba(0,246,255,.42);
+
 border-radius:24px;
+
 padding:28px;
-box-shadow:0 18px 45px rgba(0,0,0,.3);
+
+box-shadow:
+0 0 18px rgba(0,246,255,.08),
+0 18px 45px rgba(0,0,0,.3);
+
 transition:
-transform .18s ease,
+transform .15s ease,
 border .25s,
 box-shadow .25s;
+
 transform-style:preserve-3d;
+
 will-change:transform;
 }
 
 .card:before{
 content:"";
+
 position:absolute;
+
 width:180px;
 height:180px;
+
 right:-80px;
 top:-80px;
+
 border-radius:50%;
-background:radial-gradient(circle,rgba(0,246,255,.18),transparent 70%);
+
+background:
+radial-gradient(
+circle,
+rgba(0,246,255,.18),
+transparent 70%
+);
+
 pointer-events:none;
 }
 
 .card:after{
 content:"";
+
 position:absolute;
+
 inset:0;
+
 border-radius:24px;
+
 pointer-events:none;
+
 background:
 linear-gradient(
 120deg,
@@ -1290,24 +1875,33 @@ transparent 15%,
 rgba(255,255,255,.10) 45%,
 transparent 65%
 );
+
 transform:translateX(-130%);
-transition:transform .7s ease;
+
+transition:
+transform .7s ease;
 }
 
 .card:hover:after{
-transform:translateX(130%);
+transform:
+translateX(130%);
 }
 
 .card:hover{
-border-color:var(--cyan);
+border-color:
+var(--cyan);
+
 box-shadow:
-0 0 35px rgba(0,246,255,.28),
+0 0 20px rgba(0,246,255,.25),
+0 0 45px rgba(145,71,255,.18),
 0 25px 60px rgba(0,0,0,.5);
 }
 
 .card h3{
 color:var(--cyan);
+
 margin-bottom:10px;
+
 font-size:1.35rem;
 }
 
@@ -1317,214 +1911,453 @@ color:var(--soft);
 
 .icon{
 font-size:2.5rem;
+
 margin-bottom:12px;
 }
 
-/* =========================
+/* =========================================================
+   CARD MINI STARS
+========================================================= */
+
+.cardStars{
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:0;
+}
+
+.cardStars span{
+position:absolute;
+
+font-size:11px;
+
+color:#fff;
+
+text-shadow:
+0 0 6px #fff,
+0 0 12px var(--cyan),
+0 0 20px var(--purple);
+
+animation:
+cardStarTwinkle 2s ease-in-out infinite;
+}
+
+.cardStars span:nth-child(1){
+left:8%;
+top:12%;
+}
+
+.cardStars span:nth-child(2){
+right:10%;
+top:20%;
+animation-delay:.4s;
+}
+
+.cardStars span:nth-child(3){
+left:15%;
+bottom:12%;
+animation-delay:.8s;
+}
+
+.cardStars span:nth-child(4){
+right:15%;
+bottom:18%;
+animation-delay:1.2s;
+}
+
+.cardStars span:nth-child(5){
+left:48%;
+top:7%;
+animation-delay:1.6s;
+}
+
+@keyframes cardStarTwinkle{
+
+0%,100%{
+opacity:.25;
+transform:scale(.7);
+}
+
+50%{
+opacity:1;
+transform:scale(1.5);
+}
+
+}
+
+/* ให้เนื้อหาอยู่เหนือดาว */
+
+.card > *:not(.cardStars){
+position:relative;
+z-index:2;
+}
+
+/* =========================================================
    PROFILE
-========================= */
+========================================================= */
 
 .profile{
 display:grid;
-grid-template-columns:340px 1fr;
+
+grid-template-columns:
+340px 1fr;
+
 gap:35px;
+
 align-items:center;
 }
 
 .profileFrame{
 position:relative;
+
 width:310px;
 height:370px;
+
 margin:auto;
+
 display:grid;
 place-items:center;
+
 perspective:1200px;
+
 transform-style:preserve-3d;
 }
 
-.profileOrbit{
+/* กรอบนีออนหลายชั้น */
+
+.profileFrame:before{
+content:"";
+
 position:absolute;
-inset:-18px;
-border:2px dashed var(--cyan);
-border-radius:42px;
+
+inset:-28px;
+
+border:
+2px solid var(--cyan);
+
+border-radius:48px;
+
 box-shadow:
-0 0 20px rgba(0,246,255,.45),
-0 0 55px rgba(145,71,255,.25),
-inset 0 0 30px rgba(0,246,255,.15);
-animation:profileOrbit 10s linear infinite;
+0 0 15px var(--cyan),
+0 0 35px rgba(0,246,255,.7),
+0 0 70px rgba(145,71,255,.5),
+inset 0 0 30px rgba(0,246,255,.2);
+
+animation:
+frameGlow 2.5s ease-in-out infinite alternate;
+
+pointer-events:none;
+}
+
+.profileFrame:after{
+content:"🪐";
+
+position:absolute;
+
+right:-52px;
+bottom:-20px;
+
+font-size:48px;
+
+z-index:5;
+
+filter:
+drop-shadow(0 0 10px white)
+drop-shadow(0 0 20px var(--cyan))
+drop-shadow(0 0 35px var(--purple));
+
+animation:
+framePlanet 4s ease-in-out infinite;
+}
+
+@keyframes frameGlow{
+
+from{
+box-shadow:
+0 0 10px var(--cyan),
+0 0 25px var(--cyan),
+0 0 50px var(--purple);
+}
+
+to{
+box-shadow:
+0 0 20px white,
+0 0 45px var(--cyan),
+0 0 85px var(--purple),
+0 0 120px rgba(255,60,172,.35);
+}
+
+}
+
+@keyframes framePlanet{
+
+50%{
+transform:
+translateY(-18px)
+rotate(180deg)
+scale(1.15);
+}
+
+}
+
+/* ดาวโคจรรอบกรอบ */
+
+.profileFrame .profileOrbit{
+position:absolute;
+
+inset:-38px;
+
+border:
+2px dashed rgba(0,246,255,.75);
+
+border-radius:55px;
+
+box-shadow:
+0 0 18px var(--cyan),
+0 0 40px rgba(145,71,255,.4);
+
+animation:
+profileOrbit 8s linear infinite;
+
 pointer-events:none;
 }
 
 .profileOrbit:before,
 .profileOrbit:after{
-content:"✦";
+content:"";
+
 position:absolute;
-font-size:28px;
-color:var(--yellow);
-text-shadow:
-0 0 8px #fff,
-0 0 18px var(--yellow),
-0 0 35px var(--pink);
-}
 
-.profileOrbit:before{
-top:-19px;
-left:45%;
-}
+font-size:25px;
 
-.profileOrbit:after{
-bottom:-19px;
-right:35%;
-}
-
-/* รูปโปรไฟล์ */
-
-.profilePic{
-width:280px;
-height:340px;
-object-fit:cover;
-display:block;
-border:3px solid var(--cyan);
-border-radius:35px;
-background:#050816;
-box-shadow:
-0 0 25px rgba(0,246,255,.45),
-0 0 55px rgba(145,71,255,.35),
-0 0 100px rgba(255,60,172,.18);
-position:relative;
-z-index:2;
-cursor:pointer;
-transform-origin:center center;
-transition:box-shadow .35s ease;
-will-change:transform;
-backface-visibility:visible;
-}
-
-/*
-   แก้ระบบหมุนใหม่
-   ทุกครั้งที่กดรูปจะหมุนครบ 360°
-*/
-
-.profilePic.rotate360{
-animation:
-profileSpinY 1.5s cubic-bezier(.2,.8,.25,1);
-}
-
-@keyframes profileSpinY{
-
-0%{
-transform:perspective(1200px) rotateY(0deg);
-}
-
-25%{
-transform:perspective(1200px) rotateY(90deg);
-}
-
-50%{
-transform:perspective(1200px) rotateY(180deg);
-}
-
-75%{
-transform:perspective(1200px) rotateY(270deg);
-}
-
-100%{
-transform:perspective(1200px) rotateY(360deg);
-}
-}
-
-.profilePic:hover{
-box-shadow:
-0 0 40px var(--cyan),
-0 0 80px var(--purple),
-0 0 120px rgba(255,60,172,.35);
-}
-
-@keyframes profileOrbit{
-to{
-transform:rotate(360deg);
-}
-}
-
-.profileFrame:before{
-content:"⭐";
-position:absolute;
-top:-35px;
-left:-20px;
-font-size:34px;
-z-index:5;
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 18px var(--yellow))
 drop-shadow(0 0 30px var(--pink));
-animation:profileStar 2s ease-in-out infinite;
 }
 
-.profileFrame:after{
-content:"🪐";
+.profileOrbit:before{
+content:"⭐";
+
+top:-19px;
+left:20%;
+
+animation:
+orbitStar 2s ease-in-out infinite alternate;
+}
+
+.profileOrbit:after{
+content:"🌟";
+
+bottom:-20px;
+right:20%;
+
+animation:
+orbitStar 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes profileOrbit{
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+@keyframes orbitStar{
+
+to{
+transform:
+scale(1.4)
+rotate(25deg);
+}
+
+}
+
+/* ดาวเล็กในกรอบ */
+
+.profileFrame .miniStar{
 position:absolute;
-right:-28px;
-bottom:-5px;
-font-size:44px;
-z-index:5;
+
+z-index:6;
+
+font-size:16px;
+
+color:white;
+
 filter:
-drop-shadow(0 0 12px var(--cyan))
-drop-shadow(0 0 25px var(--purple));
-animation:miniPlanet 4s ease-in-out infinite;
+drop-shadow(0 0 6px white)
+drop-shadow(0 0 15px var(--cyan));
+
+animation:
+miniStarFloat 2s ease-in-out infinite alternate;
 }
 
-@keyframes profileStar{
-0%,100%{
-transform:scale(.8) rotate(-10deg);
-}
-50%{
-transform:scale(1.25) rotate(15deg);
-}
+.profileFrame .ms1{
+top:-30px;
+left:65px;
 }
 
-@keyframes miniPlanet{
-50%{
-transform:translateY(-15px) rotate(180deg);
-}
+.profileFrame .ms2{
+top:30px;
+right:-42px;
+animation-delay:.5s;
 }
 
-/* =========================
+.profileFrame .ms3{
+bottom:35px;
+left:-40px;
+animation-delay:1s;
+}
+
+.profileFrame .ms4{
+bottom:-35px;
+left:100px;
+animation-delay:1.5s;
+}
+
+@keyframes miniStarFloat{
+
+to{
+transform:
+translateY(-10px)
+scale(1.4);
+
+opacity:.5;
+}
+
+}
+
+/* =========================================================
+   AUTO ROTATING PROFILE
+========================================================= */
+
+.profilePic{
+width:280px;
+height:340px;
+
+object-fit:cover;
+
+display:block;
+
+border:
+3px solid var(--cyan);
+
+border-radius:35px;
+
+background:#050816;
+
+box-shadow:
+0 0 25px rgba(0,246,255,.65),
+0 0 55px rgba(145,71,255,.5),
+0 0 100px rgba(255,60,172,.25);
+
+position:relative;
+
+z-index:2;
+
+cursor:pointer;
+
+transform-origin:center center;
+
+transform-style:preserve-3d;
+
+backface-visibility:visible;
+
+will-change:transform;
+
+/*
+   หมุนอัตโนมัติ 360 องศา
+*/
+
+animation:
+profileAutoSpin 8s linear infinite;
+}
+
+@keyframes profileAutoSpin{
+
+0%{
+transform:
+perspective(1200px)
+rotateY(0deg);
+}
+
+100%{
+transform:
+perspective(1200px)
+rotateY(360deg);
+}
+
+}
+
+.profilePic:hover{
+box-shadow:
+0 0 35px white,
+0 0 60px var(--cyan),
+0 0 100px var(--purple),
+0 0 140px rgba(255,60,172,.4);
+}
+
+/* =========================================================
    PROFILE FACTS
-========================= */
+========================================================= */
 
 .facts{
 display:grid;
-grid-template-columns:repeat(2,1fr);
+
+grid-template-columns:
+repeat(2,1fr);
+
 gap:12px;
+
 margin-top:22px;
 }
 
 .fact{
+position:relative;
+
 padding:15px;
+
 border-radius:15px;
-background:rgba(255,255,255,.04);
-border:1px solid var(--border);
+
+background:
+rgba(255,255,255,.04);
+
+border:
+1px solid rgba(0,246,255,.35);
+
+box-shadow:
+0 0 12px rgba(0,246,255,.05);
+
 transition:
-transform .25s,
 background .25s,
 box-shadow .25s;
 }
 
 .fact:hover{
-transform:translateZ(15px) scale(1.02);
-background:rgba(0,246,255,.07);
-box-shadow:0 0 20px rgba(0,246,255,.15);
+background:
+rgba(0,246,255,.07);
+
+box-shadow:
+0 0 20px rgba(0,246,255,.25);
 }
 
 .fact b{
 color:var(--yellow);
+
 display:block;
+
 margin-bottom:4px;
 }
 
-/* =========================
+/* =========================================================
    OTHER
-========================= */
+========================================================= */
 
 .edu .card{
 min-height:270px;
@@ -1532,9 +2365,13 @@ min-height:270px;
 
 .year{
 font-size:2rem;
+
 font-weight:950;
+
 color:var(--purple);
-text-shadow:0 0 15px var(--purple);
+
+text-shadow:
+0 0 15px var(--purple);
 }
 
 .hobbyCard{
@@ -1542,13 +2379,18 @@ min-height:300px;
 }
 
 .hobbyCard:hover .icon{
-animation:iconBounce .6s ease;
+animation:
+iconBounce .6s ease;
 }
 
 @keyframes iconBounce{
+
 50%{
-transform:scale(1.4) rotate(12deg);
+transform:
+scale(1.4)
+rotate(12deg);
 }
+
 }
 
 .contact .card{
@@ -1567,11 +2409,19 @@ line-height:2.2;
 
 .tag{
 display:inline-block;
+
 color:var(--yellow);
-border:1px solid rgba(255,228,92,.4);
-padding:4px 10px;
+
+border:
+1px solid rgba(255,228,92,.4);
+
+padding:
+4px 10px;
+
 border-radius:999px;
+
 margin:3px;
+
 font-size:.9rem;
 }
 
@@ -1581,8 +2431,11 @@ min-height:280px;
 
 .achievement strong{
 display:block;
+
 font-size:1.35rem;
+
 color:var(--yellow);
+
 margin-bottom:10px;
 }
 
@@ -1592,45 +2445,64 @@ font-size:3rem;
 
 .character{
 font-size:4rem;
+
 text-align:center;
+
 margin-bottom:12px;
-filter:drop-shadow(0 0 12px rgba(0,246,255,.35));
-animation:characterFloat 3.5s ease-in-out infinite;
+
+filter:
+drop-shadow(0 0 12px rgba(0,246,255,.35));
+
+animation:
+characterFloat 3.5s ease-in-out infinite;
 }
 
 @keyframes characterFloat{
+
 50%{
-transform:translateY(-10px) rotate(3deg);
-}
+transform:
+translateY(-10px)
+rotate(3deg);
 }
 
-/* =========================
+}
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
 text-align:center;
+
 color:var(--muted);
+
 padding:35px;
-border-top:1px solid var(--border);
+
+border-top:
+1px solid var(--border);
 }
 
 footer b{
 color:var(--cyan);
 }
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media(min-width:951px){
 
 body:after{
 content:"";
+
 position:fixed;
+
 inset:0;
+
 pointer-events:none;
+
 z-index:999;
+
 background:
 linear-gradient(
 90deg,
@@ -1638,6 +2510,7 @@ transparent 49.8%,
 rgba(0,246,255,.025) 50%,
 transparent 50.2%
 );
+
 opacity:.35;
 }
 
@@ -1658,7 +2531,8 @@ margin:auto;
 .two,
 .three,
 .four{
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:
+repeat(2,1fr);
 }
 
 .nav{
@@ -1674,7 +2548,8 @@ margin:auto;
 }
 
 .spacePlanet,
-.saturn{
+.saturn,
+.extraPlanet{
 opacity:.55;
 }
 
@@ -1687,11 +2562,16 @@ font-size:22px;
 @media(max-width:600px){
 
 .container{
-width:min(calc(100% - 24px),var(--max));
+width:
+min(
+calc(100% - 24px),
+var(--max)
+);
 }
 
 .page{
-padding:55px 0 80px;
+padding:
+55px 0 80px;
 }
 
 .two,
@@ -1723,6 +2603,14 @@ width:250px;
 height:315px;
 }
 
+.profileFrame:before{
+inset:-20px;
+}
+
+.profileFrame .profileOrbit{
+inset:-28px;
+}
+
 .facts{
 grid-template-columns:1fr;
 }
@@ -1751,6 +2639,12 @@ left:-22px;
 top:17px;
 }
 
+.extraPlanet{
+width:48px;
+height:48px;
+right:17%;
+}
+
 .galaxyRing{
 width:550px;
 }
@@ -1765,19 +2659,11 @@ width:220px;
 height:220px;
 }
 
-.profileFrame:before{
-font-size:25px;
 }
 
-.profileFrame:after{
-font-size:35px;
-}
-
-}
-
-/* =========================
+/* =========================================================
    REDUCED MOTION
-========================= */
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1791,10 +2677,11 @@ scroll-behavior:auto!important;
 }
 
 </style>
-
 </head>
 
 <body>
+
+<!-- BACKGROUND -->
 
 <div class="nebula one"></div>
 <div class="nebula two"></div>
@@ -1818,6 +2705,8 @@ scroll-behavior:auto!important;
 <span class="z12">♓</span>
 
 </div>
+
+<!-- LOADER -->
 
 <div id="loader">
 
@@ -1844,6 +2733,8 @@ AIMAAM
 
 <div id="mouseGlow"></div>
 
+<!-- STAR FIELD -->
+
 <div class="stars">
 
 <div class="star s1">⭐</div>
@@ -1856,24 +2747,42 @@ AIMAAM
 
 </div>
 
+<!-- PLANETS -->
+
 <div class="spacePlanet planetBlue"></div>
 <div class="spacePlanet planetPurple"></div>
 <div class="spacePlanet planetYellow"></div>
 
+<!-- BIG SATURN -->
+
 <div class="saturn"></div>
+
+<!-- NEW BLUE PLANET NEXT TO SATURN -->
+
+<div class="extraPlanet"></div>
+
+<!-- UFO -->
 
 <div class="ufo">🛸</div>
 
-<!-- 🐱‍🚀 แมวอวกาศหลายตัว -->
+<!-- CATS -->
 
 <div class="spaceCat cat1">🐱‍🚀</div>
 <div class="spaceCat cat2">🐱‍🚀</div>
 <div class="spaceCat cat3">🐱‍🚀</div>
 
+<!-- ROCKETS -->
+
 <div class="rocket rocket1">🚀</div>
 <div class="rocket rocket2">🚀</div>
 <div class="rocket rocket3">🚀</div>
 <div class="rocket4">🚀</div>
+
+<!-- =====================================================
+     METEOR LAYER
+===================================================== -->
+
+<div class="meteorLayer" id="meteorLayer"></div>
 
 <header>
 
@@ -1915,6 +2824,10 @@ AIMAAM
 
 <main>
 
+<!-- =====================================================
+     HOME
+===================================================== -->
+
 <section class="page active" id="home">
 
 <div class="container hero">
@@ -1955,12 +2868,18 @@ AIMAAM
 </div>
 
 <div class="planetBox">
+
 <div class="heroPlanet"></div>
+
 </div>
 
 </div>
 
 </section>
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
 
 <section class="page" id="profile">
 
@@ -1985,17 +2904,30 @@ AIMAAM
 
 <div class="profileOrbit"></div>
 
+<span class="miniStar ms1">✦</span>
+<span class="miniStar ms2">✧</span>
+<span class="miniStar ms3">⭐</span>
+<span class="miniStar ms4">✨</span>
+
 <img
 class="profilePic"
 id="profilePic"
 src="https://i.pinimg.com/1200x/d3/b3/95/d3b395d2148f3202850d0ba4e34d31c5.jpg"
 alt="Aimaam Profile"
-title="คลิกเพื่อหมุน 360°"
+title="รูปโปรไฟล์หมุนอัตโนมัติ 360°"
 >
 
 </div>
 
 <div class="card">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">
 👩🏻‍🚀
@@ -2057,6 +2989,10 @@ title="คลิกเพื่อหมุน 360°"
 
 </section>
 
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
+
 <section class="page" id="education">
 
 <div class="container">
@@ -2078,6 +3014,14 @@ title="คลิกเพื่อหมุน 360°"
 
 <article class="card">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">👶🏻</div>
 
 <div class="year">01</div>
@@ -2093,6 +3037,14 @@ title="คลิกเพื่อหมุน 360°"
 
 <article class="card">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">🧒🏻</div>
 
 <div class="year">02</div>
@@ -2107,6 +3059,14 @@ title="คลิกเพื่อหมุน 360°"
 </article>
 
 <article class="card">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">🧑🏻‍🚀</div>
 
@@ -2124,6 +3084,14 @@ title="คลิกเพื่อหมุน 360°"
 </article>
 
 <article class="card">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">🚀</div>
 
@@ -2143,6 +3111,10 @@ title="คลิกเพื่อหมุน 360°"
 </div>
 
 </section>
+
+<!-- =====================================================
+     HOBBY
+===================================================== -->
 
 <section class="page" id="hobby">
 
@@ -2165,6 +3137,14 @@ title="คลิกเพื่อหมุน 360°"
 
 <article class="card hobbyCard">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">🎨</div>
 
 <div class="icon">🖌️</div>
@@ -2179,6 +3159,14 @@ title="คลิกเพื่อหมุน 360°"
 
 <article class="card hobbyCard">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">🎤</div>
 
 <div class="icon">🎧</div>
@@ -2192,6 +3180,14 @@ title="คลิกเพื่อหมุน 360°"
 </article>
 
 <article class="card hobbyCard">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">🌠</div>
 
@@ -2210,6 +3206,10 @@ title="คลิกเพื่อหมุน 360°"
 </div>
 
 </section>
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
 <section class="page" id="contact">
 
@@ -2232,6 +3232,14 @@ title="คลิกเพื่อหมุน 360°"
 
 <article class="card">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">📘</div>
 <div class="icon">📘</div>
 
@@ -2244,6 +3252,14 @@ Thanada lorlamliang
 </article>
 
 <article class="card">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">📸</div>
 <div class="icon">📸</div>
@@ -2258,6 +3274,14 @@ aimaam22
 
 <article class="card">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">🎵</div>
 <div class="icon">🎵</div>
 
@@ -2270,6 +3294,14 @@ aam_aam
 </article>
 
 <article class="card">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">📞</div>
 <div class="icon">📞</div>
@@ -2287,6 +3319,10 @@ aam_aam
 </div>
 
 </section>
+
+<!-- =====================================================
+     FRIENDS
+===================================================== -->
 
 <section class="page" id="friends">
 
@@ -2308,6 +3344,14 @@ aam_aam
 <div class="grid two">
 
 <article class="card">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">🧑🏻‍🔬</div>
 
@@ -2343,6 +3387,14 @@ Math
 
 <article class="card">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">👑</div>
 
 <h3>👑 My Best Friends</h3>
@@ -2368,6 +3420,10 @@ Math
 
 </section>
 
+<!-- =====================================================
+     WORKS
+===================================================== -->
+
 <section class="page" id="works">
 
 <div class="container">
@@ -2389,6 +3445,14 @@ Achievement Log — ภารกิจที่ฉันภูมิใจ
 
 <article class="card achievement">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">🏅</div>
 
 <div class="big">🏅</div>
@@ -2403,6 +3467,14 @@ Achievement Log — ภารกิจที่ฉันภูมิใจ
 
 <article class="card achievement">
 
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
+
 <div class="character">🧪</div>
 
 <div class="big">🥇</div>
@@ -2416,6 +3488,14 @@ Achievement Log — ภารกิจที่ฉันภูมิใจ
 </article>
 
 <article class="card achievement">
+
+<div class="cardStars">
+<span>✦</span>
+<span>✧</span>
+<span>⋆</span>
+<span>✦</span>
+<span>✨</span>
+</div>
 
 <div class="character">👑</div>
 
@@ -2455,12 +3535,15 @@ Achievement Log — ภารกิจที่ฉันภูมิใจ
 
 "use strict";
 
-/* =========================
+/* =========================================================
    PAGE SYSTEM
-========================= */
+========================================================= */
 
-const pages=[...document.querySelectorAll(".page")];
-const navs=[...document.querySelectorAll(".navGo")];
+const pages=
+[...document.querySelectorAll(".page")];
+
+const navs=
+[...document.querySelectorAll(".navGo")];
 
 const mobileMenu=
 document.getElementById("mobileMenu");
@@ -2475,11 +3558,16 @@ document.getElementById(id) ||
 document.getElementById("home");
 
 pages.forEach(
-p=>p.classList.toggle("active",p===target)
+p=>
+p.classList.toggle(
+"active",
+p===target
+)
 );
 
 navs.forEach(
-b=>b.classList.toggle(
+b=>
+b.classList.toggle(
 "active",
 b.dataset.page===target.id
 )
@@ -2539,7 +3627,10 @@ location.hash
 .replace("#","")
 .trim();
 
-showPage(hash||"home",false);
+showPage(
+hash||"home",
+false
+);
 
 }
 
@@ -2550,9 +3641,9 @@ openHashPage
 
 openHashPage();
 
-/* =========================
+/* =========================================================
    MOUSE GLOW
-========================= */
+========================================================= */
 
 const glow=
 document.getElementById("mouseGlow");
@@ -2565,10 +3656,13 @@ window.addEventListener(
 "pointermove",
 e=>{
 
-glow.style.left=e.clientX+"px";
-glow.style.top=e.clientY+"px";
+glow.style.left=
+e.clientX+"px";
 
-if(Date.now()-lastStar>40){
+glow.style.top=
+e.clientY+"px";
+
+if(Date.now()-lastStar>45){
 
 lastStar=Date.now();
 
@@ -2585,19 +3679,22 @@ e.clientY
 
 }
 
-/* =========================
+/* =========================================================
    MOUSE TRAIL
-========================= */
+========================================================= */
 
 const mouseStars=[
-"✦","✧","⋆","✨","⭐","💫","✶","🔹"
+"✦","✧","⋆","✨",
+"⭐","💫","✶","🔹"
 ];
 
 function createMouseStar(x,y){
 
-const s=document.createElement("div");
+const s=
+document.createElement("div");
 
-s.className="mouseStar";
+s.className=
+"mouseStar";
 
 s.textContent=
 mouseStars[
@@ -2618,11 +3715,22 @@ const colors=[
 
 s.style.color=
 colors[
-Math.floor(Math.random()*colors.length)
+Math.floor(
+Math.random()*colors.length
+)
 ];
 
+s.style.position="fixed";
 s.style.left=x+"px";
 s.style.top=y+"px";
+
+s.style.pointerEvents="none";
+s.style.zIndex="9997";
+
+s.style.fontSize="14px";
+
+s.style.filter=
+"drop-shadow(0 0 5px currentColor)";
 
 s.style.setProperty(
 "--mx",
@@ -2634,6 +3742,28 @@ s.style.setProperty(
 (Math.random()*100-50)+"px"
 );
 
+s.animate(
+[
+{
+opacity:1,
+transform:
+"translate(-50%,-50%) scale(1)"
+},
+{
+opacity:0,
+transform:
+`translate(
+calc(-50% + ${Math.random()*100-50}px),
+calc(-50% + ${Math.random()*100-50}px)
+) scale(.05)`
+}
+],
+{
+duration:900,
+easing:"ease-out"
+}
+);
+
 document.body.appendChild(s);
 
 setTimeout(
@@ -2643,13 +3773,16 @@ setTimeout(
 
 }
 
-/* =========================
+/* =========================================================
    CLICK EFFECT
-========================= */
+========================================================= */
 
 const clickStars=[
-"⭐","🌟","✨","💫","✦","✧","⋆",
-"🔹","🔸","💜","💙","💚","💛","🩷","🌠"
+"⭐","🌟","✨","💫",
+"✦","✧","⋆",
+"🔹","🔸",
+"💜","💙","💚",
+"💛","🩷","🌠"
 ];
 
 window.addEventListener(
@@ -2659,24 +3792,47 @@ e=>{
 const ripple=
 document.createElement("div");
 
-ripple.className="ripple";
-
+ripple.style.position="fixed";
 ripple.style.left=e.clientX+"px";
 ripple.style.top=e.clientY+"px";
+ripple.style.width="20px";
+ripple.style.height="20px";
+ripple.style.border="2px solid var(--cyan)";
+ripple.style.borderRadius="50%";
+ripple.style.pointerEvents="none";
+ripple.style.zIndex="10000";
+ripple.style.transform="translate(-50%,-50%)";
+
+ripple.animate(
+[
+{
+width:"20px",
+height:"20px",
+opacity:1
+},
+{
+width:"220px",
+height:"220px",
+opacity:0
+}
+],
+{
+duration:800,
+easing:"ease-out"
+}
+);
 
 document.body.appendChild(ripple);
 
 setTimeout(
 ()=>ripple.remove(),
-800
+850
 );
 
-for(let i=0;i<24;i++){
+for(let i=0;i<18;i++){
 
 const star=
 document.createElement("div");
-
-star.className="clickStar";
 
 star.textContent=
 clickStars[
@@ -2685,42 +3841,47 @@ Math.random()*clickStars.length
 )
 ];
 
+star.style.position="fixed";
+star.style.left=e.clientX+"px";
+star.style.top=e.clientY+"px";
+star.style.pointerEvents="none";
+star.style.zIndex="10001";
+star.style.fontSize="20px";
+
 const angle=
 Math.random()*Math.PI*2;
 
 const distance=
-70+Math.random()*210;
+70+Math.random()*180;
 
-star.style.left=e.clientX+"px";
-star.style.top=e.clientY+"px";
-
-star.style.setProperty(
-"--cx",
-Math.cos(angle)*distance+"px"
+star.animate(
+[
+{
+opacity:1,
+transform:
+"translate(-50%,-50%) scale(.3)"
+},
+{
+opacity:0,
+transform:
+`translate(
+calc(-50% + ${Math.cos(angle)*distance}px),
+calc(-50% + ${Math.sin(angle)*distance}px)
+) scale(.05)
+rotate(600deg)`
+}
+],
+{
+duration:1200,
+easing:"cubic-bezier(.1,.8,.2,1)"
+}
 );
-
-star.style.setProperty(
-"--cy",
-Math.sin(angle)*distance+"px"
-);
-
-star.style.color=[
-"#fff",
-"#00f6ff",
-"#398cff",
-"#9147ff",
-"#ff3cac",
-"#ffe45c",
-"#55ffb0"
-][
-Math.floor(Math.random()*7)
-];
 
 document.body.appendChild(star);
 
 setTimeout(
 ()=>star.remove(),
-1300
+1250
 );
 
 }
@@ -2729,13 +3890,21 @@ setTimeout(
 {passive:true}
 );
 
-/* =========================
-   CARD 3D
-========================= */
+/* =========================================================
+   3D CARD MOUSE TILT
+========================================================= */
 
 document
 .querySelectorAll(".card")
 .forEach(card=>{
+
+card.addEventListener(
+"pointerenter",
+()=>{
+card.style.transition=
+"transform .12s ease-out, box-shadow .2s ease";
+}
+);
 
 card.addEventListener(
 "pointermove",
@@ -2744,45 +3913,50 @@ e=>{
 const r=
 card.getBoundingClientRect();
 
-const x=e.clientX-r.left;
-const y=e.clientY-r.top;
+const x=
+e.clientX-r.left;
 
-const centerX=r.width/2;
-const centerY=r.height/2;
+const y=
+e.clientY-r.top;
+
+const centerX=
+r.width/2;
+
+const centerY=
+r.height/2;
 
 const rotateY=
 ((x-centerX)/centerX)*12;
 
 const rotateX=
-((centerY-y)/centerY)*8;
+((centerY-y)/centerY)*9;
 
 const moveX=
-((x-centerX)/centerX)*4;
+((x-centerX)/centerX)*3;
 
 const moveY=
-((y-centerY)/centerY)*4;
+((y-centerY)/centerY)*3;
 
 card.style.transform=
 `
-perspective(1000px)
+perspective(900px)
 rotateX(${rotateX}deg)
 rotateY(${rotateY}deg)
 translate3d(
 ${moveX}px,
 ${moveY}px,
--5px
+10px
 )
 `;
 
 card.style.boxShadow=
 `
+0 0 25px rgba(0,246,255,.25),
+0 0 50px rgba(145,71,255,.15),
 ${-rotateY}px
-${rotateX+15}px
-45px
-rgba(0,0,0,.45),
-
-0 0 35px
-rgba(0,246,255,.25)
+${rotateX+18}px
+50px
+rgba(0,0,0,.5)
 `;
 
 }
@@ -2792,220 +3966,311 @@ card.addEventListener(
 "pointerleave",
 ()=>{
 
+card.style.transition=
+"transform .45s ease, box-shadow .45s ease";
+
 card.style.transform=
 `
-perspective(1000px)
+perspective(900px)
 rotateX(0deg)
 rotateY(0deg)
 translate3d(0,0,0)
 `;
 
 card.style.boxShadow=
-"0 18px 45px rgba(0,0,0,.3)";
+`
+0 0 18px rgba(0,246,255,.08),
+0 18px 45px rgba(0,0,0,.3)
+`;
 
 }
 );
 
 });
 
-/* =====================================================
-   PROFILE 360°
-   FIXED
-===================================================== */
+/* =========================================================
+   🌠 METEOR ENGINE
+========================================================= */
 
-const profile=
-document.getElementById("profilePic");
-
-if(profile){
-
-profile.addEventListener(
-"click",
-function(){
-
-this.classList.remove("rotate360");
+const meteorLayer=
+document.getElementById("meteorLayer");
 
 /*
-   บังคับให้ animation เริ่มใหม่ทุกครั้ง
+   สร้างดาวตก 1 ดวง
+
+   จุดเริ่ม:
+   ขอบขวา + ด้านบน
+
+   ทิศ:
+   ขวาบน -> ซ้ายล่าง
 */
-void this.offsetWidth;
 
-this.classList.add("rotate360");
+function createMeteor(options={}){
 
-}
-);
+if(!meteorLayer)return;
 
-}
-
-/* =========================
-   EPIC METEOR
-========================= */
-
-function createMeteor(){
-
-const m=
+const meteor=
 document.createElement("div");
 
-m.className="meteor";
+meteor.className="meteor";
 
-const random=
+const type=
 Math.random();
 
-if(random>.65){
-m.classList.add("pink");
+if(type>.72){
+meteor.classList.add("pink");
 }
-else if(random>.42){
-m.classList.add("gold");
+else if(type>.50){
+meteor.classList.add("gold");
 }
 
-m.style.left=
-(5+Math.random()*110)+"vw";
+/* จุดเริ่มแบบสุ่ม */
 
-m.style.top=
-(-250-Math.random()*500)+"px";
+let startX;
+let startY;
 
-m.style.setProperty(
-"--meteor-x",
-(-250-Math.random()*550)+"px"
+/*
+   กระจายทั่วขอบด้านบนและขวา
+*/
+
+if(Math.random()>.45){
+
+startX=
+window.innerWidth*
+(
+0.55+
+Math.random()*.55
 );
 
-m.style.setProperty(
-"--meteor-speed",
-(1.1+Math.random()*1.8)+"s"
-);
+startY=
+-80-
+Math.random()*
+window.innerHeight*
+.35;
 
-const scale=
-.45+Math.random()*1.4;
+}else{
 
-m.style.width=
-(2+Math.random()*5)+"px";
+startX=
+window.innerWidth+
+80+
+Math.random()*300;
 
-m.style.height=
-(80+Math.random()*190)+"px";
-
-m.style.transform=
-`
-rotate(-25deg)
-scale(${scale})
-`;
-
-document.body.appendChild(m);
-
-setTimeout(
-()=>m.remove(),
-3500
-);
+startY=
+Math.random()*
+window.innerHeight*
+.45-
+250;
 
 }
 
 /*
-   ฝนดาวตกชุดใหญ่ตอนเปิดเว็บ
+   ระยะทาง
 */
 
-function epicMeteorShow(){
+const travelX=
+window.innerWidth*
+(
+0.65+
+Math.random()*.7
+);
 
-/* ชุดหลัก */
+const travelY=
+window.innerHeight*
+(
+0.75+
+Math.random()*.65
+);
 
-for(let i=0;i<75;i++){
+/*
+   ความยาวดาวตก
+*/
+
+const height=
+options.fast
+?
+100+Math.random()*150
+:
+130+Math.random()*230;
+
+const width=
+2+Math.random()*4;
+
+meteor.style.width=
+width+"px";
+
+meteor.style.height=
+height+"px";
+
+meteor.style.setProperty(
+"--startX",
+startX+"px"
+);
+
+meteor.style.setProperty(
+"--startY",
+startY+"px"
+);
+
+meteor.style.setProperty(
+"--travelX",
+travelX+"px"
+);
+
+meteor.style.setProperty(
+"--travelY",
+travelY+"px"
+);
+
+/*
+   เร็ว/ช้าแบบสุ่ม
+*/
+
+const duration=
+options.duration ||
+(
+1.3+
+Math.random()*1.8
+);
+
+meteor.style.animation=
+`meteorMove ${duration}s linear forwards`;
+
+meteorLayer.appendChild(meteor);
 
 setTimeout(
-createMeteor,
-i*55+Math.random()*700
+()=>{
+meteor.remove();
+},
+(duration*1000)+300
 );
 
 }
 
-/* ชุดพิเศษกระหน่ำ */
+/* =========================================================
+   F5 OPENING METEOR SHOWER
+========================================================= */
 
-for(let i=0;i<35;i++){
+function openingMeteorShower(){
+
+/*
+   รอบแรกเป็นชุดใหญ่
+   แต่กระจายตำแหน่ง
+   ไม่เกิดจากจุดเดียว
+*/
+
+for(let i=0;i<48;i++){
 
 setTimeout(
-createMeteor,
-1800+i*75+Math.random()*500
+()=>{
+
+createMeteor({
+duration:
+1.1+
+Math.random()*1.7
+});
+
+},
+i*45+
+Math.random()*900
 );
 
 }
 
 }
 
-/* =========================
-   CONTINUOUS METEOR
-========================= */
+/* =========================================================
+   NORMAL RANDOM METEORS
+========================================================= */
 
-function meteorLoop(){
+function randomMeteorLoop(){
+
+/*
+   ปกติจะตกทีละ 1-2 ดวง
+   ไม่เป็นก้อน
+*/
 
 const amount=
-2+Math.floor(Math.random()*4);
+Math.random()>.72
+?
+2
+:
+1;
 
 for(let i=0;i<amount;i++){
 
 setTimeout(
-createMeteor,
-i*120
+()=>{
+createMeteor({
+duration:
+1.5+
+Math.random()*2
+});
+},
+i*600
 );
 
 }
+
+/*
+   เว้นช่วงสุ่ม
+*/
 
 setTimeout(
-meteorLoop,
-500+Math.random()*1100
+randomMeteorLoop,
+900+
+Math.random()*2600
 );
 
 }
 
-/* =========================
-   ALIENS
-========================= */
+/* =========================================================
+   ALIEN F5 SHOW
+========================================================= */
 
 function createAlien(){
 
-const a=
+const alien=
 document.createElement("div");
 
-a.className="alien";
-a.textContent="👽";
+alien.className="alien";
 
-a.style.left=
+alien.textContent="👽";
+
+alien.style.left=
 Math.random()*100+"vw";
 
-a.style.animationDuration=
-(2+Math.random()*2)+"s";
+alien.style.animationDuration=
+(
+2+
+Math.random()*2
+)+"s";
 
-document.body.appendChild(a);
+document.body.appendChild(alien);
 
 setTimeout(
-()=>a.remove(),
+()=>alien.remove(),
 4500
 );
 
 }
 
-/* =========================
-   OPENING SHOW
-========================= */
+function openingAliens(){
 
-function launchOpeningShow(){
-
-epicMeteorShow();
-
-for(let i=0;i<12;i++){
+for(let i=0;i<10;i++){
 
 setTimeout(
 createAlien,
-i*230+Math.random()*600
+i*180+
+Math.random()*500
 );
 
 }
 
-setTimeout(
-meteorLoop,
-5000
-);
-
 }
 
-/* =========================
+/* =========================================================
    TINY STARS
-========================= */
+========================================================= */
 
 function createTinyStar(){
 
@@ -3018,22 +4283,26 @@ star.style,
 
 position:"fixed",
 
-left:Math.random()*100+"vw",
+left:
+Math.random()*100+"vw",
 
-top:Math.random()*100+"vh",
+top:
+Math.random()*100+"vh",
 
-width:(Math.random()*4+1)+"px",
+width:
+(Math.random()*4+1)+"px",
 
-height:(Math.random()*4+1)+"px",
-
-aspectRatio:"1",
+height:
+(Math.random()*4+1)+"px",
 
 borderRadius:"50%",
 
 background:
 Math.random()>.5
-?"white"
-:"#00f6ff",
+?
+"white"
+:
+"#00f6ff",
 
 boxShadow:
 "0 0 5px currentColor,"+
@@ -3044,7 +4313,8 @@ pointerEvents:"none",
 
 zIndex:"4",
 
-opacity:Math.random()*.55+.45
+opacity:
+Math.random()*.55+.45
 
 }
 );
@@ -3052,7 +4322,6 @@ opacity:Math.random()*.55+.45
 document.body.appendChild(star);
 
 star.animate(
-
 [
 {
 opacity:.15,
@@ -3067,26 +4336,23 @@ opacity:.15,
 transform:"scale(.5)"
 }
 ],
-
 {
 duration:
-1500+Math.random()*3000,
+1500+
+Math.random()*3000,
 iterations:Infinity
 }
-
 );
 
 }
-
-/* ดาวพื้นหลัง */
 
 for(let i=0;i<150;i++){
 createTinyStar();
 }
 
-/* =========================
+/* =========================================================
    SPACE PARTICLES
-========================= */
+========================================================= */
 
 function spaceParticle(){
 
@@ -3110,7 +4376,8 @@ p.style,
 
 position:"fixed",
 
-left:Math.random()*100+"vw",
+left:
+Math.random()*100+"vw",
 
 top:"105vh",
 
@@ -3128,7 +4395,9 @@ color:[
 "#ff3cac",
 "#ffe45c"
 ][
-Math.floor(Math.random()*5)
+Math.floor(
+Math.random()*5
+)
 ],
 
 textShadow:
@@ -3143,7 +4412,6 @@ const x=
 Math.random()*240-120;
 
 p.animate(
-
 [
 {
 transform:"translateY(0) rotate(0)",
@@ -3155,19 +4423,24 @@ opacity:1
 {
 transform:
 `
-translate(${x}px,-120vh)
-rotate(${Math.random()*720}deg)
+translate(
+${x}px,
+-120vh
+)
+rotate(
+${Math.random()*720}deg
+)
 `,
 opacity:0
 }
 ],
-
 {
 duration:
-5000+Math.random()*7000,
+5000+
+Math.random()*7000,
+
 easing:"linear"
 }
-
 ).onfinish=
 ()=>p.remove();
 
@@ -3178,9 +4451,9 @@ spaceParticle,
 650
 );
 
-/* =========================
+/* =========================================================
    LOADER
-========================= */
+========================================================= */
 
 const loader=
 document.getElementById("loader");
@@ -3189,7 +4462,10 @@ let loaderClosed=false;
 
 function closeLoader(){
 
-if(loaderClosed||!loader)return;
+if(
+loaderClosed||
+!loader
+)return;
 
 loaderClosed=true;
 
@@ -3216,21 +4492,40 @@ closeLoader,
 1800
 );
 
-/* =========================
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 window.addEventListener(
 "load",
 ()=>{
 
+/*
+   F5 / เปิดเว็บใหม่:
+   Meteor + Alien พร้อมกัน
+*/
+
 setTimeout(
-launchOpeningShow,
-450
+openingMeteorShower,
+300
 );
 
-}
+setTimeout(
+openingAliens,
+500
 );
+
+/*
+   หลังจากชุดเปิดเว็บจบ
+   เปลี่ยนเป็นดาวตกสุ่มทีละดวง
+*/
+
+setTimeout(
+randomMeteorLoop,
+5200
+);
+
+});
 
 })();
 
