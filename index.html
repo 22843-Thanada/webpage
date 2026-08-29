@@ -1,8 +1,12 @@
-<!DOCTYPE html><html lang="th">
+<!DOCTYPE html>
+<html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Aimaam Galaxy MAX</title><style>
+<meta name="theme-color" content="#01020b">
+<title>Aimaam Galaxy MAX</title>
+
+<style>
 :root{
 --bg:#01020b;
 --bg2:#08051c;
@@ -44,7 +48,7 @@ cursor:crosshair;
 }
 
 /* =========================================================
-   STAR FIELD
+   DEEP STAR FIELD
 ========================================================= */
 
 body:before{
@@ -75,6 +79,157 @@ background-position:
 700px -500px,
 -800px 300px;
 }
+}
+
+/* =========================================================
+   ZODIAC CONSTELLATIONS
+========================================================= */
+
+.zodiacField{
+position:fixed;
+inset:0;
+z-index:-60;
+pointer-events:none;
+overflow:hidden;
+}
+
+.zodiac{
+position:absolute;
+width:180px;
+height:150px;
+opacity:.65;
+filter:
+drop-shadow(0 0 5px var(--cyan))
+drop-shadow(0 0 12px rgba(145,71,255,.7));
+animation:zodiacFloat 8s ease-in-out infinite;
+}
+
+.zodiac svg{
+width:100%;
+height:100%;
+overflow:visible;
+}
+
+.zodiac line{
+stroke:rgba(0,246,255,.35);
+stroke-width:1;
+}
+
+.zodiac circle{
+fill:#fff;
+filter:
+drop-shadow(0 0 4px #fff)
+drop-shadow(0 0 9px var(--cyan));
+}
+
+.zodiac text{
+font-family:"Segoe UI",Arial,sans-serif;
+fill:rgba(217,224,255,.75);
+font-size:13px;
+font-weight:900;
+letter-spacing:1px;
+}
+
+.zodiac:nth-child(1){
+left:2%;
+top:10%;
+animation-delay:-1s;
+}
+
+.zodiac:nth-child(2){
+left:31%;
+top:5%;
+animation-delay:-4s;
+}
+
+.zodiac:nth-child(3){
+right:3%;
+top:9%;
+animation-delay:-2s;
+}
+
+.zodiac:nth-child(4){
+left:7%;
+top:36%;
+animation-delay:-5s;
+}
+
+.zodiac:nth-child(5){
+left:39%;
+top:30%;
+animation-delay:-7s;
+}
+
+.zodiac:nth-child(6){
+right:5%;
+top:36%;
+animation-delay:-3s;
+}
+
+.zodiac:nth-child(7){
+left:1%;
+top:65%;
+animation-delay:-6s;
+}
+
+.zodiac:nth-child(8){
+left:32%;
+top:57%;
+animation-delay:-1s;
+}
+
+.zodiac:nth-child(9){
+right:1%;
+top:61%;
+animation-delay:-5s;
+}
+
+.zodiac:nth-child(10){
+left:8%;
+bottom:2%;
+animation-delay:-3s;
+}
+
+.zodiac:nth-child(11){
+left:42%;
+bottom:0;
+animation-delay:-7s;
+}
+
+.zodiac:nth-child(12){
+right:4%;
+bottom:2%;
+animation-delay:-4s;
+}
+
+@keyframes zodiacFloat{
+0%,100%{
+transform:translateY(0) rotate(0deg);
+opacity:.45;
+}
+50%{
+transform:translateY(-12px) rotate(2deg);
+opacity:.85;
+}
+}
+
+/* =========================================================
+   ZODIAC EXTRA LABEL
+========================================================= */
+
+.zodiacName{
+position:absolute;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+white-space:nowrap;
+color:var(--soft);
+font-size:11px;
+font-weight:900;
+letter-spacing:2px;
+text-shadow:
+0 0 7px var(--cyan),
+0 0 15px var(--purple);
 }
 
 /* =========================================================
@@ -359,8 +514,8 @@ transform:translate(-650px,500px) rotate(-35deg) scale(1.3);
 
 .meteor{
 position:fixed;
-width:5px;
-height:190px;
+width:6px;
+height:220px;
 border-radius:50%;
 z-index:9995;
 pointer-events:none;
@@ -389,6 +544,53 @@ opacity:1;
 }
 100%{
 transform:translate(-550px,115vh) rotate(-25deg) scale(1.4);
+opacity:0;
+}
+}
+
+/* =========================================================
+   FALLING ALIEN
+========================================================= */
+
+.fallingAlien{
+position:fixed;
+z-index:9996;
+pointer-events:none;
+font-size:45px;
+filter:
+drop-shadow(0 0 8px #55ff55)
+drop-shadow(0 0 20px #00ff55)
+drop-shadow(0 0 35px #00ffcc);
+animation:alienFall linear forwards;
+}
+
+@keyframes alienFall{
+0%{
+transform:translate3d(0,-120px,0)
+rotate(0deg)
+scale(.4);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+45%{
+transform:
+translate3d(var(--ax1),50vh,0)
+rotate(180deg)
+scale(1.1);
+}
+75%{
+transform:
+translate3d(var(--ax2),78vh,0)
+rotate(360deg)
+scale(.9);
+}
+100%{
+transform:
+translate3d(var(--ax3),120vh,0)
+rotate(700deg)
+scale(.6);
 opacity:0;
 }
 }
@@ -1177,7 +1379,7 @@ gap:22px;
 .four{grid-template-columns:repeat(4,1fr)}
 
 /* =========================================================
-   CARD + MINI STARS
+   CARD
 ========================================================= */
 
 .card{
@@ -1239,8 +1441,6 @@ box-shadow:
 0 0 35px rgba(0,246,255,.28),
 0 25px 60px rgba(0,0,0,.5);
 }
-
-/* ดาวเล็ก ๆ รอบกรอบทุก Card */
 
 .cardStars{
 position:absolute;
@@ -1376,8 +1576,6 @@ box-shadow:
 0 0 120px rgba(255,60,172,.35);
 }
 
-/* หมุน 360 อัตโนมัติ */
-
 .profilePic.autoSpin{
 animation:profileAutoSpin 8s linear infinite;
 }
@@ -1390,8 +1588,6 @@ transform:perspective(1200px) rotateY(0deg);
 transform:perspective(1200px) rotateY(360deg);
 }
 }
-
-/* คลิกหมุน 360 */
 
 .profilePic.rotate{
 animation:profileSpinY 1.5s cubic-bezier(.2,.8,.25,1);
@@ -1609,7 +1805,60 @@ color:var(--cyan);
 }
 
 /* =========================================================
-   RESPONSIVE
+   DESKTOP LARGE
+========================================================= */
+
+@media(min-width:1200px){
+
+.container{
+width:min(calc(100% - 70px),1400px);
+}
+
+.nav{
+gap:8px;
+}
+
+.nav button{
+padding:11px 14px;
+}
+
+.hero{
+gap:80px;
+}
+
+.zodiac{
+transform:scale(1.05);
+}
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1100px){
+
+.two{
+grid-template-columns:repeat(2,1fr);
+}
+
+.three{
+grid-template-columns:repeat(2,1fr);
+}
+
+.four{
+grid-template-columns:repeat(2,1fr);
+}
+
+.nav button{
+padding:9px 8px;
+font-size:.85rem;
+}
+
+}
+
+/* =========================================================
+   MOBILE / TABLET
 ========================================================= */
 
 @media(max-width:950px){
@@ -1647,7 +1896,16 @@ margin:auto;
 opacity:.55;
 }
 
+.zodiac{
+opacity:.32;
+transform:scale(.8);
 }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media(max-width:600px){
 
@@ -1739,6 +1997,35 @@ height:70px;
 font-size:clamp(3.5rem,18vw,7rem);
 }
 
+.introSmall{
+letter-spacing:.35em;
+}
+
+.zodiac{
+opacity:.18;
+transform:scale(.6);
+}
+
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media(hover:none){
+
+body{
+cursor:auto;
+}
+
+#mouseGlow{
+display:none;
+}
+
+.card:hover{
+transform:none!important;
+}
+
 }
 
 /* =========================================================
@@ -1746,29 +2033,331 @@ font-size:clamp(3.5rem,18vw,7rem);
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
+
 *,
 *:before,
 *:after{
 animation:none!important;
 scroll-behavior:auto!important;
 }
+
+#cinematicIntro{
+display:none!important;
 }
-</style></head><body><!-- =====================================================
+
+}
+
+/* =========================================================
+   LANDSCAPE PHONE
+========================================================= */
+
+@media(max-width:900px) and (orientation:landscape){
+
+.hero{
+grid-template-columns:1fr 1fr;
+}
+
+.heroPlanet{
+width:230px;
+}
+
+.page{
+padding-top:45px;
+}
+
+}
+
+/* =========================================================
+   VERY LARGE SCREEN
+========================================================= */
+
+@media(min-width:1600px){
+
+body{
+font-size:18px;
+}
+
+.hero h1{
+font-size:7rem;
+}
+
+.card{
+padding:34px;
+}
+
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+button:focus-visible{
+outline:2px solid var(--cyan);
+outline-offset:4px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
      F5 CINEMATIC INTRO
-===================================================== --><div id="cinematicIntro"><div class="introGrid"></div>
-<div class="introScan"></div><div class="introPlanet"></div>
-<div class="introRing"></div><div class="introStars" id="introStars"></div><div class="introContent"><div class="introSmall">
+===================================================== -->
+
+<div id="cinematicIntro">
+
+<div class="introGrid"></div>
+
+<div class="introScan"></div>
+
+<div class="introPlanet"></div>
+
+<div class="introRing"></div>
+
+<div class="introStars" id="introStars"></div>
+
+<div class="introContent">
+
+<div class="introSmall">
 ✦ AIMAAM GALAXY SYSTEM ✦
-</div><div class="introTitle">
+</div>
+
+<div class="introTitle">
 AIMAAM
-</div><div class="introSub">
+</div>
+
+<div class="introSub">
 🚀 WELCOME TO MY UNIVERSE 🚀
-</div></div></div><!-- =====================================================
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     ZODIAC CONSTELLATIONS
+===================================================== -->
+
+<div class="zodiacField">
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="25" y1="100" x2="55" y2="60"/>
+<line x1="55" y1="60" x2="90" y2="80"/>
+<line x1="90" y1="80" x2="125" y2="45"/>
+<line x1="125" y1="45" x2="150" y2="85"/>
+<line x1="90" y1="80" x2="65" y2="115"/>
+<circle cx="25" cy="100" r="3"/>
+<circle cx="55" cy="60" r="3"/>
+<circle cx="90" cy="80" r="3"/>
+<circle cx="125" cy="45" r="3"/>
+<circle cx="150" cy="85" r="3"/>
+<circle cx="65" cy="115" r="3"/>
+</svg>
+<div class="zodiacName">♈ ARIES</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="30" y1="55" x2="65" y2="35"/>
+<line x1="65" y1="35" x2="95" y2="65"/>
+<line x1="95" y1="65" x2="140" y2="50"/>
+<line x1="65" y1="35" x2="75" y2="105"/>
+<line x1="75" y1="105" x2="125" y2="115"/>
+<circle cx="30" cy="55" r="3"/>
+<circle cx="65" cy="35" r="3"/>
+<circle cx="95" cy="65" r="3"/>
+<circle cx="140" cy="50" r="3"/>
+<circle cx="75" cy="105" r="3"/>
+<circle cx="125" cy="115" r="3"/>
+</svg>
+<div class="zodiacName">♉ TAURUS</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="30" y1="35" x2="80" y2="60"/>
+<line x1="80" y1="60" x2="145" y2="35"/>
+<line x1="30" y1="35" x2="55" y2="110"/>
+<line x1="145" y1="35" x2="125" y2="110"/>
+<line x1="55" y1="110" x2="125" y2="110"/>
+<circle cx="30" cy="35" r="3"/>
+<circle cx="80" cy="60" r="3"/>
+<circle cx="145" cy="35" r="3"/>
+<circle cx="55" cy="110" r="3"/>
+<circle cx="125" cy="110" r="3"/>
+</svg>
+<div class="zodiacName">♊ GEMINI</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="40" y1="50" x2="80" y2="35"/>
+<line x1="80" y1="35" x2="125" y2="55"/>
+<line x1="125" y1="55" x2="145" y2="100"/>
+<line x1="145" y1="100" x2="95" y2="115"/>
+<line x1="95" y1="115" x2="45" y2="100"/>
+<line x1="45" y1="100" x2="40" y2="50"/>
+<circle cx="40" cy="50" r="3"/>
+<circle cx="80" cy="35" r="3"/>
+<circle cx="125" cy="55" r="3"/>
+<circle cx="145" cy="100" r="3"/>
+<circle cx="95" cy="115" r="3"/>
+<circle cx="45" cy="100" r="3"/>
+</svg>
+<div class="zodiacName">♋ CANCER</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="25" y1="85" x2="60" y2="45"/>
+<line x1="60" y1="45" x2="100" y2="60"/>
+<line x1="100" y1="60" x2="135" y2="35"/>
+<line x1="100" y1="60" x2="125" y2="105"/>
+<line x1="125" y1="105" x2="155" y2="90"/>
+<circle cx="25" cy="85" r="3"/>
+<circle cx="60" cy="45" r="3"/>
+<circle cx="100" cy="60" r="3"/>
+<circle cx="135" cy="35" r="3"/>
+<circle cx="125" cy="105" r="3"/>
+<circle cx="155" cy="90" r="3"/>
+</svg>
+<div class="zodiacName">♌ LEO</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="30" y1="80" x2="60" y2="40"/>
+<line x1="60" y1="40" x2="95" y2="75"/>
+<line x1="95" y1="75" x2="140" y2="45"/>
+<line x1="95" y1="75" x2="125" y2="115"/>
+<line x1="30" y1="80" x2="55" y2="120"/>
+<circle cx="30" cy="80" r="3"/>
+<circle cx="60" cy="40" r="3"/>
+<circle cx="95" cy="75" r="3"/>
+<circle cx="140" cy="45" r="3"/>
+<circle cx="125" cy="115" r="3"/>
+<circle cx="55" cy="120" r="3"/>
+</svg>
+<div class="zodiacName">♍ VIRGO</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="25" y1="65" x2="75" y2="40"/>
+<line x1="75" y1="40" x2="110" y2="75"/>
+<line x1="110" y1="75" x2="155" y2="55"/>
+<line x1="110" y1="75" x2="80" y2="115"/>
+<circle cx="25" cy="65" r="3"/>
+<circle cx="75" cy="40" r="3"/>
+<circle cx="110" cy="75" r="3"/>
+<circle cx="155" cy="55" r="3"/>
+<circle cx="80" cy="115" r="3"/>
+</svg>
+<div class="zodiacName">♎ LIBRA</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="25" y1="100" x2="55" y2="55"/>
+<line x1="55" y1="55" x2="90" y2="90"/>
+<line x1="90" y1="90" x2="130" y2="50"/>
+<line x1="130" y1="50" x2="155" y2="100"/>
+<line x1="90" y1="90" x2="110" y2="120"/>
+<circle cx="25" cy="100" r="3"/>
+<circle cx="55" cy="55" r="3"/>
+<circle cx="90" cy="90" r="3"/>
+<circle cx="130" cy="50" r="3"/>
+<circle cx="155" cy="100" r="3"/>
+<circle cx="110" cy="120" r="3"/>
+</svg>
+<div class="zodiacName">♏ SCORPIO</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="30" y1="105" x2="60" y2="65"/>
+<line x1="60" y1="65" x2="90" y2="40"/>
+<line x1="90" y1="40" x2="125" y2="70"/>
+<line x1="125" y1="70" x2="150" y2="35"/>
+<line x1="125" y1="70" x2="105" y2="115"/>
+<circle cx="30" cy="105" r="3"/>
+<circle cx="60" cy="65" r="3"/>
+<circle cx="90" cy="40" r="3"/>
+<circle cx="125" cy="70" r="3"/>
+<circle cx="150" cy="35" r="3"/>
+<circle cx="105" cy="115" r="3"/>
+</svg>
+<div class="zodiacName">♐ SAGITTARIUS</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="30" y1="100" x2="60" y2="55"/>
+<line x1="60" y1="55" x2="95" y2="35"/>
+<line x1="95" y1="35" x2="135" y2="60"/>
+<line x1="135" y1="60" x2="150" y2="105"/>
+<line x1="60" y1="55" x2="80" y2="115"/>
+<circle cx="30" cy="100" r="3"/>
+<circle cx="60" cy="55" r="3"/>
+<circle cx="95" cy="35" r="3"/>
+<circle cx="135" cy="60" r="3"/>
+<circle cx="150" cy="105" r="3"/>
+<circle cx="80" cy="115" r="3"/>
+</svg>
+<div class="zodiacName">♑ CAPRICORN</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="25" y1="60" x2="65" y2="90"/>
+<line x1="65" y1="90" x2="105" y2="50"/>
+<line x1="105" y1="50" x2="145" y2="85"/>
+<line x1="25" y1="60" x2="40" y2="115"/>
+<line x1="105" y1="50" x2="125" y2="120"/>
+<circle cx="25" cy="60" r="3"/>
+<circle cx="65" cy="90" r="3"/>
+<circle cx="105" cy="50" r="3"/>
+<circle cx="145" cy="85" r="3"/>
+<circle cx="40" cy="115" r="3"/>
+<circle cx="125" cy="120" r="3"/>
+</svg>
+<div class="zodiacName">♒ AQUARIUS</div>
+</div>
+
+<div class="zodiac">
+<svg viewBox="0 0 180 150">
+<line x1="25" y1="55" x2="60" y2="90"/>
+<line x1="60" y1="90" x2="95" y2="45"/>
+<line x1="95" y1="45" x2="135" y2="90"/>
+<line x1="135" y1="90" x2="155" y2="55"/>
+<line x1="60" y1="90" x2="105" y2="120"/>
+<circle cx="25" cy="55" r="3"/>
+<circle cx="60" cy="90" r="3"/>
+<circle cx="95" cy="45" r="3"/>
+<circle cx="135" cy="90" r="3"/>
+<circle cx="155" cy="55" r="3"/>
+<circle cx="105" cy="120" r="3"/>
+</svg>
+<div class="zodiacName">♓ PISCES</div>
+</div>
+
+</div>
+
+
+<!-- =====================================================
      BACKGROUND
-===================================================== --><div class="nebula one"></div>
+===================================================== -->
+
+<div class="nebula one"></div>
 <div class="nebula two"></div>
 <div class="nebula three"></div>
-<div class="galaxyRing"></div><div class="stars">
+
+<div class="galaxyRing"></div>
+
+<div class="stars">
+
 <div class="star s1">⭐</div>
 <div class="star s2">🌟</div>
 <div class="star s3">✦</div>
@@ -1776,84 +2365,206 @@ AIMAAM
 <div class="star s5">✨</div>
 <div class="star s6">✦</div>
 <div class="star s7">⭐</div>
-</div><div class="spacePlanet planetBlue"></div>
+
+</div>
+
+<div class="spacePlanet planetBlue"></div>
 <div class="spacePlanet planetPurple"></div>
 <div class="spacePlanet planetYellow"></div>
-<div class="saturn"></div><div class="ufo">🛸</div>
-<div class="spaceCat">🐱‍🚀</div><div class="rocket rocket1">🚀</div>
-<div class="rocket rocket2">🚀</div>
-<div class="rocket rocket3">🚀</div><div id="mouseGlow"></div><!-- =====================================================
-     HEADER
-===================================================== --><header><nav class="container"><button class="logo navGo" data-page="home">
-🚀 Aimaam <b>Galaxy</b>
-</button><ul class="nav"><li>
-<button class="navGo active" data-page="home">HOME</button>
-</li><li>
-<button class="navGo" data-page="profile">PROFILE</button>
-</li><li>
-<button class="navGo" data-page="education">EDUCATION</button>
-</li><li>
-<button class="navGo" data-page="hobby">HOBBY</button>
-</li><li>
-<button class="navGo" data-page="contact">CONTACT</button>
-</li><li>
-<button class="navGo" data-page="friends">FRIENDS</button>
-</li><li>
-<button class="navGo" data-page="works">WORKS</button>
-</li></ul><button class="mobileBtn" id="menuBtn">☰</button>
 
-</nav><div class="mobileMenu container" id="mobileMenu"><button class="navGo" data-page="home">
+<div class="saturn"></div>
+
+<div class="ufo">🛸</div>
+
+<div class="spaceCat">🐱‍🚀</div>
+
+<div class="rocket rocket1">🚀</div>
+<div class="rocket rocket2">🚀</div>
+<div class="rocket rocket3">🚀</div>
+
+<div id="mouseGlow"></div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<nav class="container">
+
+<button class="logo navGo" data-page="home">
+🚀 Aimaam <b>Galaxy</b>
+</button>
+
+<ul class="nav">
+
+<li>
+<button class="navGo active" data-page="home">HOME</button>
+</li>
+
+<li>
+<button class="navGo" data-page="profile">PROFILE</button>
+</li>
+
+<li>
+<button class="navGo" data-page="education">EDUCATION</button>
+</li>
+
+<li>
+<button class="navGo" data-page="hobby">HOBBY</button>
+</li>
+
+<li>
+<button class="navGo" data-page="contact">CONTACT</button>
+</li>
+
+<li>
+<button class="navGo" data-page="friends">FRIENDS</button>
+</li>
+
+<li>
+<button class="navGo" data-page="works">WORKS</button>
+</li>
+
+</ul>
+
+<button class="mobileBtn" id="menuBtn">☰</button>
+
+</nav>
+
+<div class="mobileMenu container" id="mobileMenu">
+
+<button class="navGo" data-page="home">
 🏠 HOME
-</button><button class="navGo" data-page="profile">
+</button>
+
+<button class="navGo" data-page="profile">
 👤 PROFILE / ABOUT ME
-</button><button class="navGo" data-page="education">
+</button>
+
+<button class="navGo" data-page="education">
 🎓 EDUCATION
-</button><button class="navGo" data-page="hobby">
+</button>
+
+<button class="navGo" data-page="hobby">
 🎨 HOBBY
-</button><button class="navGo" data-page="contact">
+</button>
+
+<button class="navGo" data-page="contact">
 📡 CONTACT
-</button><button class="navGo" data-page="friends">
+</button>
+
+<button class="navGo" data-page="friends">
 ⭐ SUBJECT & FRIENDS
-</button><button class="navGo" data-page="works">
+</button>
+
+<button class="navGo" data-page="works">
 🏆 WORKS
-</button></div></header><!-- =====================================================
+</button>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
      MAIN
-===================================================== --><main><!-- HOME --><section class="page active" id="home"><div class="container hero"><div><div class="eyebrow">
+===================================================== -->
+
+<main>
+
+<!-- HOME -->
+
+<section class="page active" id="home">
+
+<div class="container hero">
+
+<div>
+
+<div class="eyebrow">
 ✨ WELCOME TO AIMAAM'S UNIVERSE
-</div><h1>
+</div>
+
+<h1>
 สวัสดีค่ะ<br>
 ฉันคือ
 <span class="gradient">
 อิ่มเอม
 </span>
 🚀
-</h1><p>
+</h1>
+
+<p>
 ยินดีต้อนรับเข้าสู่
 <b>Aimaam Galaxy</b>
 จักรวาล Portfolio ส่วนตัว
 ที่เต็มไปด้วยดาวเคราะห์ ยานอวกาศ
 เอเลี่ยน แมวอวกาศ และความฝันของฉัน
-</p><div class="actions"><button class="btn navGo" data-page="profile">
+</p>
+
+<div class="actions">
+
+<button class="btn navGo" data-page="profile">
 🌌 สำรวจจักรวาล
-</button><button class="btn alt navGo" data-page="works">
+</button>
+
+<button class="btn alt navGo" data-page="works">
 🏆 ดูผลงาน
-</button></div></div><div class="planetBox">
+</button>
+
+</div>
+
+</div>
+
+<div class="planetBox">
 <div class="heroPlanet"></div>
-</div></div></section><!-- PROFILE --><section class="page" id="profile"><div class="container"><div class="title"><h2>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section class="page" id="profile">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
 👤
 <span class="gradient">
 Profile / About Me
 </span>
-</h2><p>
+</h2>
+
+<p>
 ข้อมูลนักเดินทางแห่งจักรวาล Aimaam
-</p></div><div class="profile"><div class="profileFrame"><div class="profileOrbit"></div><img
+</p>
+
+</div>
+
+<div class="profile">
+
+<div class="profileFrame">
+
+<div class="profileOrbit"></div>
+
+<img
 class="profilePic autoSpin"
 id="profilePic"
 src="https://i.pinimg.com/1200x/d3/b3/95/d3b395d2148f3202850d0ba4e34d31c5.jpg"
 alt="Aimaam Profile"
 title="คลิกเพื่อหมุน 360°">
 
-</div><div class="card"><div class="cardStars">
+</div>
+
+<div class="card">
+
+<div class="cardStars">
 <span>✦</span>
 <span>✧</span>
 <span>⋆</span>
@@ -1861,130 +2572,448 @@ title="คลิกเพื่อหมุน 360°">
 <span>✧</span>
 <span>⋆</span>
 <span>✦</span>
-</div><div class="character">👩🏻‍🚀</div><h3>🌟 ข้อมูลส่วนตัว</h3><div class="facts"><div class="fact">
+</div>
+
+<div class="character">👩🏻‍🚀</div>
+
+<h3>🌟 ข้อมูลส่วนตัว</h3>
+
+<div class="facts">
+
+<div class="fact">
 <b>ชื่อจริง</b>
 นางสาว ฐาณดา ล้อลำเลียง
-</div><div class="fact">
+</div>
+
+<div class="fact">
 <b>ชื่อเล่น</b>
 อิ่มเอม
-</div><div class="fact">
+</div>
+
+<div class="fact">
 <b>วันเกิด</b>
 3 มิถุนายน พ.ศ. 2554 / ค.ศ. 2011
-</div><div class="fact">
+</div>
+
+<div class="fact">
 <b>สีที่ชอบ</b>
 💛 สีเหลือง
-</div><div class="fact">
+</div>
+
+<div class="fact">
 <b>อาหารที่ชอบ</b>
 🍜 ก๋วยเตี๋ยว
-</div><div class="fact">
+</div>
+
+<div class="fact">
 <b>เครื่องดื่ม</b>
 🥤 น้ำโกโก้
-</div><div class="fact">
+</div>
+
+<div class="fact">
 <b>ขนมที่ชอบ</b>
 🍫 ช็อกโกแลต
-</div><div class="fact">
+</div>
+
+<div class="fact">
 <b>สัตว์ที่ชอบ</b>
 🐶 สุนัข · 🐱 แมว
-</div></div></div></div></div></section><!-- EDUCATION --><section class="page" id="education"><div class="container"><div class="title"><h2>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section class="page" id="education">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
 🎓
 <span class="gradient">Education</span>
-</h2><p>
+</h2>
+
+<p>
 เส้นทางการเดินทางผ่านจักรวาลการศึกษา
-</p></div><div class="grid four"><article class="card"><div class="cardStars">
+</p>
+
+</div>
+
+<div class="grid four">
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">👶🏻</div><div class="year">01</div><h3>ระดับชั้นอนุบาล</h3><p>
+</div>
+
+<div class="character">👶🏻</div>
+
+<div class="year">01</div>
+
+<h3>ระดับชั้นอนุบาล</h3>
+
+<p>
 เรียนที่
 <b>โรงเรียนวิทยาวัฒน์</b>
-</p></article><article class="card"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🧒🏻</div><div class="year">02</div><h3>ระดับชั้นประถมศึกษา</h3><p>
+</div>
+
+<div class="character">🧒🏻</div>
+
+<div class="year">02</div>
+
+<h3>ระดับชั้นประถมศึกษา</h3>
+
+<p>
 เรียนที่
 <b>โรงเรียนศรีจอมทอง</b>
-</p></article><article class="card"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🧑🏻‍🚀</div><div class="year">03</div><h3>ปัจจุบัน</h3><p>
+</div>
+
+<div class="character">🧑🏻‍🚀</div>
+
+<div class="year">03</div>
+
+<h3>ปัจจุบัน</h3>
+
+<p>
 กำลังเรียนชั้น
 <b>มัธยมศึกษาปีที่ 3</b>
 <br>
 โรงเรียนจอมทอง
-</p></article><article class="card"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🚀</div><div class="year">04</div><h3>อนาคต</h3><p>
+</div>
+
+<div class="character">🚀</div>
+
+<div class="year">04</div>
+
+<h3>อนาคต</h3>
+
+<p>
 จะเรียนต่อชั้นมัธยมศึกษา ที่
 <b>โรงเรียนยุพราชวิทยาลัย</b>
-</p></article></div></div></section><!-- HOBBY --><section class="page" id="hobby"><div class="container"><div class="title"><h2>
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HOBBY -->
+
+<section class="page" id="hobby">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
 🎨
 <span class="gradient">Hobby</span>
-</h2><p>
+</h2>
+
+<p>
 กิจกรรมที่ทำเมื่อเดินทางในจักรวาลเวลาว่าง
-</p></div><div class="grid three"><article class="card hobbyCard"><div class="cardStars">
+</p>
+
+</div>
+
+<div class="grid three">
+
+<article class="card hobbyCard">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🎨</div><div class="icon">🖌️</div><h3>วาดรูป</h3><p>
+</div>
+
+<div class="character">🎨</div>
+
+<div class="icon">🖌️</div>
+
+<h3>วาดรูป</h3>
+
+<p>
 สร้างโลกและตัวละครด้วยจินตนาการของตัวเอง
-</p></article><article class="card hobbyCard"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card hobbyCard">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🎤</div><div class="icon">🎧</div><h3>ร้องเพลง / ฟังเพลง</h3><p>
+</div>
+
+<div class="character">🎤</div>
+
+<div class="icon">🎧</div>
+
+<h3>ร้องเพลง / ฟังเพลง</h3>
+
+<p>
 เพลิดเพลินกับเสียงเพลงและเพลงที่ชอบ
-</p></article><article class="card hobbyCard"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card hobbyCard">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🌠</div><div class="icon">📺</div><h3>ดูอนิเม / ซีรีย์</h3><p>
+</div>
+
+<div class="character">🌠</div>
+
+<div class="icon">📺</div>
+
+<h3>ดูอนิเม / ซีรีย์</h3>
+
+<p>
 สนุกกับเรื่องราว ตัวละครและโลกแฟนตาซี
-</p></article></div></div></section><!-- CONTACT --><section class="page" id="contact"><div class="container"><div class="title"><h2>
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="page" id="contact">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
 📡
 <span class="gradient">Contact</span>
-</h2><p>
+</h2>
+
+<p>
 ส่งสัญญาณติดต่อมาหาฉันได้
-</p></div><div class="grid four"><article class="card"><div class="cardStars">
+</p>
+
+</div>
+
+<div class="grid four">
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">📘</div><div class="icon">📘</div><h3>Facebook</h3><p class="contactText">
+</div>
+
+<div class="character">📘</div>
+
+<div class="icon">📘</div>
+
+<h3>Facebook</h3>
+
+<p class="contactText">
 Thanada lorlamliang
-</p></article><article class="card"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">📸</div><div class="icon">📸</div><h3>Instagram</h3><p class="contactText">
+</div>
+
+<div class="character">📸</div>
+
+<div class="icon">📸</div>
+
+<h3>Instagram</h3>
+
+<p class="contactText">
 aimaam22
-</p></article><article class="card"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🎵</div><div class="icon">🎵</div><h3>TikTok</h3><p class="contactText">
+</div>
+
+<div class="character">🎵</div>
+
+<div class="icon">🎵</div>
+
+<h3>TikTok</h3>
+
+<p class="contactText">
 aam_aam
-</p></article><article class="card"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">📞</div><div class="icon">📞</div><h3>เบอร์โทรศัพท์</h3><p class="contactText">
+</div>
+
+<div class="character">📞</div>
+
+<div class="icon">📞</div>
+
+<h3>เบอร์โทรศัพท์</h3>
+
+<p class="contactText">
 062-737-3189
-</p></article></div></div></section><!-- FRIENDS --><section class="page" id="friends"><div class="container"><div class="title"><h2>
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FRIENDS -->
+
+<section class="page" id="friends">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
 ⭐
 <span class="gradient">
 Subject & My Best Friends
 </span>
-</h2><p>
+</h2>
+
+<p>
 วิชาและเหล่าเพื่อนร่วมทีมในจักรวาลของฉัน
-</p></div><div class="grid two"><article class="card"><div class="cardStars">
+</p>
+
+</div>
+
+<div class="grid two">
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🧑🏻‍🔬</div><h3>📚 วิชาที่ชอบ / ไม่ชอบ</h3><p class="friends"><b style="color:var(--cyan)">
+</div>
+
+<div class="character">🧑🏻‍🔬</div>
+
+<h3>📚 วิชาที่ชอบ / ไม่ชอบ</h3>
+
+<p class="friends">
+
+<b style="color:var(--cyan)">
 💙 ชอบ:
 </b>
-Science, Chinese<br><b style="color:var(--pink)">
+Science, Chinese
+<br>
+
+<b style="color:var(--pink)">
 💗 ไม่ชอบ:
 </b>
-Math</p><div><span class="tag">🔬 SCIENCE</span>
+Math
+
+</p>
+
+<div>
+
+<span class="tag">🔬 SCIENCE</span>
 <span class="tag">🀄 CHINESE</span>
 <span class="tag">➗ MATH</span>
 
-</div></article><article class="card"><div class="cardStars">
+</div>
+
+</article>
+
+
+<article class="card">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">👑</div><h3>👑 My Best Friends</h3><p class="friends">💫 แก้ม<br>
+</div>
+
+<div class="character">👑</div>
+
+<h3>👑 My Best Friends</h3>
+
+<p class="friends">
+
+💫 แก้ม<br>
 🌟 ปั้นหยา<br>
 ✨ จริน<br>
 💜 เมกาน<br>
@@ -1993,37 +3022,117 @@ Math</p><div><span class="tag">🔬 SCIENCE</span>
 💛 พ็อต<br>
 🧡 <b>มังโก้</b>
 
-</p></article></div></div></section><!-- WORKS --><section class="page" id="works"><div class="container"><div class="title"><h2>
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WORKS -->
+
+<section class="page" id="works">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
 🏆
 <span class="gradient">ผลงาน</span>
-</h2><p>
+</h2>
+
+<p>
 Achievement Log — ภารกิจที่ฉันภูมิใจ
-</p></div><div class="grid three"><article class="card achievement"><div class="cardStars">
+</p>
+
+</div>
+
+<div class="grid three">
+
+
+<article class="card achievement">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🏅</div><div class="big">🏅</div><strong>TOP 10</strong>
+</div>
+
+<div class="character">🏅</div>
+
+<div class="big">🏅</div>
+
+<strong>TOP 10</strong>
 
 <p>
 ได้ท็อป 10 สี่เทอมติดดด 🔥
-</p></article><article class="card achievement"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card achievement">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">🧪</div><div class="big">🥇</div><strong>ชนะเลิศ</strong>
+</div>
+
+<div class="character">🧪</div>
+
+<div class="big">🥇</div>
+
+<strong>ชนะเลิศ</strong>
 
 <p>
 การแข่งขันตอบปัญหาวันวิทยาศาสตร์
-</p></article><article class="card achievement"><div class="cardStars">
+</p>
+
+</article>
+
+
+<article class="card achievement">
+
+<div class="cardStars">
 <span>✦</span><span>✧</span><span>⋆</span>
 <span>✦</span><span>✧</span><span>⋆</span><span>✦</span>
-</div><div class="character">👑</div><div class="big">👑</div><strong>มีอำนาจ</strong>
+</div>
+
+<div class="character">👑</div>
+
+<div class="big">👑</div>
+
+<strong>มีอำนาจ</strong>
 
 <p>
 เป็นหัวหน้าห้อง ⭐
-</p></article></div></div></section></main><footer>
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
 🚀 Made with
 <b>✨ Aimaam Galaxy ✨</b>
 — Explore. Create. Shine.
-</footer><script>
+
+</footer>
+
+
+<script>
 (function(){
 
 "use strict";
@@ -2060,10 +3169,13 @@ behavior:"smooth"
 });
 
 if(updateHash){
+
 try{
 history.replaceState(null,"","#"+target.id);
 }catch(e){}
+
 }
+
 }
 
 navs.forEach(button=>{
@@ -2073,24 +3185,32 @@ showPage(button.dataset.page);
 });
 
 if(menuBtn && mobileMenu){
+
 menuBtn.addEventListener("click",()=>{
 mobileMenu.classList.toggle("open");
 });
+
 }
 
 function openHashPage(){
+
 const hash=location.hash.replace("#","").trim();
+
 showPage(hash||"home",false);
+
 }
 
 window.addEventListener("hashchange",openHashPage);
+
 openHashPage();
+
 
 /* =========================================================
    MOUSE GLOW
 ========================================================= */
 
 const glow=document.getElementById("mouseGlow");
+
 let lastStar=0;
 
 if(glow){
@@ -2116,6 +3236,7 @@ passive:true
 });
 
 }
+
 
 /* =========================================================
    MOUSE TRAIL
@@ -2173,6 +3294,7 @@ s.remove();
 },900);
 
 }
+
 
 /* =========================================================
    CLICK STAR BURST
@@ -2253,6 +3375,7 @@ star.remove();
 passive:true
 });
 
+
 /* =========================================================
    CARD 3D MOUSE FOLLOW
 ========================================================= */
@@ -2260,6 +3383,8 @@ passive:true
 document.querySelectorAll(".card").forEach(card=>{
 
 card.addEventListener("pointermove",e=>{
+
+if(matchMedia("(hover:none)").matches)return;
 
 const r=card.getBoundingClientRect();
 
@@ -2308,8 +3433,9 @@ card.style.boxShadow=
 
 });
 
+
 /* =========================================================
-   PROFILE 360 CLICK
+   PROFILE 360
 ========================================================= */
 
 const profile=document.getElementById("profilePic");
@@ -2336,8 +3462,9 @@ profile.classList.add("autoSpin");
 
 }
 
+
 /* =========================================================
-   SHOOTING STAR LOOP
+   SHOOTING STAR
 ========================================================= */
 
 function createShootingStar(){
@@ -2389,6 +3516,7 @@ shootingLoop,
 }
 
 setTimeout(shootingLoop,1500);
+
 
 /* =========================================================
    TINY STARS
@@ -2449,6 +3577,7 @@ for(let i=0;i<170;i++){
 createTinyStar();
 }
 
+
 /* =========================================================
    METEOR
 ========================================================= */
@@ -2479,60 +3608,56 @@ m.remove();
 
 }
 
+
 /* =========================================================
-   ALIENS
+   ALIEN FALL
 ========================================================= */
 
 function createAlien(){
 
 const a=document.createElement("div");
 
-a.style.position="fixed";
-a.style.zIndex="9996";
-a.style.pointerEvents="none";
-a.style.fontSize=
-(30+Math.random()*25)+"px";
-a.style.left=
-Math.random()*100+"vw";
-a.style.top="-100px";
+a.className="fallingAlien";
+
 a.textContent="👽";
 
-a.style.filter=
-"drop-shadow(0 0 8px #55ff55)"+
-"drop-shadow(0 0 20px #00ff55)";
+a.style.left=
+Math.random()*100+"vw";
+
+a.style.top="-120px";
+
+a.style.fontSize=
+(30+Math.random()*40)+"px";
+
+a.style.setProperty(
+"--ax1",
+(Math.random()*300-150)+"px"
+);
+
+a.style.setProperty(
+"--ax2",
+(Math.random()*500-250)+"px"
+);
+
+a.style.setProperty(
+"--ax3",
+(Math.random()*700-350)+"px"
+);
+
+a.style.animationDuration=
+(2.8+Math.random()*2.7)+"s";
 
 document.body.appendChild(a);
 
-const x=Math.random()*250-125;
-
-a.animate(
-[
-{
-transform:"translateY(0) rotate(0) scale(.5)",
-opacity:0
-},
-{
-transform:"translateY(40vh) rotate(180deg) scale(1)",
-opacity:1
-},
-{
-transform:
-`translate(${x}px,110vh) rotate(520deg) scale(.8)`,
-opacity:0
-}
-],
-{
-duration:2500+Math.random()*2000,
-easing:"linear"
-}
-).onfinish=()=>{
+a.addEventListener("animationend",()=>{
 a.remove();
-};
+});
 
 }
+
 
 /* =========================================================
-   CINEMATIC F5 INTRO
+   CINEMATIC INTRO STARS
 ========================================================= */
 
 const intro=
@@ -2592,76 +3717,82 @@ s.remove();
 
 function introBurst(){
 
-for(let i=0;i<70;i++){
+for(let i=0;i<90;i++){
 
 setTimeout(
 createIntroStar,
-i*25+Math.random()*500
+i*20+Math.random()*500
 );
 
 }
 
 }
 
+
 /* =========================================================
-   OPENING METEOR SHOW
+   F5 / RELOAD OPENING SHOW
 ========================================================= */
 
 function launchOpeningShow(){
 
 /* ดาวตกชุดใหญ่ */
 
-for(let i=0;i<55;i++){
+for(let i=0;i<70;i++){
 
 setTimeout(
 createMeteor,
-i*45+Math.random()*900
+i*38+Math.random()*1000
 );
 
 }
 
 /* ดาวพุ่ง */
 
-for(let i=0;i<12;i++){
+for(let i=0;i<18;i++){
 
 setTimeout(
 createShootingStar,
-i*150+Math.random()*700
+i*120+Math.random()*800
 );
 
 }
 
-/* เอเลี่ยน */
+/* เอเลี่ยนตก */
 
-for(let i=0;i<9;i++){
+for(let i=0;i<15;i++){
 
 setTimeout(
 createAlien,
-i*300+Math.random()*700
+i*190+Math.random()*900
 );
 
 }
 
 }
 
+
 /* =========================================================
-   START
+   START AFTER F5 / PAGE RELOAD
 ========================================================= */
 
 window.addEventListener("load",()=>{
 
-/* เปิดชื่อ AIMAAM ก่อน */
+/*
+ทุกครั้งที่เปิดไฟล์ใหม่ / กด F5 / Reload
+จะเริ่มฉาก AIMAAM ใหม่
+*/
 
 introBurst();
 
-/* ฉากดาวตกเริ่มพร้อมชื่อ */
-
 setTimeout(
 launchOpeningShow,
-350
+250
 );
 
-/* ปิด cinematic */
+/*
+ค้างหน้า AIMAAM ไว้ประมาณ 4.5 วินาที
+แล้วค่อยเปิด Portfolio
+*/
 
 setTimeout(()=>{
 
@@ -2669,9 +3800,28 @@ if(intro){
 intro.classList.add("hide");
 }
 
-},4200);
+},4500);
 
 });
+
+
+/* =========================================================
+   EXTRA CONTINUOUS ALIEN
+========================================================= */
+
+setInterval(()=>{
+
+/*
+มีเอเลี่ยนสุ่มตกเป็นระยะ
+แต่ไม่ถี่เท่าฉาก F5
+*/
+
+if(Math.random()>.45){
+createAlien();
+}
+
+},3500);
+
 
 /* =========================================================
    CONTINUOUS SPACE PARTICLES
@@ -2743,6 +3893,104 @@ p.remove();
 
 setInterval(spaceParticle,500);
 
+
+/* =========================================================
+   EXTRA ZODIAC TWINKLE
+========================================================= */
+
+document.querySelectorAll(".zodiac circle").forEach((star,i)=>{
+
+star.animate(
+[
+{
+opacity:.3,
+transform:"scale(.7)"
+},
+{
+opacity:1,
+transform:"scale(1.7)"
+},
+{
+opacity:.3,
+transform:"scale(.7)"
+}
+],
+{
+duration:1200+Math.random()*2400,
+delay:Math.random()*1500,
+iterations:Infinity,
+direction:"alternate",
+easing:"ease-in-out"
+}
+);
+
+});
+
+
+/* =========================================================
+   KEYBOARD F5 VISUAL BOOST
+========================================================= */
+
+window.addEventListener("keydown",e=>{
+
+/*
+F5 ถูกเบราว์เซอร์ใช้ Reload จริง
+โค้ดส่วนนี้ไม่ได้ยกเลิก F5
+แต่ถ้าเบราว์เซอร์ส่ง keydown มา
+จะสร้างเอฟเฟกต์เพิ่มก่อน Reload
+*/
+
+if(e.key==="F5"){
+
+for(let i=0;i<12;i++){
+
+setTimeout(
+createShootingStar,
+i*30
+);
+
+}
+
+for(let i=0;i<5;i++){
+
+setTimeout(
+createAlien,
+i*70
+);
+
+}
+
+}
+
+});
+
+
+/* =========================================================
+   RESIZE OPTIMIZATION
+========================================================= */
+
+let resizeTimer;
+
+window.addEventListener("resize",()=>{
+
+clearTimeout(resizeTimer);
+
+resizeTimer=setTimeout(()=>{
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.style.transform=
+"perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0)";
+
+});
+
+},150);
+
+});
+
+
 })();
-</script></body>
+</script>
+
+</body>
    </html>
