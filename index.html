@@ -3,39 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>Aimaam Galaxy MAX</title>
 
 <style>
-
-/* =========================================================
-   GALAXY MAX — ROOT
-========================================================= */
-
 :root{
 --bg:#01020b;
---bg2:#08051c;
 --cyan:#00f6ff;
 --blue:#398cff;
 --purple:#9147ff;
 --pink:#ff3cac;
 --yellow:#ffe45c;
 --green:#55ffb0;
-
 --white:#fff;
 --soft:#d9e0ff;
 --muted:#8995bd;
-
---panel:rgba(9,14,40,.82);
 --border:rgba(0,246,255,.3);
-
 --max:1200px;
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
 margin:0;
@@ -51,242 +35,51 @@ body{
 min-height:100vh;
 overflow-x:hidden;
 color:#fff;
-
-font-family:
-"Noto Sans Thai",
-"Segoe UI",
-Arial,
-sans-serif;
-
+font-family:"Noto Sans Thai","Segoe UI",Arial,sans-serif;
 background:
 radial-gradient(circle at 20% 10%,rgba(0,246,255,.18),transparent 25%),
 radial-gradient(circle at 80% 20%,rgba(145,71,255,.24),transparent 30%),
 radial-gradient(circle at 50% 75%,rgba(255,60,172,.13),transparent 30%),
 radial-gradient(circle at 50% 50%,#101650 0%,#05051a 40%,#01020b 100%);
-
 background-attachment:fixed;
 cursor:crosshair;
 }
 
-
-/* =========================================================
+/* =====================================================
    DEEP SPACE
-========================================================= */
+===================================================== */
 
 body:before{
-
 content:"";
 position:fixed;
 inset:0;
 z-index:-100;
 pointer-events:none;
-
 background-image:
-
 radial-gradient(#fff 1px,transparent 1.5px),
 radial-gradient(#00f6ff 1px,transparent 1.5px),
 radial-gradient(#9147ff 1px,transparent 1.7px),
 radial-gradient(#ff3cac 1px,transparent 1.6px);
-
-background-size:
-65px 65px,
-130px 130px,
-210px 210px,
-310px 310px;
-
+background-size:65px 65px,130px 130px,210px 210px,310px 310px;
 opacity:.65;
-
-animation:
-deepStars 35s linear infinite;
+animation:deepStars 45s linear infinite;
 }
 
 @keyframes deepStars{
-
 to{
 background-position:
-700px 1000px,
--600px 800px,
-800px -600px,
--900px 400px;
+600px 900px,
+-500px 700px,
+700px -500px,
+-800px 300px;
 }
 }
 
-
-/* =========================================================
-   CINEMATIC BLACK BARS
-========================================================= */
-
-.cinemaBar{
-position:fixed;
-left:0;
-width:100%;
-height:0;
-background:#000;
-z-index:999999;
-pointer-events:none;
-transition:height .8s ease;
-}
-
-.cinemaTop{top:0}
-.cinemaBottom{bottom:0}
-
-.cinemaBar.show{
-height:9vh;
-}
-
-
-/* =========================================================
-   CINEMATIC FLASH
-========================================================= */
-
-#cinematicFlash{
-
-position:fixed;
-inset:0;
-
-background:
-radial-gradient(
-circle,
-rgba(255,255,255,.95),
-rgba(0,246,255,.55),
-transparent 70%
-);
-
-z-index:999998;
-
-pointer-events:none;
-
-opacity:0;
-}
-
-#cinematicFlash.active{
-
-animation:
-cinemaFlash .7s ease-out forwards;
-}
-
-@keyframes cinemaFlash{
-
-0%{opacity:0}
-15%{opacity:1}
-35%{opacity:.65}
-100%{opacity:0}
-}
-
-
-/* =========================================================
-   WARP
-========================================================= */
-
-#warp{
-
-position:fixed;
-inset:0;
-
-z-index:999997;
-
-pointer-events:none;
-
-opacity:0;
-
-background:
-
-radial-gradient(
-circle at center,
-transparent 0%,
-rgba(0,246,255,.05) 25%,
-rgba(145,71,255,.1) 55%,
-rgba(0,0,0,.65) 100%
-);
-}
-
-#warp.active{
-animation:
-warpPulse 3s ease-out forwards;
-}
-
-@keyframes warpPulse{
-
-0%{
-opacity:0;
-transform:scale(.5);
-}
-
-20%{
-opacity:1;
-}
-
-100%{
-opacity:0;
-transform:scale(1.5);
-}
-}
-
-
-/* =========================================================
-   MOVING STAR LINES
-========================================================= */
-
-.warpLine{
-
-position:fixed;
-
-width:3px;
-height:120px;
-
-background:
-linear-gradient(
-to bottom,
-transparent,
-white,
-var(--cyan),
-transparent
-);
-
-box-shadow:
-0 0 8px white,
-0 0 20px var(--cyan);
-
-pointer-events:none;
-
-z-index:99990;
-
-animation:
-warpLineFly 1.3s linear forwards;
-}
-
-@keyframes warpLineFly{
-
-0%{
-transform:
-translate3d(0,0,0)
-scaleY(.2);
-opacity:0;
-}
-
-15%{
-opacity:1;
-}
-
-100%{
-transform:
-translate3d(
-var(--wx),
-var(--wy),
-0
-)
-scaleY(3);
-opacity:0;
-}
-}
-
-
-/* =========================================================
+/* =====================================================
    NEBULA
-========================================================= */
+===================================================== */
 
 .nebula{
-
 position:fixed;
 pointer-events:none;
 border-radius:50%;
@@ -295,222 +88,130 @@ z-index:-90;
 }
 
 .nebula.one{
-
 width:650px;
 height:650px;
 left:-250px;
 top:5%;
-
-background:
-radial-gradient(
-circle,
-rgba(0,246,255,.2),
-rgba(0,100,255,.08),
-transparent 70%
-);
-
-animation:
-nebulaOne 15s ease-in-out infinite alternate;
+background:radial-gradient(circle,rgba(0,246,255,.2),rgba(0,100,255,.08),transparent 70%);
+animation:nebulaOne 15s ease-in-out infinite alternate;
 }
 
 .nebula.two{
-
 width:800px;
 height:800px;
 right:-350px;
 top:20%;
-
-background:
-radial-gradient(
-circle,
-rgba(145,71,255,.22),
-rgba(255,60,172,.08),
-transparent 70%
-);
-
-animation:
-nebulaTwo 18s ease-in-out infinite alternate;
+background:radial-gradient(circle,rgba(145,71,255,.22),rgba(255,60,172,.08),transparent 70%);
+animation:nebulaTwo 18s ease-in-out infinite alternate;
 }
 
 .nebula.three{
-
 width:700px;
 height:700px;
 left:35%;
 bottom:-350px;
-
-background:
-radial-gradient(
-circle,
-rgba(255,60,172,.16),
-rgba(0,246,255,.08),
-transparent 70%
-);
-
-animation:
-nebulaThree 20s ease-in-out infinite alternate;
+background:radial-gradient(circle,rgba(255,60,172,.16),rgba(0,246,255,.08),transparent 70%);
+animation:nebulaThree 20s ease-in-out infinite alternate;
 }
 
 @keyframes nebulaOne{
-to{
-transform:
-translate(180px,100px)
-scale(1.25)
-rotate(30deg);
-}
+to{transform:translate(180px,100px) scale(1.25) rotate(30deg)}
 }
 
 @keyframes nebulaTwo{
-to{
-transform:
-translate(-150px,120px)
-scale(1.3)
-rotate(-25deg);
-}
+to{transform:translate(-150px,120px) scale(1.3) rotate(-25deg)}
 }
 
 @keyframes nebulaThree{
-to{
-transform:
-translate(80px,-150px)
-scale(1.2);
-}
+to{transform:translate(80px,-150px) scale(1.2)}
 }
 
-
-/* =========================================================
+/* =====================================================
    GALAXY RING
-========================================================= */
+===================================================== */
 
 .galaxyRing{
-
 position:fixed;
-
 width:850px;
 height:280px;
-
 left:50%;
 top:48%;
-
-transform:
-translate(-50%,-50%)
-rotate(-18deg);
-
+transform:translate(-50%,-50%) rotate(-18deg);
 border-radius:50%;
-
-border:
-2px solid rgba(0,246,255,.08);
-
+border:2px solid rgba(0,246,255,.08);
 box-shadow:
 0 0 60px rgba(0,246,255,.08),
 inset 0 0 60px rgba(145,71,255,.06);
-
 z-index:-80;
 pointer-events:none;
-
-animation:
-galaxySpin 35s linear infinite;
+animation:galaxySpin 35s linear infinite;
 }
 
 .galaxyRing:before,
 .galaxyRing:after{
-
 content:"";
-
 position:absolute;
 inset:-45px;
-
 border-radius:50%;
-
-border:
-1px solid rgba(145,71,255,.08);
+border:1px solid rgba(145,71,255,.08);
 }
 
 .galaxyRing:after{
-
 inset:45px;
-
-border-color:
-rgba(255,60,172,.08);
+border-color:rgba(255,60,172,.08);
 }
 
 @keyframes galaxySpin{
-
 to{
-transform:
-translate(-50%,-50%)
-rotate(342deg);
+transform:translate(-50%,-50%) rotate(342deg);
 }
 }
 
-
-/* =========================================================
+/* =====================================================
    MOUSE GLOW
-========================================================= */
+===================================================== */
 
 #mouseGlow{
-
 position:fixed;
-
 width:350px;
 height:350px;
-
 border-radius:50%;
-
 pointer-events:none;
-
 z-index:9998;
-
-transform:
-translate(-50%,-50%);
-
-background:
-
-radial-gradient(
+transform:translate(-50%,-50%);
+background:radial-gradient(
 circle,
 rgba(0,246,255,.22),
 rgba(145,71,255,.12),
 rgba(255,60,172,.05),
 transparent 68%
 );
-
 mix-blend-mode:screen;
-
-transition:
-left .05s linear,
-top .05s linear;
+transition:left .04s linear,top .04s linear;
 }
 
-
-/* =========================================================
+/* =====================================================
    MOUSE TRAIL
-========================================================= */
+===================================================== */
 
 .mouseStar{
-
 position:fixed;
 pointer-events:none;
 z-index:9997;
-font-size:14px;
-
+font-size:16px;
+font-weight:900;
 filter:
-drop-shadow(0 0 5px currentColor)
-drop-shadow(0 0 12px currentColor);
-
-animation:
-mouseStarFly .9s ease-out forwards;
+drop-shadow(0 0 6px currentColor)
+drop-shadow(0 0 14px currentColor)
+drop-shadow(0 0 25px currentColor);
+animation:mouseStarFly 1s ease-out forwards;
 }
 
 @keyframes mouseStarFly{
-
 0%{
 opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1.2)
-rotate(0);
+transform:translate(-50%,-50%) scale(1.5) rotate(0);
 }
-
 100%{
 opacity:0;
 transform:
@@ -518,104 +219,107 @@ translate(
 calc(-50% + var(--mx)),
 calc(-50% + var(--my))
 )
-rotate(240deg)
+rotate(300deg)
 scale(.05);
 }
 }
 
-
-/* =========================================================
-   CLICK STARS
-========================================================= */
+/* =====================================================
+   CLICK EFFECT — MAX
+===================================================== */
 
 .clickStar{
-
 position:fixed;
 pointer-events:none;
-z-index:10001;
-font-size:22px;
-
+z-index:100000;
+font-size:32px;
+font-weight:900;
 filter:
-drop-shadow(0 0 5px currentColor)
-drop-shadow(0 0 14px currentColor)
-drop-shadow(0 0 25px currentColor);
-
-animation:
-clickStarFly 1.25s cubic-bezier(.1,.8,.2,1) forwards;
+drop-shadow(0 0 8px #fff)
+drop-shadow(0 0 18px currentColor)
+drop-shadow(0 0 35px currentColor)
+drop-shadow(0 0 60px currentColor);
+animation:clickStarFly 1.5s cubic-bezier(.08,.8,.15,1) forwards;
 }
 
 @keyframes clickStarFly{
-
 0%{
 opacity:1;
-transform:
-translate(-50%,-50%)
-scale(.2)
-rotate(0);
+transform:translate(-50%,-50%) scale(.15) rotate(0);
 }
-
+15%{
+opacity:1;
+transform:translate(-50%,-50%) scale(1.7) rotate(60deg);
+}
+45%{
+opacity:1;
+}
 100%{
 opacity:0;
-
 transform:
 translate(
 calc(-50% + var(--cx)),
 calc(-50% + var(--cy))
 )
-scale(.05)
-rotate(600deg);
+scale(.08)
+rotate(720deg);
 }
 }
 
-
-/* =========================================================
-   CLICK RIPPLE
-========================================================= */
-
-.ripple{
-
+.clickFlash{
 position:fixed;
-
-width:20px;
-height:20px;
-
-border:
-2px solid var(--cyan);
-
+width:40px;
+height:40px;
 border-radius:50%;
-
 pointer-events:none;
-
-z-index:10000;
-
-transform:
-translate(-50%,-50%);
-
+z-index:99999;
+transform:translate(-50%,-50%);
+background:#fff;
 box-shadow:
-0 0 15px var(--cyan),
-0 0 30px var(--purple),
-0 0 50px var(--pink);
-
-animation:
-ripple .8s ease-out forwards;
+0 0 20px #fff,
+0 0 50px var(--cyan),
+0 0 100px var(--purple),
+0 0 150px var(--pink);
+animation:flashOut .45s ease-out forwards;
 }
 
-@keyframes ripple{
-
+@keyframes flashOut{
 to{
-width:220px;
-height:220px;
+width:350px;
+height:350px;
 opacity:0;
 }
 }
 
+.ripple{
+position:fixed;
+width:25px;
+height:25px;
+border:3px solid var(--cyan);
+border-radius:50%;
+pointer-events:none;
+z-index:10000;
+transform:translate(-50%,-50%);
+box-shadow:
+0 0 20px var(--cyan),
+0 0 45px var(--purple),
+0 0 80px var(--pink);
+animation:ripple .9s ease-out forwards;
+}
 
-/* =========================================================
+@keyframes ripple{
+to{
+width:280px;
+height:280px;
+opacity:0;
+}
+}
+
+/* =====================================================
    FLOATING STARS
-========================================================= */
+===================================================== */
 
 .stars{
-
 position:fixed;
 inset:0;
 pointer-events:none;
@@ -623,12 +327,8 @@ z-index:2;
 }
 
 .star{
-
 position:absolute;
-
-animation:
-starFloat 4s ease-in-out infinite;
-
+animation:starFloat 4s ease-in-out infinite;
 filter:
 drop-shadow(0 0 5px white)
 drop-shadow(0 0 12px var(--cyan));
@@ -643,35 +343,21 @@ drop-shadow(0 0 12px var(--cyan));
 .s7{right:30%;top:80%;font-size:30px;animation-delay:1.2s}
 
 @keyframes starFloat{
-
 0%,100%{
-transform:
-translateY(0)
-rotate(0);
+transform:translateY(0) rotate(0);
 opacity:.55;
 }
-
 50%{
-transform:
-translateY(-25px)
-rotate(15deg);
-
+transform:translateY(-25px) rotate(15deg);
 opacity:1;
-
-filter:
-drop-shadow(0 0 8px white)
-drop-shadow(0 0 18px var(--cyan))
-drop-shadow(0 0 30px var(--purple));
 }
 }
 
-
-/* =========================================================
+/* =====================================================
    ZODIAC
-========================================================= */
+===================================================== */
 
 .zodiac{
-
 position:fixed;
 inset:0;
 z-index:-5;
@@ -680,47 +366,15 @@ overflow:hidden;
 }
 
 .zodiac span{
-
 position:absolute;
-
 font-size:34px;
-
 opacity:.3;
-
 color:#dff;
-
 text-shadow:
 0 0 5px #fff,
 0 0 12px var(--cyan),
 0 0 25px var(--purple);
-
-animation:
-zodiacPulse 5s ease-in-out infinite;
-}
-
-.zodiac span:after{
-
-content:"";
-
-position:absolute;
-
-width:65px;
-height:1px;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-var(--cyan),
-transparent
-);
-
-left:25px;
-top:20px;
-
-transform:rotate(25deg);
-
-opacity:.4;
+animation:zodiacPulse 5s ease-in-out infinite;
 }
 
 .z1{left:6%;top:8%}
@@ -737,26 +391,16 @@ opacity:.4;
 .z12{right:7%;bottom:7%;animation-delay:4.5s}
 
 @keyframes zodiacPulse{
-
-0%,100%{
-opacity:.18;
-transform:scale(.9);
+0%,100%{opacity:.18;transform:scale(.9)}
+50%{opacity:.6;transform:scale(1.08)}
 }
 
-50%{
-opacity:.6;
-transform:scale(1.08);
-}
-}
-
-
-/* =========================================================
+/* =====================================================
    PLANETS
-========================================================= */
+===================================================== */
 
 .spacePlanet,
 .saturn{
-
 position:fixed;
 border-radius:50%;
 pointer-events:none;
@@ -764,21 +408,15 @@ z-index:1;
 }
 
 .spacePlanet{
-
-animation:
-planetFloat 8s ease-in-out infinite;
+animation:planetFloat 8s ease-in-out infinite;
 }
 
 .planetBlue{
-
 width:75px;
 height:75px;
-
 top:20%;
 left:-20px;
-
-background:
-radial-gradient(
+background:radial-gradient(
 circle at 30% 25%,
 #fff,
 #56eaff 15%,
@@ -786,84 +424,54 @@ circle at 30% 25%,
 #16206e 75%,
 #050512
 );
-
-box-shadow:
-0 0 20px var(--cyan),
-0 0 50px rgba(0,246,255,.4);
+box-shadow:0 0 20px var(--cyan),0 0 50px rgba(0,246,255,.4);
 }
 
 .planetPurple{
-
 width:55px;
 height:55px;
-
 right:7%;
 top:43%;
-
-background:
-radial-gradient(
+background:radial-gradient(
 circle at 30% 25%,
 #ffd9ff,
 #b967ff 30%,
 #6425c9 65%,
 #15062d
 );
-
-box-shadow:
-0 0 25px var(--purple);
+box-shadow:0 0 25px var(--purple);
 }
 
 .planetYellow{
-
 width:42px;
 height:42px;
-
 left:11%;
 bottom:18%;
-
-background:
-radial-gradient(
+background:radial-gradient(
 circle at 30% 25%,
 #fff,
 #ffe45c 30%,
 #ff9d00 70%,
 #501600
 );
-
-box-shadow:
-0 0 20px var(--yellow);
+box-shadow:0 0 20px var(--yellow);
 }
 
 @keyframes planetFloat{
-
-0%,100%{
-transform:
-translateY(0)
-rotate(0);
+0%,100%{transform:translateY(0) rotate(0)}
+50%{transform:translateY(-35px) rotate(180deg)}
 }
 
-50%{
-transform:
-translateY(-35px)
-rotate(180deg);
-}
-}
-
-
-/* =========================================================
+/* =====================================================
    SATURN
-========================================================= */
+===================================================== */
 
 .saturn{
-
 right:2%;
 bottom:8%;
-
 width:100px;
 height:100px;
-
-background:
-radial-gradient(
+background:radial-gradient(
 circle at 30% 25%,
 #fff,
 #55eaff 20%,
@@ -871,262 +479,84 @@ circle at 30% 25%,
 #3420a8 75%,
 #05051b
 );
-
-box-shadow:
-0 0 25px var(--cyan),
-0 0 55px rgba(0,246,255,.55);
-
-animation:
-saturnFloat 7s ease-in-out infinite,
-saturnColor 8s linear infinite;
+box-shadow:0 0 25px var(--cyan),0 0 55px rgba(0,246,255,.55);
+animation:saturnFloat 7s ease-in-out infinite;
 }
 
 .saturn:before{
-
 content:"";
-
 position:absolute;
-
 width:165px;
 height:45px;
-
 left:-33px;
 top:28px;
-
-border:
-6px solid rgba(100,230,255,.7);
-
+border:6px solid rgba(100,230,255,.7);
 border-radius:50%;
-
 transform:rotate(-15deg);
-
-box-shadow:
-0 0 15px var(--cyan),
-0 0 35px rgba(145,71,255,.5);
-
-animation:
-ringColor 8s linear infinite;
+box-shadow:0 0 15px var(--cyan),0 0 35px rgba(145,71,255,.5);
 }
 
 @keyframes saturnFloat{
-
-50%{
-transform:
-translateY(-25px)
-rotate(8deg);
-}
+50%{transform:translateY(-25px) rotate(8deg)}
 }
 
-@keyframes saturnColor{
-
-0%{filter:hue-rotate(0deg)}
-25%{filter:hue-rotate(80deg)}
-50%{filter:hue-rotate(170deg)}
-75%{filter:hue-rotate(260deg)}
-100%{filter:hue-rotate(360deg)}
-}
-
-@keyframes ringColor{
-
-0%{filter:hue-rotate(0deg)}
-50%{filter:hue-rotate(180deg)}
-100%{filter:hue-rotate(360deg)}
-}
-
-
-/* =========================================================
-   UFO
-========================================================= */
+/* =====================================================
+   UFO / CAT
+===================================================== */
 
 .ufo{
-
 position:fixed;
-
 right:-140px;
 top:18%;
-
 font-size:65px;
-
 z-index:8;
 pointer-events:none;
-
-animation:
-ufoFly 14s linear infinite;
-
+animation:ufoFly 14s linear infinite;
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 15px var(--cyan))
 drop-shadow(0 0 35px var(--purple));
 }
 
-.ufo:after{
-
-content:"";
-
-position:absolute;
-
-width:80px;
-height:35px;
-
-left:18px;
-top:55px;
-
-background:
-linear-gradient(
-to bottom,
-rgba(0,246,255,.7),
-transparent
-);
-
-filter:blur(8px);
-
-transform:
-perspective(100px)
-rotateX(55deg);
-}
-
 @keyframes ufoFly{
-
-0%{
-transform:
-translate(0,0)
-rotate(-5deg);
+0%{transform:translate(0,0) rotate(-5deg)}
+25%{transform:translate(-25vw,90px) rotate(8deg)}
+50%{transform:translate(-55vw,-70px) rotate(-8deg)}
+75%{transform:translate(-85vw,100px) rotate(5deg)}
+100%{transform:translate(-125vw,-50px) rotate(-5deg)}
 }
-
-25%{
-transform:
-translate(-25vw,90px)
-rotate(8deg);
-}
-
-50%{
-transform:
-translate(-55vw,-70px)
-rotate(-8deg);
-}
-
-75%{
-transform:
-translate(-85vw,100px)
-rotate(5deg);
-}
-
-100%{
-transform:
-translate(-125vw,-50px)
-rotate(-5deg);
-}
-}
-
-
-/* =========================================================
-   SPACE CAT — MAX
-========================================================= */
 
 .spaceCat{
-
 position:fixed;
-
-right:-150px;
+right:-130px;
 top:58%;
-
-font-size:75px;
-
-z-index:9;
+font-size:70px;
+z-index:7;
 pointer-events:none;
-
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 20px var(--cyan))
-drop-shadow(0 0 35px var(--purple))
-drop-shadow(0 0 55px var(--pink));
-
-animation:
-catFly 13s linear infinite;
-}
-
-.spaceCat:after{
-
-content:"✨";
-
-position:absolute;
-
-font-size:25px;
-
-left:-35px;
-top:25px;
-
-animation:
-catSpark .5s linear infinite;
+drop-shadow(0 0 35px var(--purple));
+animation:catFly 17s linear infinite;
 }
 
 @keyframes catFly{
-
-0%{
-transform:
-translate(0,0)
-rotate(-5deg)
-scale(.8);
+0%{transform:translate(0,0) rotate(-5deg)}
+25%{transform:translate(-25vw,-70px) rotate(8deg)}
+50%{transform:translate(-55vw,40px) rotate(-5deg)}
+75%{transform:translate(-85vw,-80px) rotate(8deg)}
+100%{transform:translate(-125vw,20px) rotate(-5deg)}
 }
 
-20%{
-transform:
-translate(-25vw,-90px)
-rotate(10deg)
-scale(1);
-}
-
-40%{
-transform:
-translate(-50vw,70px)
-rotate(-8deg)
-scale(1.15);
-}
-
-60%{
-transform:
-translate(-75vw,-100px)
-rotate(8deg)
-scale(.9);
-}
-
-80%{
-transform:
-translate(-100vw,80px)
-rotate(-10deg)
-scale(1.1);
-}
-
-100%{
-transform:
-translate(-140vw,-20px)
-rotate(5deg)
-scale(.8);
-}
-}
-
-@keyframes catSpark{
-
-50%{
-transform:scale(1.8) rotate(180deg);
-}
-}
-
-
-/* =========================================================
+/* =====================================================
    ROCKET
-========================================================= */
+===================================================== */
 
 .rocket{
-
 position:fixed;
-
 z-index:10;
-
 pointer-events:none;
-
 font-size:58px;
-
 filter:
 drop-shadow(0 0 5px white)
 drop-shadow(0 0 15px var(--cyan))
@@ -1134,22 +564,14 @@ drop-shadow(0 0 30px var(--pink));
 }
 
 .rocket:after{
-
 content:"";
-
 position:absolute;
-
 width:22px;
 height:65px;
-
 left:19px;
 bottom:-48px;
-
-border-radius:
-50% 50% 65% 65%;
-
-background:
-linear-gradient(
+border-radius:50% 50% 65% 65%;
+background:linear-gradient(
 to bottom,
 #fff,
 #ffe45c 20%,
@@ -1157,975 +579,499 @@ to bottom,
 #ff2b00 75%,
 transparent
 );
-
 filter:blur(3px);
-
-animation:
-engineFire .12s ease-in-out infinite alternate;
+animation:engineFire .12s ease-in-out infinite alternate;
 }
 
 .rocket:before{
-
 content:"";
-
 position:absolute;
-
 width:55px;
 height:55px;
-
 left:3px;
 bottom:-40px;
-
 border-radius:50%;
-
-background:
-radial-gradient(
+background:radial-gradient(
 circle,
 rgba(255,228,92,.8),
 rgba(255,60,0,.3),
 transparent 70%
 );
-
 filter:blur(8px);
-
-animation:
-engineGlow .18s ease-in-out infinite alternate;
+animation:engineGlow .18s ease-in-out infinite alternate;
 }
 
 @keyframes engineFire{
-
-from{
-height:45px;
-opacity:.7;
-}
-
-to{
-height:75px;
-opacity:1;
-}
+from{height:45px;opacity:.7}
+to{height:75px;opacity:1}
 }
 
 @keyframes engineGlow{
-
-from{
-transform:scale(.8);
-}
-
-to{
-transform:scale(1.25);
-}
+from{transform:scale(.8)}
+to{transform:scale(1.25)}
 }
 
 .rocket1{
 left:-120px;
 top:30%;
-animation:
-rocketFly1 8s linear infinite;
+animation:rocketFly1 11s linear infinite;
 }
 
 .rocket2{
 right:-120px;
 top:70%;
 font-size:48px;
-animation:
-rocketFly2 10s linear infinite;
+animation:rocketFly2 14s linear infinite;
 }
 
 .rocket3{
 left:20%;
 bottom:-100px;
 font-size:42px;
-animation:
-rocketFly3 9s linear infinite;
+animation:rocketFly3 10s linear infinite;
 }
 
 @keyframes rocketFly1{
-
-0%{
-transform:
-translate(0,0)
-rotate(25deg);
-}
-
-100%{
-transform:
-translate(120vw,-300px)
-rotate(25deg);
-}
+0%{transform:translate(0,0) rotate(25deg)}
+50%{transform:translate(55vw,-150px) rotate(25deg)}
+100%{transform:translate(120vw,-300px) rotate(25deg)}
 }
 
 @keyframes rocketFly2{
-
-0%{
-transform:
-translate(0,0)
-rotate(-25deg);
-}
-
-100%{
-transform:
-translate(-125vw,-200px)
-rotate(-25deg);
-}
+0%{transform:translate(0,0) rotate(-25deg)}
+50%{transform:translate(-55vw,-100px) rotate(-25deg)}
+100%{transform:translate(-125vw,-200px) rotate(-25deg)}
 }
 
 @keyframes rocketFly3{
-
-0%{
-transform:
-translateY(0)
-rotate(-20deg);
-opacity:0;
+0%{transform:translateY(0) rotate(-20deg);opacity:0}
+10%{opacity:1}
+100%{transform:translateY(-120vh) rotate(-20deg);opacity:0}
 }
 
-10%{
-opacity:1;
-}
-
-100%{
-transform:
-translateY(-120vh)
-rotate(-20deg);
-opacity:0;
-}
-}
-
-.rocket4{
-
-position:fixed;
-
-right:-100px;
-top:8%;
-
-font-size:38px;
-
-z-index:9;
-pointer-events:none;
-
-animation:
-rocket4Fly 13s linear infinite;
-
-filter:
-drop-shadow(0 0 8px white)
-drop-shadow(0 0 20px var(--cyan));
-}
-
-.rocket4:after{
-
-content:"";
-
-position:absolute;
-
-width:15px;
-height:55px;
-
-left:12px;
-bottom:-40px;
-
-background:
-linear-gradient(
-to bottom,
-white,
-#ffe45c,
-#ff3c00,
-transparent
-);
-
-border-radius:50%;
-filter:blur(3px);
-}
-
-@keyframes rocket4Fly{
-
-0%{
-transform:
-translate(0,0)
-rotate(-30deg);
-}
-
-100%{
-transform:
-translate(-125vw,55vh)
-rotate(-30deg);
-}
-}
-
-
-/* =========================================================
+/* =====================================================
    SHOOTING STAR
-========================================================= */
+===================================================== */
 
 .shootingStar{
-
 position:fixed;
-
-width:200px;
+width:230px;
 height:5px;
-
 border-radius:50%;
-
-background:
-linear-gradient(
+background:linear-gradient(
 90deg,
 transparent,
-white 30%,
+white 25%,
 var(--cyan)
 );
-
-box-shadow:
-0 0 8px white,
-0 0 18px var(--cyan),
-0 0 35px var(--purple),
-0 0 60px var(--pink);
-
-z-index:99990;
-
-pointer-events:none;
-
-transform:rotate(-35deg);
-
-animation:
-shooting 1.1s linear forwards;
-}
-
-.shootingStar.pink{
-
-background:
-linear-gradient(
-90deg,
-transparent,
-white 30%,
-var(--pink)
-);
-
-box-shadow:
-0 0 8px white,
-0 0 18px var(--pink),
-0 0 35px var(--purple);
-}
-
-@keyframes shooting{
-
-0%{
-opacity:0;
-transform:
-translate(0,0)
-rotate(-35deg)
-scale(.5);
-}
-
-10%{
-opacity:1;
-}
-
-100%{
-opacity:0;
-transform:
-translate(-650px,500px)
-rotate(-35deg)
-scale(1.5);
-}
-}
-
-
-/* =========================================================
-   METEOR MAX
-========================================================= */
-
-.meteor{
-
-position:fixed;
-
-width:6px;
-height:220px;
-
-border-radius:50%;
-
-z-index:99995;
-
-pointer-events:none;
-
-background:
-linear-gradient(
-to bottom,
-white 0%,
-var(--cyan) 20%,
-var(--blue) 45%,
-var(--purple) 70%,
-transparent 100%
-);
-
-box-shadow:
-0 0 8px white,
-0 0 18px var(--cyan),
-0 0 35px var(--purple),
-0 0 65px var(--pink);
-
-transform:rotate(-25deg);
-
-animation:
-meteorFall 1.7s linear forwards;
-}
-
-@keyframes meteorFall{
-
-0%{
-transform:
-translate(0,-300px)
-rotate(-25deg)
-scale(.4);
-
-opacity:0;
-}
-
-8%{
-opacity:1;
-}
-
-100%{
-transform:
-translate(-600px,120vh)
-rotate(-25deg)
-scale(1.4);
-
-opacity:0;
-}
-}
-
-
-/* =========================================================
-   METEOR HEAD
-========================================================= */
-
-.meteorHead{
-
-position:fixed;
-
-width:18px;
-height:18px;
-
-border-radius:50%;
-
-background:white;
-
 box-shadow:
 0 0 10px white,
 0 0 25px var(--cyan),
-0 0 50px var(--purple),
-0 0 80px var(--pink);
-
-z-index:99996;
-
+0 0 55px var(--purple);
+z-index:9990;
 pointer-events:none;
-
-animation:
-meteorHeadFly 1.5s linear forwards;
+transform:rotate(-35deg);
+animation:shooting 1.1s linear forwards;
 }
 
-@keyframes meteorHeadFly{
-
-0%{
-transform:
-translate(0,-150px)
-scale(.3);
-
-opacity:0;
-}
-
-10%{
-opacity:1;
-}
-
-100%{
-transform:
-translate(-700px,110vh)
-scale(1.4);
-
-opacity:0;
-}
-}
-
-
-/* =========================================================
-   ALIEN
-========================================================= */
-
-.alien{
-
-position:fixed;
-
-z-index:99996;
-
-pointer-events:none;
-
-font-size:42px;
-
-filter:
-drop-shadow(0 0 8px #55ff55)
-drop-shadow(0 0 20px #00ff55)
-drop-shadow(0 0 35px var(--cyan));
-
-animation:
-alienFall 3s linear forwards;
-}
-
-@keyframes alienFall{
-
-0%{
-top:-100px;
-
-transform:
-translateX(0)
-rotate(0)
-scale(.6);
-
-opacity:0;
-}
-
-10%{
-opacity:1;
-}
-
-50%{
-transform:
-translateX(120px)
-rotate(180deg)
-scale(1);
-}
-
-100%{
-top:110vh;
-
-transform:
-translateX(-180px)
-rotate(500deg)
-scale(.8);
-
-opacity:0;
-}
-}
-
-
-/* =========================================================
-   OPENING TITLE
-========================================================= */
-
-#openingTitle{
-
-position:fixed;
-
-inset:0;
-
-z-index:999999;
-
-display:grid;
-
-place-items:center;
-
-pointer-events:none;
-
-opacity:0;
-
-}
-
-#openingTitle.show{
-
-animation:
-openingTitle 5s ease forwards;
-}
-
-.openingInner{
-text-align:center;
-}
-
-.openingSmall{
-
-font-size:
-clamp(.8rem,2vw,1.2rem);
-
-letter-spacing:
-.7em;
-
-color:var(--cyan);
-
-font-weight:900;
-
-text-shadow:
-0 0 15px var(--cyan);
-}
-
-.openingMain{
-
-font-size:
-clamp(3.5rem,12vw,10rem);
-
-font-weight:1000;
-
-letter-spacing:.05em;
-
-line-height:.9;
-
-background:
-linear-gradient(
+.shootingStar.pink{
+background:linear-gradient(
 90deg,
-var(--cyan),
-var(--blue),
-var(--purple),
-var(--pink),
-var(--yellow),
-var(--cyan)
+transparent,
+white 25%,
+var(--pink)
 );
-
-background-size:400% auto;
-
--webkit-background-clip:text;
-background-clip:text;
-
-color:transparent;
-
-animation:
-gradientMove 2s linear infinite;
-
-filter:
-drop-shadow(0 0 20px rgba(0,246,255,.8))
-drop-shadow(0 0 50px rgba(145,71,255,.7));
+box-shadow:
+0 0 10px white,
+0 0 25px var(--pink),
+0 0 55px var(--purple);
 }
 
-.openingSub{
-
-margin-top:25px;
-
-font-size:
-clamp(.9rem,2.5vw,1.5rem);
-
-letter-spacing:
-.25em;
-
-color:white;
-
-text-shadow:
-0 0 15px var(--cyan);
-}
-
-@keyframes openingTitle{
-
+@keyframes shooting{
 0%{
 opacity:0;
-transform:
-scale(.7);
-filter:blur(20px);
+transform:translate(0,0) rotate(-35deg) scale(.4);
 }
-
-15%{
-opacity:1;
-transform:scale(1);
-filter:blur(0);
-}
-
-65%{
-opacity:1;
-transform:scale(1.03);
-}
-
+8%{opacity:1}
 100%{
 opacity:0;
-transform:
-scale(1.3);
-filter:blur(15px);
+transform:translate(-650px,500px) rotate(-35deg) scale(1.5);
 }
 }
 
+/* =====================================================
+   MAX METEOR
+===================================================== */
 
-/* =========================================================
+.meteor{
+position:fixed;
+width:7px;
+height:210px;
+border-radius:50%;
+z-index:9995;
+pointer-events:none;
+background:linear-gradient(
+to bottom,
+white 0%,
+#fff 8%,
+var(--cyan) 25%,
+var(--purple) 55%,
+transparent 100%
+);
+box-shadow:
+0 0 10px white,
+0 0 25px var(--cyan),
+0 0 55px var(--purple),
+0 0 90px var(--pink);
+transform:rotate(-25deg);
+animation:meteorFall 1.7s linear forwards;
+}
+
+.meteor:after{
+content:"";
+position:absolute;
+top:-40px;
+left:-12px;
+width:30px;
+height:100px;
+border-radius:50%;
+background:radial-gradient(
+circle,
+rgba(255,255,255,.8),
+rgba(0,246,255,.3),
+transparent 70%
+);
+filter:blur(8px);
+}
+
+@keyframes meteorFall{
+0%{
+transform:translate(0,-350px) rotate(-25deg) scale(.3);
+opacity:0;
+}
+8%{
+opacity:1;
+}
+100%{
+transform:translate(-650px,115vh) rotate(-25deg) scale(1.5);
+opacity:0;
+}
+}
+
+/* =====================================================
+   OPENING MOVIE EFFECT
+===================================================== */
+
+#openingFlash{
+position:fixed;
+inset:0;
+background:#fff;
+z-index:999998;
+pointer-events:none;
+opacity:0;
+}
+
+#openingFlash.active{
+animation:openingFlash .8s ease-out forwards;
+}
+
+@keyframes openingFlash{
+0%{opacity:0}
+12%{opacity:.8}
+25%{opacity:.25}
+100%{opacity:0}
+}
+
+#cinematic{
+position:fixed;
+inset:0;
+z-index:999997;
+pointer-events:none;
+background:
+radial-gradient(
+ellipse at center,
+transparent 0%,
+rgba(0,0,20,.08) 55%,
+rgba(0,0,0,.55) 100%
+);
+opacity:0;
+}
+
+#cinematic.active{
+animation:cinematicIn 4.5s ease-out forwards;
+}
+
+@keyframes cinematicIn{
+0%{opacity:1}
+75%{opacity:.8}
+100%{opacity:0}
+}
+
+.cinemaBeam{
+position:fixed;
+height:3px;
+width:120vw;
+left:-10vw;
+background:linear-gradient(
+90deg,
+transparent,
+#fff,
+var(--cyan),
+transparent
+);
+box-shadow:
+0 0 15px #fff,
+0 0 35px var(--cyan),
+0 0 70px var(--purple);
+z-index:999996;
+pointer-events:none;
+opacity:0;
+}
+
+.cinemaBeam.active{
+animation:beamFly 1.4s ease-out forwards;
+}
+
+@keyframes beamFly{
+0%{
+top:10%;
+opacity:0;
+transform:rotate(-15deg) scaleX(.1);
+}
+20%{opacity:1}
+100%{
+top:90%;
+opacity:0;
+transform:rotate(-15deg) scaleX(1.8);
+}
+}
+
+/* =====================================================
    LOADER
-========================================================= */
+===================================================== */
 
 #loader{
-
 position:fixed;
-
 inset:0;
-
-z-index:9999999;
-
+z-index:999999;
 display:grid;
-
 place-items:center;
-
 background:
-
-radial-gradient(
-circle at center,
-#11174b 0%,
-#05051a 45%,
-#01020b 100%
-);
-
-transition:
-opacity .8s ease,
-visibility .8s ease;
+radial-gradient(circle at center,#11174b 0%,#05051a 45%,#01020b 100%);
+transition:opacity .45s ease,visibility .45s ease;
 }
 
 #loader.hide{
-
 opacity:0;
 visibility:hidden;
 pointer-events:none;
 }
 
 .loaderBox{
-
 width:min(90%,420px);
-
 text-align:center;
 }
 
 .loaderPlanet{
-
 width:90px;
 height:90px;
-
 margin:auto;
-
 border-radius:50%;
-
-background:
-radial-gradient(
+background:radial-gradient(
 circle at 30% 25%,
 #fff 0%,
 #55eaff 18%,
 #6540ef 58%,
 #09021d 100%
 );
-
 box-shadow:
 0 0 25px var(--cyan),
 0 0 60px var(--purple);
-
-animation:
-loaderSpin 1.2s linear infinite;
+animation:loaderSpin 1.2s linear infinite;
 }
 
 @keyframes loaderSpin{
-
-to{
-transform:rotate(360deg);
-}
+to{transform:rotate(360deg)}
 }
 
 .loaderTitle{
-
 margin-top:18px;
-
-font-size:
-clamp(1.8rem,7vw,3.2rem);
-
+font-size:clamp(1.8rem,7vw,3.2rem);
 font-weight:950;
 }
 
 .loaderText{
-
 margin-top:8px;
-
 color:var(--cyan);
-
 font-weight:800;
 }
 
 .loaderBar{
-
 width:min(270px,80vw);
-
 height:5px;
-
 margin:18px auto 0;
-
 overflow:hidden;
-
 border-radius:999px;
-
-background:
-rgba(255,255,255,.1);
+background:rgba(255,255,255,.1);
 }
 
 .loaderBar i{
-
 display:block;
-
 width:0;
-
 height:100%;
-
 border-radius:999px;
-
-background:
-linear-gradient(
+background:linear-gradient(
 90deg,
 var(--cyan),
 var(--purple),
 var(--pink)
 );
-
-animation:
-loadFast 1s ease-out forwards;
+animation:loadFast .7s ease-out forwards;
 }
 
 @keyframes loadFast{
-
-to{
-width:100%;
-}
+to{width:100%}
 }
 
-
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 header{
-
 position:sticky;
-
 top:0;
-
 z-index:500;
-
-background:
-rgba(2,3,13,.75);
-
-border-bottom:
-1px solid var(--border);
-
-backdrop-filter:
-blur(20px);
+background:rgba(2,3,13,.75);
+border-bottom:1px solid var(--border);
+backdrop-filter:blur(20px);
 }
 
 nav{
-
 min-height:72px;
-
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
 }
 
 .container{
-
-width:
-min(
-calc(100% - 32px),
-var(--max)
-);
-
+width:min(calc(100% - 32px),var(--max));
 margin:auto;
 }
 
 .logo{
-
 border:0;
-
 background:none;
-
 color:#fff;
-
 font-weight:950;
-
 font-size:1.3rem;
-
 cursor:pointer;
-
-text-shadow:
-0 0 15px var(--cyan);
+text-shadow:0 0 15px var(--cyan);
 }
 
-.logo b{
-color:var(--cyan);
-}
+.logo b{color:var(--cyan)}
 
 .nav{
-
 display:flex;
-
 gap:4px;
-
 list-style:none;
 }
 
 .nav button,
 .mobileBtn{
-
 border:0;
-
 background:transparent;
-
 color:var(--soft);
-
 cursor:pointer;
-
 padding:10px 12px;
-
 border-radius:12px;
-
 font-weight:850;
-
 transition:.25s;
 }
 
 .nav button:hover,
 .nav button.active{
-
 color:var(--cyan);
-
-background:
-rgba(0,246,255,.08);
-
-box-shadow:
-0 0 20px rgba(0,246,255,.15);
+background:rgba(0,246,255,.08);
+box-shadow:0 0 20px rgba(0,246,255,.15);
 }
 
 .mobileBtn{
-
 display:none;
-
 font-size:1.6rem;
 }
 
 .mobileMenu{
-
 display:none;
-
-padding:
-8px 0 14px;
+padding:8px 0 14px;
 }
 
-.mobileMenu.open{
-display:block;
-}
+.mobileMenu.open{display:block}
 
 .mobileMenu button{
-
 width:100%;
-
 text-align:left;
-
-border:
-1px solid var(--border);
-
-background:
-rgba(255,255,255,.04);
-
+border:1px solid var(--border);
+background:rgba(255,255,255,.04);
 color:#fff;
-
 padding:13px;
-
 border-radius:12px;
-
 margin-top:6px;
 }
 
-
-/* =========================================================
+/* =====================================================
    PAGE
-========================================================= */
+===================================================== */
 
 main{
-
 position:relative;
-
 z-index:20;
 }
 
 .page{
-
 display:none;
-
-min-height:
-calc(100vh - 72px);
-
-padding:
-80px 0 100px;
-
-animation:
-pageIn .5s ease;
+min-height:calc(100vh - 72px);
+padding:80px 0 100px;
+animation:pageIn .5s ease;
 }
 
-.page.active{
-display:block;
-}
+.page.active{display:block}
 
 @keyframes pageIn{
-
-from{
-opacity:0;
-transform:translateY(20px);
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:none}
 }
 
-to{
-opacity:1;
-transform:none;
-}
-}
-
-
-/* =========================================================
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero{
-
-min-height:
-calc(100vh - 72px);
-
+min-height:calc(100vh - 72px);
 display:grid;
-
-grid-template-columns:
-1.05fr .95fr;
-
+grid-template-columns:1.05fr .95fr;
 gap:55px;
-
 align-items:center;
 }
 
 .eyebrow{
-
 display:inline-block;
-
-padding:
-8px 16px;
-
-border:
-1px solid var(--cyan);
-
+padding:8px 16px;
+border:1px solid var(--cyan);
 border-radius:999px;
-
 color:var(--cyan);
-
-background:
-rgba(0,246,255,.07);
-
-box-shadow:
-0 0 25px rgba(0,246,255,.2);
-
+background:rgba(0,246,255,.07);
+box-shadow:0 0 25px rgba(0,246,255,.2);
 font-weight:900;
 }
 
 .hero h1{
-
-font-size:
-clamp(3rem,7vw,6.5rem);
-
+font-size:clamp(3rem,7vw,6.5rem);
 line-height:1.03;
-
-margin:
-20px 0;
+margin:20px 0;
 }
 
 .gradient{
-
-background:
-linear-gradient(
+background:linear-gradient(
 90deg,
 var(--cyan),
 var(--blue),
@@ -2134,122 +1080,67 @@ var(--pink),
 var(--yellow),
 var(--cyan)
 );
-
 background-size:300% auto;
-
 -webkit-background-clip:text;
-
 background-clip:text;
-
 color:transparent;
-
-animation:
-gradientMove 6s linear infinite;
+animation:gradientMove 6s linear infinite;
 }
 
 @keyframes gradientMove{
-
-to{
-background-position:
-300% center;
-}
+to{background-position:300% center}
 }
 
 .hero p,
 .lead{
-
 color:var(--soft);
-
 font-size:1.12rem;
-
 max-width:720px;
 }
 
 .actions{
-
 display:flex;
-
 gap:12px;
-
 flex-wrap:wrap;
-
 margin-top:28px;
 }
 
 .btn{
-
-border:
-1px solid var(--cyan);
-
+border:1px solid var(--cyan);
 border-radius:14px;
-
-padding:
-12px 20px;
-
+padding:12px 20px;
 text-decoration:none;
-
 font-weight:900;
-
 cursor:pointer;
-
 color:#fff;
-
-background:
-linear-gradient(
-135deg,
-var(--purple),
-var(--blue)
-);
-
-box-shadow:
-0 0 25px rgba(0,246,255,.2);
-
+background:linear-gradient(135deg,var(--purple),var(--blue));
+box-shadow:0 0 25px rgba(0,246,255,.2);
 transition:.25s;
 }
 
 .btn:hover{
-
-transform:
-translateY(-5px)
-scale(1.03);
-
-box-shadow:
-0 0 40px rgba(0,246,255,.45);
+transform:translateY(-5px) scale(1.03);
+box-shadow:0 0 40px rgba(0,246,255,.45);
 }
 
 .btn.alt{
-
-background:
-rgba(0,0,0,.25);
-
+background:rgba(0,0,0,.25);
 color:var(--cyan);
 }
 
 .planetBox{
-
 min-height:470px;
-
 display:grid;
-
 place-items:center;
-
 position:relative;
 }
 
 .heroPlanet{
-
-width:
-min(360px,70vw);
-
+width:min(360px,70vw);
 aspect-ratio:1;
-
 border-radius:50%;
-
 position:relative;
-
-background:
-
-radial-gradient(
+background:radial-gradient(
 circle at 30% 23%,
 #fff,
 #61eaff 12%,
@@ -2258,318 +1149,205 @@ circle at 30% 23%,
 #17072f 82%,
 #020108
 );
-
 box-shadow:
-
 0 0 35px var(--cyan),
 0 0 90px rgba(145,71,255,.55),
 0 0 150px rgba(255,60,172,.22),
 inset -45px -35px 70px #000;
-
-animation:
-heroPlanet 6s ease-in-out infinite;
+animation:heroPlanet 6s ease-in-out infinite;
 }
 
 .heroPlanet:before{
-
 content:"";
-
 position:absolute;
-
 width:145%;
 height:35%;
-
 left:-22%;
 top:34%;
-
-border:
-3px solid rgba(255,255,255,.55);
-
+border:3px solid rgba(255,255,255,.55);
 border-radius:50%;
-
 transform:rotate(-17deg);
-
-box-shadow:
-0 0 25px var(--cyan);
+box-shadow:0 0 25px var(--cyan);
 }
 
 .heroPlanet:after{
-
 content:"";
-
 position:absolute;
-
 inset:-45px;
-
-border:
-1px dashed rgba(0,246,255,.45);
-
+border:1px dashed rgba(0,246,255,.45);
 border-radius:50%;
-
-animation:
-orbit 16s linear infinite;
+animation:orbit 16s linear infinite;
 }
 
 @keyframes heroPlanet{
-
-50%{
-transform:
-translateY(-20px)
-rotate(4deg);
-}
+50%{transform:translateY(-20px) rotate(4deg)}
 }
 
 @keyframes orbit{
-
-to{
-transform:rotate(360deg);
-}
+to{transform:rotate(360deg)}
 }
 
-
-/* =========================================================
+/* =====================================================
    TITLES / GRID
-========================================================= */
+===================================================== */
 
 .title{
-
 text-align:center;
-
 margin-bottom:48px;
 }
 
 .title h2{
-
-font-size:
-clamp(2.3rem,5vw,4.2rem);
-
+font-size:clamp(2.3rem,5vw,4.2rem);
 line-height:1.1;
-
 margin-bottom:12px;
 }
 
-.title p{
-color:var(--soft);
-}
+.title p{color:var(--soft)}
 
 .grid{
-
 display:grid;
-
 gap:22px;
 }
 
-.two{
-grid-template-columns:
-repeat(2,1fr);
-}
+.two{grid-template-columns:repeat(2,1fr)}
+.three{grid-template-columns:repeat(3,1fr)}
+.four{grid-template-columns:repeat(4,1fr)}
 
-.three{
-grid-template-columns:
-repeat(3,1fr);
-}
-
-.four{
-grid-template-columns:
-repeat(4,1fr);
-}
-
-
-/* =========================================================
-   CARDS
-========================================================= */
+/* =====================================================
+   CARDS + STAR FRAME
+===================================================== */
 
 .card{
-
 position:relative;
-
 overflow:hidden;
-
-background:
-
-linear-gradient(
+background:linear-gradient(
 145deg,
 rgba(18,25,62,.92),
 rgba(7,9,28,.94)
 );
-
-border:
-1px solid var(--border);
-
+border:1px solid var(--border);
 border-radius:24px;
-
 padding:28px;
-
-box-shadow:
-0 18px 45px rgba(0,0,0,.3);
-
+box-shadow:0 18px 45px rgba(0,0,0,.3);
 transition:
 transform .18s ease,
 border .25s,
 box-shadow .25s;
-
 transform-style:preserve-3d;
-
 will-change:transform;
 }
 
+/* ดาวเล็ก ๆ ทุกกรอบ */
+
 .card:before{
-
-content:"";
-
+content:"✦  ·  ✧  ·  ✦";
 position:absolute;
-
-width:180px;
-height:180px;
-
-right:-80px;
-top:-80px;
-
-border-radius:50%;
-
-background:
-radial-gradient(
-circle,
-rgba(0,246,255,.18),
-transparent 70%
-);
-
+top:7px;
+left:14px;
+right:14px;
+font-size:12px;
+letter-spacing:13px;
+white-space:nowrap;
+color:var(--cyan);
+text-shadow:
+0 0 5px #fff,
+0 0 12px var(--cyan),
+0 0 20px var(--purple);
+opacity:.8;
+animation:frameStars 2.8s linear infinite;
 pointer-events:none;
 }
 
 .card:after{
-
-content:"";
-
+content:"✧  ·  ✦  ·  ✧";
 position:absolute;
-
-inset:0;
-
-border-radius:24px;
-
+bottom:6px;
+right:12px;
+font-size:12px;
+letter-spacing:12px;
+white-space:nowrap;
+color:var(--pink);
+text-shadow:
+0 0 5px #fff,
+0 0 12px var(--pink),
+0 0 20px var(--purple);
+opacity:.75;
+animation:frameStarsReverse 3.2s linear infinite;
 pointer-events:none;
-
-background:
-linear-gradient(
-120deg,
-transparent 15%,
-rgba(255,255,255,.10) 45%,
-transparent 65%
-);
-
-transform:
-translateX(-130%);
-
-transition:
-transform .7s ease;
 }
 
-.card:hover:after{
+@keyframes frameStars{
+0%{transform:translateX(-15px);opacity:.3}
+50%{transform:translateX(15px);opacity:1}
+100%{transform:translateX(-15px);opacity:.3}
+}
 
-transform:
-translateX(130%);
+@keyframes frameStarsReverse{
+0%{transform:translateX(15px);opacity:.3}
+50%{transform:translateX(-15px);opacity:1}
+100%{transform:translateX(15px);opacity:.3}
 }
 
 .card:hover{
-
-border-color:
-var(--cyan);
-
+border-color:var(--cyan);
 box-shadow:
-
 0 0 35px rgba(0,246,255,.28),
 0 25px 60px rgba(0,0,0,.5);
 }
 
 .card h3{
-
 color:var(--cyan);
-
 margin-bottom:10px;
-
 font-size:1.35rem;
 }
 
-.card p{
-color:var(--soft);
-}
+.card p{color:var(--soft)}
 
 .icon{
-
 font-size:2.5rem;
-
 margin-bottom:12px;
 }
 
-
-/* =========================================================
-   PROFILE 3D
-========================================================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 .profile{
-
 display:grid;
-
-grid-template-columns:
-340px 1fr;
-
+grid-template-columns:340px 1fr;
 gap:35px;
-
 align-items:center;
 }
 
 .profileFrame{
-
 position:relative;
-
 width:310px;
 height:370px;
-
 margin:auto;
-
 display:grid;
-
 place-items:center;
-
 perspective:1200px;
-
 transform-style:preserve-3d;
 }
 
 .profileOrbit{
-
 position:absolute;
-
 inset:-18px;
-
-border:
-2px dashed var(--cyan);
-
+border:2px dashed var(--cyan);
 border-radius:42px;
-
 box-shadow:
-
 0 0 20px rgba(0,246,255,.45),
-0 0 55px rgba(145,71,255,.25),
-inset 0 0 30px rgba(0,246,255,.15);
-
-animation:
-profileOrbit 8s linear infinite;
-
+0 0 55px rgba(145,71,255,.25);
+animation:profileOrbit 10s linear infinite;
 pointer-events:none;
 }
 
 .profileOrbit:before,
 .profileOrbit:after{
-
 content:"✦";
-
 position:absolute;
-
 font-size:28px;
-
 color:var(--yellow);
-
 text-shadow:
 0 0 8px #fff,
 0 0 18px var(--yellow),
@@ -2586,554 +1364,308 @@ bottom:-19px;
 right:35%;
 }
 
-
-/* =========================================================
-   PROFILE IMAGE — TRUE 360
-========================================================= */
-
 .profilePic{
-
 width:280px;
-
 height:340px;
-
 object-fit:cover;
-
 display:block;
-
-border:
-3px solid var(--cyan);
-
+border:3px solid var(--cyan);
 border-radius:35px;
-
 background:#050816;
-
 box-shadow:
-
 0 0 25px rgba(0,246,255,.45),
 0 0 55px rgba(145,71,255,.35),
 0 0 100px rgba(255,60,172,.18);
-
 position:relative;
-
 z-index:2;
-
 cursor:pointer;
-
 transform-style:preserve-3d;
-
 transform-origin:center center;
-
+transition:box-shadow .35s ease;
 will-change:transform;
-
-transition:
-box-shadow .35s ease;
 }
 
+/* หมุนอัตโนมัติ */
 
-/*
-   สำคัญ:
-   ไม่ใช้ animation กับ transform ตัวเดียวกับ hover
-   เพื่อไม่ให้ transform ชนกัน
-*/
+.profilePic.autoSpin{
+animation:profileAutoSpin 5s ease-in-out infinite;
+}
+
+@keyframes profileAutoSpin{
+0%{
+transform:perspective(1200px) rotateY(0deg);
+}
+20%{
+transform:perspective(1200px) rotateY(72deg);
+}
+40%{
+transform:perspective(1200px) rotateY(144deg);
+}
+60%{
+transform:perspective(1200px) rotateY(216deg);
+}
+80%{
+transform:perspective(1200px) rotateY(288deg);
+}
+100%{
+transform:perspective(1200px) rotateY(360deg);
+}
+}
+
+/* คลิกหมุน */
+
+.profilePic.rotate{
+animation:profileSpinY 1.4s cubic-bezier(.2,.8,.25,1) !important;
+}
+
+@keyframes profileSpinY{
+0%{transform:perspective(1200px) rotateY(0deg)}
+25%{transform:perspective(1200px) rotateY(90deg)}
+50%{transform:perspective(1200px) rotateY(180deg)}
+75%{transform:perspective(1200px) rotateY(270deg)}
+100%{transform:perspective(1200px) rotateY(360deg)}
+}
 
 .profilePic:hover{
-
 box-shadow:
-
 0 0 40px var(--cyan),
 0 0 80px var(--purple),
 0 0 120px rgba(255,60,172,.35);
 }
 
-
-/* หมุนด้วย JS */
-
-.profilePic.spin360{
-
-animation:
-profileSpin360 1.5s cubic-bezier(.2,.8,.25,1);
-}
-
-@keyframes profileSpin360{
-
-0%{
-transform:
-perspective(1200px)
-rotateY(0deg);
-}
-
-25%{
-transform:
-perspective(1200px)
-rotateY(90deg);
-}
-
-50%{
-transform:
-perspective(1200px)
-rotateY(180deg);
-}
-
-75%{
-transform:
-perspective(1200px)
-rotateY(270deg);
-}
-
-100%{
-transform:
-perspective(1200px)
-rotateY(360deg);
-}
-}
-
-
-/* หมุนอัตโนมัติ */
-
-.profilePic.autoSpin{
-
-animation:
-autoProfileSpin 5s linear infinite;
-}
-
-@keyframes autoProfileSpin{
-
-0%{
-transform:
-perspective(1200px)
-rotateY(0deg);
-}
-
-100%{
-transform:
-perspective(1200px)
-rotateY(360deg);
-}
-}
-
 @keyframes profileOrbit{
-
-to{
-transform:rotate(360deg);
+to{transform:rotate(360deg)}
 }
-}
-
-
-/* =========================================================
-   PROFILE DECOR
-========================================================= */
 
 .profileFrame:before{
-
 content:"⭐";
-
 position:absolute;
-
 top:-35px;
-
 left:-20px;
-
 font-size:34px;
-
 z-index:5;
-
 filter:
 drop-shadow(0 0 8px white)
 drop-shadow(0 0 18px var(--yellow))
 drop-shadow(0 0 30px var(--pink));
-
-animation:
-profileStar 2s ease-in-out infinite;
+animation:profileStar 2s ease-in-out infinite;
 }
 
 .profileFrame:after{
-
 content:"🪐";
-
 position:absolute;
-
 right:-28px;
-
 bottom:-5px;
-
 font-size:44px;
-
 z-index:5;
-
 filter:
 drop-shadow(0 0 12px var(--cyan))
 drop-shadow(0 0 25px var(--purple));
-
-animation:
-miniPlanet 4s ease-in-out infinite;
+animation:miniPlanet 4s ease-in-out infinite;
 }
 
 @keyframes profileStar{
-
-0%,100%{
-transform:
-scale(.8)
-rotate(-10deg);
-}
-
-50%{
-transform:
-scale(1.25)
-rotate(15deg);
-}
+0%,100%{transform:scale(.8) rotate(-10deg)}
+50%{transform:scale(1.25) rotate(15deg)}
 }
 
 @keyframes miniPlanet{
-
-50%{
-transform:
-translateY(-15px)
-rotate(180deg);
-}
+50%{transform:translateY(-15px) rotate(180deg)}
 }
 
-
-/* =========================================================
-   PROFILE FACTS
-========================================================= */
+/* =====================================================
+   FACTS
+===================================================== */
 
 .facts{
-
 display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
-
+grid-template-columns:repeat(2,1fr);
 gap:12px;
-
 margin-top:22px;
 }
 
 .fact{
-
+position:relative;
 padding:15px;
-
 border-radius:15px;
+background:rgba(255,255,255,.04);
+border:1px solid var(--border);
+transition:.25s;
+overflow:hidden;
+}
 
-background:
-rgba(255,255,255,.04);
+.fact:after{
+content:"✦ · ✧";
+position:absolute;
+right:7px;
+top:4px;
+font-size:11px;
+color:var(--cyan);
+text-shadow:0 0 8px var(--cyan);
+animation:tinySpark 1.5s infinite alternate;
+}
 
-border:
-1px solid var(--border);
-
-transition:
-transform .25s,
-background .25s,
-box-shadow .25s;
+@keyframes tinySpark{
+from{opacity:.25;transform:scale(.7)}
+to{opacity:1;transform:scale(1.3)}
 }
 
 .fact:hover{
-
-transform:
-translateZ(15px)
-scale(1.02);
-
-background:
-rgba(0,246,255,.07);
-
-box-shadow:
-0 0 20px rgba(0,246,255,.15);
+transform:translateZ(15px) scale(1.02);
+background:rgba(0,246,255,.07);
+box-shadow:0 0 20px rgba(0,246,255,.15);
 }
 
 .fact b{
-
 color:var(--yellow);
-
 display:block;
-
 margin-bottom:4px;
 }
 
-
-/* =========================================================
+/* =====================================================
    OTHER
-========================================================= */
+===================================================== */
 
-.edu .card{
-min-height:270px;
-}
+.edu .card{min-height:270px}
 
 .year{
-
 font-size:2rem;
-
 font-weight:950;
-
 color:var(--purple);
-
-text-shadow:
-0 0 15px var(--purple);
+text-shadow:0 0 15px var(--purple);
 }
 
-.hobbyCard{
-min-height:300px;
-}
+.hobbyCard{min-height:300px}
 
 .hobbyCard:hover .icon{
-
-animation:
-iconBounce .6s ease;
+animation:iconBounce .6s ease;
 }
 
 @keyframes iconBounce{
-
-50%{
-transform:
-scale(1.4)
-rotate(12deg);
-}
+50%{transform:scale(1.4) rotate(12deg)}
 }
 
-.contact .card{
-min-height:280px;
-}
+.contact .card{min-height:280px}
 
 .contactText{
-
 word-break:break-word;
-
 color:var(--soft);
 }
 
 .friends{
-
 font-size:1.12rem;
-
 line-height:2.2;
 }
 
 .tag{
-
 display:inline-block;
-
 color:var(--yellow);
-
-border:
-1px solid rgba(255,228,92,.4);
-
-padding:
-4px 10px;
-
+border:1px solid rgba(255,228,92,.4);
+padding:4px 10px;
 border-radius:999px;
-
 margin:3px;
-
 font-size:.9rem;
 }
 
-.achievement{
-min-height:280px;
-}
+.achievement{min-height:280px}
 
 .achievement strong{
-
 display:block;
-
 font-size:1.35rem;
-
 color:var(--yellow);
-
 margin-bottom:10px;
 }
 
-.big{
-font-size:3rem;
-}
+.big{font-size:3rem}
 
 .character{
-
 font-size:4rem;
-
 text-align:center;
-
 margin-bottom:12px;
-
-filter:
-drop-shadow(
-0 0 12px
-rgba(0,246,255,.35)
-);
-
-animation:
-characterFloat 3.5s ease-in-out infinite;
+filter:drop-shadow(0 0 12px rgba(0,246,255,.35));
+animation:characterFloat 3.5s ease-in-out infinite;
 }
 
 @keyframes characterFloat{
-
-50%{
-transform:
-translateY(-10px)
-rotate(3deg);
-}
+50%{transform:translateY(-10px) rotate(3deg)}
 }
 
-
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer{
-
 text-align:center;
-
 color:var(--muted);
-
 padding:35px;
-
-border-top:
-1px solid var(--border);
+border-top:1px solid var(--border);
 }
 
-footer b{
-color:var(--cyan);
-}
+footer b{color:var(--cyan)}
 
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-@media(min-width:951px){
-
-body:after{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-pointer-events:none;
-
-z-index:999;
-
-background:
-
-linear-gradient(
-90deg,
-transparent 49.8%,
-rgba(0,246,255,.025) 50%,
-transparent 50.2%
-);
-
-opacity:.35;
-}
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:950px){
 
 .hero,
 .profile{
-
 grid-template-columns:1fr;
-
 text-align:center;
 }
 
-.hero p{
-margin:auto;
-}
+.hero p{margin:auto}
 
 .two,
 .three,
 .four{
-
-grid-template-columns:
-repeat(2,1fr);
+grid-template-columns:repeat(2,1fr);
 }
 
-.nav{
-display:none;
-}
+.nav{display:none}
 
-.mobileBtn{
-display:block;
-}
+.mobileBtn{display:block}
 
-.profilePic{
-margin:auto;
-}
+.profilePic{margin:auto}
 
 .spacePlanet,
-.saturn{
-opacity:.55;
+.saturn{opacity:.55}
+
+.zodiac span{font-size:22px}
 }
-
-.zodiac span{
-font-size:22px;
-}
-
-.cinemaBar.show{
-height:6vh;
-}
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:600px){
 
 .container{
-
-width:
-min(
-calc(100% - 24px),
-var(--max)
-);
+width:min(calc(100% - 24px),var(--max));
 }
 
 .page{
-
-padding:
-55px 0 80px;
+padding:55px 0 80px;
 }
 
 .two,
 .three,
 .four{
-
 grid-template-columns:1fr;
 }
 
 .hero{
-
 min-height:auto;
-
 padding-top:35px;
 }
 
-.planetBox{
+.planetBox{min-height:350px}
 
-min-height:350px;
-}
-
-.heroPlanet{
-width:230px;
-}
+.heroPlanet{width:230px}
 
 .profilePic{
-
 width:220px;
 height:285px;
 }
 
 .profileFrame{
-
 width:250px;
 height:315px;
 }
@@ -3142,144 +1674,68 @@ height:315px;
 grid-template-columns:1fr;
 }
 
-.ufo{
-font-size:42px;
-}
+.ufo{font-size:42px}
 
-.spaceCat{
-font-size:45px;
-}
+.spaceCat{font-size:45px}
 
-.rocket{
-font-size:40px;
-}
+.rocket{font-size:40px}
 
 .saturn{
-
 width:65px;
 height:65px;
 }
 
 .saturn:before{
-
 width:110px;
 height:32px;
-
 left:-22px;
 top:17px;
 }
 
-.galaxyRing{
-width:550px;
-}
+.galaxyRing{width:550px}
 
 .zodiac span{
-
 font-size:18px;
-
 opacity:.16;
 }
 
 #mouseGlow{
-
 width:220px;
 height:220px;
 }
 
-.profileFrame:before{
-font-size:25px;
+.profileFrame:before{font-size:25px}
+
+.profileFrame:after{font-size:35px}
+
+.clickStar{font-size:25px}
 }
 
-.profileFrame:after{
-font-size:35px;
-}
-
-.openingSmall{
-letter-spacing:.35em;
-}
-
-.openingSub{
-letter-spacing:.1em;
-}
-
-.cinemaBar.show{
-height:4vh;
-}
-
-}
-
-
-/* =========================================================
+/* =====================================================
    REDUCED MOTION
-========================================================= */
+===================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
 *,
 *:before,
 *:after{
-
 animation:none!important;
-
 scroll-behavior:auto!important;
 }
 
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- =====================================================
-     CINEMATIC OPENING LAYERS
-===================================================== -->
-
-<div class="cinemaBar cinemaTop"></div>
-<div class="cinemaBar cinemaBottom"></div>
-
-<div id="cinematicFlash"></div>
-<div id="warp"></div>
-
-<div id="openingTitle">
-
-<div class="openingInner">
-
-<div class="openingSmall">
-WELCOME TO THE
-</div>
-
-<div class="openingMain">
-AIMAAM
-</div>
-
-<div class="openingSub">
-🌌 GALAXY PORTFOLIO 🚀
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     SPACE BACKGROUND
-===================================================== -->
-
 <div class="nebula one"></div>
 <div class="nebula two"></div>
 <div class="nebula three"></div>
-
 <div class="galaxyRing"></div>
 
-
-<!-- =====================================================
-     ZODIAC
-===================================================== -->
-
 <div class="zodiac">
-
 <span class="z1">♈</span>
 <span class="z2">♉</span>
 <span class="z3">♊</span>
@@ -3292,53 +1748,25 @@ AIMAAM
 <span class="z10">♑</span>
 <span class="z11">♒</span>
 <span class="z12">♓</span>
-
 </div>
 
-
-<!-- =====================================================
-     LOADER
-===================================================== -->
+<div id="openingFlash"></div>
+<div id="cinematic"></div>
 
 <div id="loader">
-
 <div class="loaderBox">
-
 <div class="loaderPlanet"></div>
-
 <div class="loaderTitle">
-
-AIMAAM
-<span class="gradient">GALAXY</span>
-
+AIMAAM <span class="gradient">GALAXY</span>
 </div>
-
-<div class="loaderText">
-🚀 กำลังเข้าสู่จักรวาล...
+<div class="loaderText">🚀 กำลังเข้าสู่จักรวาล...</div>
+<div class="loaderBar"><i></i></div>
 </div>
-
-<div class="loaderBar">
-<i></i>
 </div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     MOUSE
-===================================================== -->
 
 <div id="mouseGlow"></div>
 
-
-<!-- =====================================================
-     FLOATING STARS
-===================================================== -->
-
 <div class="stars">
-
 <div class="star s1">⭐</div>
 <div class="star s2">🌟</div>
 <div class="star s3">✦</div>
@@ -3346,263 +1774,105 @@ AIMAAM
 <div class="star s5">✨</div>
 <div class="star s6">✦</div>
 <div class="star s7">⭐</div>
-
 </div>
-
-
-<!-- =====================================================
-     PLANETS
-===================================================== -->
 
 <div class="spacePlanet planetBlue"></div>
 <div class="spacePlanet planetPurple"></div>
 <div class="spacePlanet planetYellow"></div>
-
 <div class="saturn"></div>
 
-
-<!-- =====================================================
-     UFO / CAT
-===================================================== -->
-
 <div class="ufo">🛸</div>
-
 <div class="spaceCat">🐱‍🚀</div>
-
-
-<!-- =====================================================
-     ROCKETS
-===================================================== -->
 
 <div class="rocket rocket1">🚀</div>
 <div class="rocket rocket2">🚀</div>
 <div class="rocket rocket3">🚀</div>
-<div class="rocket4">🚀</div>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header>
-
 <nav class="container">
 
-<button
-class="logo navGo"
-data-page="home"
->
+<button class="logo navGo" data-page="home">
 🚀 Aimaam <b>Galaxy</b>
 </button>
 
-
 <ul class="nav">
-
-<li>
-<button class="navGo active" data-page="home">
-HOME
-</button>
-</li>
-
-<li>
-<button class="navGo" data-page="profile">
-PROFILE
-</button>
-</li>
-
-<li>
-<button class="navGo" data-page="education">
-EDUCATION
-</button>
-</li>
-
-<li>
-<button class="navGo" data-page="hobby">
-HOBBY
-</button>
-</li>
-
-<li>
-<button class="navGo" data-page="contact">
-CONTACT
-</button>
-</li>
-
-<li>
-<button class="navGo" data-page="friends">
-FRIENDS
-</button>
-</li>
-
-<li>
-<button class="navGo" data-page="works">
-WORKS
-</button>
-</li>
-
+<li><button class="navGo active" data-page="home">HOME</button></li>
+<li><button class="navGo" data-page="profile">PROFILE</button></li>
+<li><button class="navGo" data-page="education">EDUCATION</button></li>
+<li><button class="navGo" data-page="hobby">HOBBY</button></li>
+<li><button class="navGo" data-page="contact">CONTACT</button></li>
+<li><button class="navGo" data-page="friends">FRIENDS</button></li>
+<li><button class="navGo" data-page="works">WORKS</button></li>
 </ul>
 
-
-<button
-class="mobileBtn"
-id="menuBtn"
->
-☰
-</button>
-
+<button class="mobileBtn" id="menuBtn">☰</button>
 </nav>
 
-
-<div
-class="mobileMenu container"
-id="mobileMenu"
->
-
-<button class="navGo" data-page="home">
-🏠 HOME
-</button>
-
-<button class="navGo" data-page="profile">
-👤 PROFILE / ABOUT ME
-</button>
-
-<button class="navGo" data-page="education">
-🎓 EDUCATION
-</button>
-
-<button class="navGo" data-page="hobby">
-🎨 HOBBY
-</button>
-
-<button class="navGo" data-page="contact">
-📡 CONTACT
-</button>
-
-<button class="navGo" data-page="friends">
-⭐ SUBJECT & FRIENDS
-</button>
-
-<button class="navGo" data-page="works">
-🏆 WORKS
-</button>
-
+<div class="mobileMenu container" id="mobileMenu">
+<button class="navGo" data-page="home">🏠 HOME</button>
+<button class="navGo" data-page="profile">👤 PROFILE / ABOUT ME</button>
+<button class="navGo" data-page="education">🎓 EDUCATION</button>
+<button class="navGo" data-page="hobby">🎨 HOBBY</button>
+<button class="navGo" data-page="contact">📡 CONTACT</button>
+<button class="navGo" data-page="friends">⭐ SUBJECT & FRIENDS</button>
+<button class="navGo" data-page="works">🏆 WORKS</button>
 </div>
-
 </header>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
 
 <main>
 
-
-<!-- =====================================================
-     HOME
-===================================================== -->
-
-<section
-class="page active"
-id="home"
->
-
+<!-- HOME -->
+<section class="page active" id="home">
 <div class="container hero">
 
 <div>
-
-<div class="eyebrow">
-✨ WELCOME TO AIMAAM'S UNIVERSE
-</div>
+<div class="eyebrow">✨ WELCOME TO AIMAAM'S UNIVERSE</div>
 
 <h1>
-
 สวัสดีค่ะ<br>
-
 ฉันคือ
-<span class="gradient">
-อิ่มเอม
-</span>
-
+<span class="gradient">อิ่มเอม</span>
 🚀
-
 </h1>
 
 <p>
-
 ยินดีต้อนรับเข้าสู่
 <b>Aimaam Galaxy</b>
-
 จักรวาล Portfolio ส่วนตัว
 ที่เต็มไปด้วยดาวเคราะห์ ยานอวกาศ
 เอเลี่ยน แมวอวกาศ และความฝันของฉัน
-
 </p>
 
 <div class="actions">
-
-<button
-class="btn navGo"
-data-page="profile"
->
+<button class="btn navGo" data-page="profile">
 🌌 สำรวจจักรวาล
 </button>
 
-<button
-class="btn alt navGo"
-data-page="works"
->
+<button class="btn alt navGo" data-page="works">
 🏆 ดูผลงาน
 </button>
-
 </div>
-
 </div>
-
 
 <div class="planetBox">
-
 <div class="heroPlanet"></div>
-
 </div>
 
 </div>
-
 </section>
 
-
-<!-- =====================================================
-     PROFILE
-===================================================== -->
-
-<section
-class="page"
-id="profile"
->
-
+<!-- PROFILE -->
+<section class="page" id="profile">
 <div class="container">
 
 <div class="title">
-
-<h2>
-👤
-<span class="gradient">
-Profile / About Me
-</span>
-</h2>
-
-<p>
-ข้อมูลนักเดินทางแห่งจักรวาล Aimaam
-</p>
-
+<h2>👤 <span class="gradient">Profile / About Me</span></h2>
+<p>ข้อมูลนักเดินทางแห่งจักรวาล Aimaam</p>
 </div>
-
 
 <div class="profile">
 
-
 <div class="profileFrame">
-
 <div class="profileOrbit"></div>
 
 <img
@@ -3612,576 +1882,231 @@ src="https://i.pinimg.com/1200x/d3/b3/95/d3b395d2148f3202850d0ba4e34d31c5.jpg"
 alt="Aimaam Profile"
 title="คลิกเพื่อหมุน 360°"
 >
-
 </div>
-
 
 <div class="card">
 
-<div class="character">
-👩🏻‍🚀
-</div>
+<div class="character">👩🏻‍🚀</div>
 
-<h3>
-🌟 ข้อมูลส่วนตัว
-</h3>
-
+<h3>🌟 ข้อมูลส่วนตัว</h3>
 
 <div class="facts">
 
-
 <div class="fact">
-
-<b>
-ชื่อจริง
-</b>
-
+<b>ชื่อจริง</b>
 นางสาว ฐาณดา ล้อลำเลียง
-
 </div>
 
-
 <div class="fact">
-
-<b>
-ชื่อเล่น
-</b>
-
+<b>ชื่อเล่น</b>
 อิ่มเอม
-
 </div>
 
-
 <div class="fact">
-
-<b>
-วันเกิด
-</b>
-
+<b>วันเกิด</b>
 3 มิถุนายน พ.ศ. 2554 / ค.ศ. 2011
-
 </div>
 
-
 <div class="fact">
-
-<b>
-สีที่ชอบ
-</b>
-
+<b>สีที่ชอบ</b>
 💛 สีเหลือง
-
 </div>
 
-
 <div class="fact">
-
-<b>
-อาหารที่ชอบ
-</b>
-
+<b>อาหารที่ชอบ</b>
 🍜 ก๋วยเตี๋ยว
-
 </div>
 
-
 <div class="fact">
-
-<b>
-เครื่องดื่ม
-</b>
-
+<b>เครื่องดื่ม</b>
 🥤 น้ำโกโก้
-
 </div>
 
-
 <div class="fact">
-
-<b>
-ขนมที่ชอบ
-</b>
-
+<b>ขนมที่ชอบ</b>
 🍫 ช็อกโกแลต
-
 </div>
-
 
 <div class="fact">
-
-<b>
-สัตว์ที่ชอบ
-</b>
-
+<b>สัตว์ที่ชอบ</b>
 🐶 สุนัข · 🐱 แมว
-
-</div>
-
-
 </div>
 
 </div>
-
 </div>
-
 </div>
-
+</div>
 </section>
 
-
-<!-- =====================================================
-     EDUCATION
-===================================================== -->
-
-<section
-class="page"
-id="education"
->
-
+<!-- EDUCATION -->
+<section class="page" id="education">
 <div class="container">
 
 <div class="title">
-
-<h2>
-🎓
-<span class="gradient">
-Education
-</span>
-</h2>
-
-<p>
-เส้นทางการเดินทางผ่านจักรวาลการศึกษา
-</p>
-
+<h2>🎓 <span class="gradient">Education</span></h2>
+<p>เส้นทางการเดินทางผ่านจักรวาลการศึกษา</p>
 </div>
-
 
 <div class="grid four edu">
 
-
 <article class="card">
-
-<div class="character">
-👶🏻
-</div>
-
-<div class="year">
-01
-</div>
-
-<h3>
-ระดับชั้นอนุบาล
-</h3>
-
-<p>
-เรียนที่
-<b>
-โรงเรียนวิทยาวัฒน์
-</b>
-</p>
-
+<div class="character">👶🏻</div>
+<div class="year">01</div>
+<h3>ระดับชั้นอนุบาล</h3>
+<p>เรียนที่ <b>โรงเรียนวิทยาวัฒน์</b></p>
 </article>
 
-
 <article class="card">
-
-<div class="character">
-🧒🏻
-</div>
-
-<div class="year">
-02
-</div>
-
-<h3>
-ระดับชั้นประถมศึกษา
-</h3>
-
-<p>
-เรียนที่
-<b>
-โรงเรียนศรีจอมทอง
-</b>
-</p>
-
+<div class="character">🧒🏻</div>
+<div class="year">02</div>
+<h3>ระดับชั้นประถมศึกษา</h3>
+<p>เรียนที่ <b>โรงเรียนศรีจอมทอง</b></p>
 </article>
 
-
 <article class="card">
-
-<div class="character">
-🧑🏻‍🚀
-</div>
-
-<div class="year">
-03
-</div>
-
-<h3>
-ปัจจุบัน
-</h3>
-
+<div class="character">🧑🏻‍🚀</div>
+<div class="year">03</div>
+<h3>ปัจจุบัน</h3>
 <p>
-
 กำลังเรียนชั้น
-<b>
-มัธยมศึกษาปีที่ 3
-</b>
-
+<b>มัธยมศึกษาปีที่ 3</b>
 <br>
-
 โรงเรียนจอมทอง
-
 </p>
-
 </article>
-
 
 <article class="card">
-
-<div class="character">
-🚀
-</div>
-
-<div class="year">
-04
-</div>
-
-<h3>
-อนาคต
-</h3>
-
+<div class="character">🚀</div>
+<div class="year">04</div>
+<h3>อนาคต</h3>
 <p>
-
 จะเรียนต่อชั้นมัธยมศึกษา ที่
-
-<b>
-โรงเรียนยุพราชวิทยาลัย
-</b>
-
+<b>โรงเรียนยุพราชวิทยาลัย</b>
 </p>
-
 </article>
 
-
 </div>
-
 </div>
-
 </section>
 
-
-<!-- =====================================================
-     HOBBY
-===================================================== -->
-
-<section
-class="page"
-id="hobby"
->
-
+<!-- HOBBY -->
+<section class="page" id="hobby">
 <div class="container">
 
 <div class="title">
-
-<h2>
-🎨
-<span class="gradient">
-Hobby
-</span>
-</h2>
-
-<p>
-กิจกรรมที่ทำเมื่อเดินทางในจักรวาลเวลาว่าง
-</p>
-
+<h2>🎨 <span class="gradient">Hobby</span></h2>
+<p>กิจกรรมที่ทำเมื่อเดินทางในจักรวาลเวลาว่าง</p>
 </div>
-
 
 <div class="grid three">
 
-
 <article class="card hobbyCard">
-
-<div class="character">
-🎨
-</div>
-
-<div class="icon">
-🖌️
-</div>
-
-<h3>
-วาดรูป
-</h3>
-
-<p>
-สร้างโลกและตัวละครด้วยจินตนาการของตัวเอง
-</p>
-
+<div class="character">🎨</div>
+<div class="icon">🖌️</div>
+<h3>วาดรูป</h3>
+<p>สร้างโลกและตัวละครด้วยจินตนาการของตัวเอง</p>
 </article>
 
-
 <article class="card hobbyCard">
-
-<div class="character">
-🎤
-</div>
-
-<div class="icon">
-🎧
-</div>
-
-<h3>
-ร้องเพลง / ฟังเพลง
-</h3>
-
-<p>
-เพลิดเพลินกับเสียงเพลงและเพลงที่ชอบ
-</p>
-
+<div class="character">🎤</div>
+<div class="icon">🎧</div>
+<h3>ร้องเพลง / ฟังเพลง</h3>
+<p>เพลิดเพลินกับเสียงเพลงและเพลงที่ชอบ</p>
 </article>
 
-
 <article class="card hobbyCard">
-
-<div class="character">
-🌠
-</div>
-
-<div class="icon">
-📺
-</div>
-
-<h3>
-ดูอนิเม / ซีรีย์
-</h3>
-
-<p>
-สนุกกับเรื่องราว ตัวละครและโลกแฟนตาซี
-</p>
-
+<div class="character">🌠</div>
+<div class="icon">📺</div>
+<h3>ดูอนิเม / ซีรีย์</h3>
+<p>สนุกกับเรื่องราว ตัวละครและโลกแฟนตาซี</p>
 </article>
 
-
 </div>
-
 </div>
-
 </section>
 
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section
-class="page"
-id="contact"
->
-
+<!-- CONTACT -->
+<section class="page" id="contact">
 <div class="container">
 
 <div class="title">
-
-<h2>
-📡
-<span class="gradient">
-Contact
-</span>
-</h2>
-
-<p>
-ส่งสัญญาณติดต่อมาหาฉันได้
-</p>
-
+<h2>📡 <span class="gradient">Contact</span></h2>
+<p>ส่งสัญญาณติดต่อมาหาฉันได้</p>
 </div>
-
 
 <div class="grid four">
 
-
 <article class="card">
-
-<div class="character">
-📘
-</div>
-
-<div class="icon">
-📘
-</div>
-
-<h3>
-Facebook
-</h3>
-
-<p class="contactText">
-Thanada lorlamliang
-</p>
-
+<div class="character">📘</div>
+<div class="icon">📘</div>
+<h3>Facebook</h3>
+<p class="contactText">Thanada lorlamliang</p>
 </article>
 
-
 <article class="card">
-
-<div class="character">
-📸
-</div>
-
-<div class="icon">
-📸
-</div>
-
-<h3>
-Instagram
-</h3>
-
-<p class="contactText">
-aimaam22
-</p>
-
+<div class="character">📸</div>
+<div class="icon">📸</div>
+<h3>Instagram</h3>
+<p class="contactText">aimaam22</p>
 </article>
 
-
 <article class="card">
-
-<div class="character">
-🎵
-</div>
-
-<div class="icon">
-🎵
-</div>
-
-<h3>
-TikTok
-</h3>
-
-<p class="contactText">
-aam_aam
-</p>
-
+<div class="character">🎵</div>
+<div class="icon">🎵</div>
+<h3>TikTok</h3>
+<p class="contactText">aam_aam</p>
 </article>
 
-
 <article class="card">
-
-<div class="character">
-📞
-</div>
-
-<div class="icon">
-📞
-</div>
-
-<h3>
-เบอร์โทรศัพท์
-</h3>
-
-<p class="contactText">
-062-737-3189
-</p>
-
+<div class="character">📞</div>
+<div class="icon">📞</div>
+<h3>เบอร์โทรศัพท์</h3>
+<p class="contactText">062-737-3189</p>
 </article>
 
-
 </div>
-
 </div>
-
 </section>
 
-
-<!-- =====================================================
-     FRIENDS
-===================================================== -->
-
-<section
-class="page"
-id="friends"
->
-
+<!-- FRIENDS -->
+<section class="page" id="friends">
 <div class="container">
 
 <div class="title">
-
-<h2>
-⭐
-<span class="gradient">
-Subject & My Best Friends
-</span>
-</h2>
-
-<p>
-วิชาและเหล่าเพื่อนร่วมทีมในจักรวาลของฉัน
-</p>
-
+<h2>⭐ <span class="gradient">Subject & My Best Friends</span></h2>
+<p>วิชาและเหล่าเพื่อนร่วมทีมในจักรวาลของฉัน</p>
 </div>
-
 
 <div class="grid two">
 
-
 <article class="card">
-
-<div class="character">
-🧑🏻‍🔬
-</div>
-
-<h3>
-📚 วิชาที่ชอบ / ไม่ชอบ
-</h3>
+<div class="character">🧑🏻‍🔬</div>
+<h3>📚 วิชาที่ชอบ / ไม่ชอบ</h3>
 
 <p class="friends">
 
-<b style="color:var(--cyan)">
-💙 ชอบ:
-</b>
-
+<b style="color:var(--cyan)">💙 ชอบ:</b>
 Science, Chinese
 
 <br>
 
-<b style="color:var(--pink)">
-💗 ไม่ชอบ:
-</b>
-
+<b style="color:var(--pink)">💗 ไม่ชอบ:</b>
 Math
 
 </p>
 
-
 <div>
-
-<span class="tag">
-🔬 SCIENCE
-</span>
-
-<span class="tag">
-🀄 CHINESE
-</span>
-
-<span class="tag">
-➗ MATH
-</span>
-
+<span class="tag">🔬 SCIENCE</span>
+<span class="tag">🀄 CHINESE</span>
+<span class="tag">➗ MATH</span>
 </div>
-
 </article>
 
-
 <article class="card">
-
-<div class="character">
-👑
-</div>
-
-<h3>
-👑 My Best Friends
-</h3>
+<div class="character">👑</div>
+<h3>👑 My Best Friends</h3>
 
 <p class="friends">
-
 💫 แก้ม<br>
 🌟 ปั้นหยา<br>
 ✨ จริน<br>
@@ -4190,189 +2115,82 @@ Math
 💚 ชู<br>
 💛 พ็อต<br>
 🧡 <b>มังโก้</b>
-
 </p>
-
 </article>
 
-
 </div>
-
 </div>
-
 </section>
 
-
-<!-- =====================================================
-     WORKS
-===================================================== -->
-
-<section
-class="page"
-id="works"
->
-
+<!-- WORKS -->
+<section class="page" id="works">
 <div class="container">
 
 <div class="title">
-
-<h2>
-
-🏆
-<span class="gradient">
-ผลงาน
-</span>
-
-</h2>
-
-<p>
-Achievement Log — ภารกิจที่ฉันภูมิใจ
-</p>
-
+<h2>🏆 <span class="gradient">ผลงาน</span></h2>
+<p>Achievement Log — ภารกิจที่ฉันภูมิใจ</p>
 </div>
-
 
 <div class="grid three">
 
-
 <article class="card achievement">
-
-<div class="character">
-🏅
-</div>
-
-<div class="big">
-🏅
-</div>
-
-<strong>
-TOP 10
-</strong>
-
-<p>
-ได้ท็อป 10 สี่เทอมติดดด 🔥
-</p>
-
+<div class="character">🏅</div>
+<div class="big">🏅</div>
+<strong>TOP 10</strong>
+<p>ได้ท็อป 10 สี่เทอมติดดด 🔥</p>
 </article>
 
-
 <article class="card achievement">
-
-<div class="character">
-🧪
-</div>
-
-<div class="big">
-🥇
-</div>
-
-<strong>
-ชนะเลิศ
-</strong>
-
-<p>
-การแข่งขันตอบปัญหาวันวิทยาศาสตร์
-</p>
-
+<div class="character">🧪</div>
+<div class="big">🥇</div>
+<strong>ชนะเลิศ</strong>
+<p>การแข่งขันตอบปัญหาวันวิทยาศาสตร์</p>
 </article>
 
-
 <article class="card achievement">
-
-<div class="character">
-👑
-</div>
-
-<div class="big">
-👑
-</div>
-
-<strong>
-มีอำนาจ
-</strong>
-
-<p>
-เป็นหัวหน้าห้อง ⭐
-</p>
-
+<div class="character">👑</div>
+<div class="big">👑</div>
+<strong>มีอำนาจ</strong>
+<p>เป็นหัวหน้าห้อง ⭐</p>
 </article>
 
-
 </div>
-
 </div>
-
 </section>
-
 
 </main>
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
-
 🚀 Made with
-
-<b>
-✨ Aimaam Galaxy ✨
-</b>
-
+<b>✨ Aimaam Galaxy ✨</b>
 — Explore. Create. Shine.
-
 </footer>
 
-
 <script>
-
 (function(){
 
 "use strict";
 
-
-/* =========================================================
+/* =====================================================
    PAGE SYSTEM
-========================================================= */
+===================================================== */
 
-const pages =
-[
-...document.querySelectorAll(".page")
-];
+const pages=[...document.querySelectorAll(".page")];
+const navs=[...document.querySelectorAll(".navGo")];
+const mobileMenu=document.getElementById("mobileMenu");
+const menuBtn=document.getElementById("menuBtn");
 
-const navs =
-[
-...document.querySelectorAll(".navGo")
-];
+function showPage(id,updateHash=true){
 
-const mobileMenu =
-document.getElementById("mobileMenu");
-
-const menuBtn =
-document.getElementById("menuBtn");
-
-
-function showPage(
-id,
-updateHash=true
-){
-
-const target =
+const target=
 document.getElementById(id) ||
 document.getElementById("home");
 
-
-pages.forEach(
-p =>
-p.classList.toggle(
-"active",
-p===target
-)
+pages.forEach(p=>
+p.classList.toggle("active",p===target)
 );
 
-navs.forEach(
-b =>
+navs.forEach(b=>
 b.classList.toggle(
 "active",
 b.dataset.page===target.id
@@ -4380,178 +2198,86 @@ b.dataset.page===target.id
 );
 
 if(mobileMenu){
-
-mobileMenu.classList.remove(
-"open"
-);
-
+mobileMenu.classList.remove("open");
 }
 
 window.scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 if(updateHash){
-
 try{
-
-history.replaceState(
-null,
-"",
-"#"+target.id
-);
-
+history.replaceState(null,"","#"+target.id);
 }catch(e){}
-
+}
 }
 
+navs.forEach(button=>{
+button.addEventListener("click",()=>{
+showPage(button.dataset.page);
+});
+});
+
+if(menuBtn && mobileMenu){
+menuBtn.addEventListener("click",()=>{
+mobileMenu.classList.toggle("open");
+});
 }
-
-
-navs.forEach(
-button => {
-
-button.addEventListener(
-"click",
-() => {
-
-showPage(
-button.dataset.page
-);
-
-}
-);
-
-}
-);
-
-
-if(
-menuBtn &&
-mobileMenu
-){
-
-menuBtn.addEventListener(
-"click",
-() => {
-
-mobileMenu.classList.toggle(
-"open"
-);
-
-}
-);
-
-}
-
 
 function openHashPage(){
-
-const hash =
-location.hash
-.replace("#","")
-.trim();
-
-showPage(
-hash || "home",
-false
-);
-
+const hash=location.hash.replace("#","").trim();
+showPage(hash||"home",false);
 }
 
-window.addEventListener(
-"hashchange",
-openHashPage
-);
-
+window.addEventListener("hashchange",openHashPage);
 openHashPage();
 
-
-/* =========================================================
+/* =====================================================
    MOUSE GLOW
-========================================================= */
+===================================================== */
 
-const glow =
-document.getElementById("mouseGlow");
-
-let lastStar = 0;
+const glow=document.getElementById("mouseGlow");
+let lastStar=0;
 
 if(glow){
 
-window.addEventListener(
-"pointermove",
-e => {
+window.addEventListener("pointermove",e=>{
 
-glow.style.left =
-e.clientX+"px";
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
 
-glow.style.top =
-e.clientY+"px";
-
-if(
-Date.now()-lastStar > 40
-){
-
-lastStar =
-Date.now();
-
-createMouseStar(
-e.clientX,
-e.clientY
-);
-
+if(Date.now()-lastStar>35){
+lastStar=Date.now();
+createMouseStar(e.clientX,e.clientY);
 }
 
-},
-{
+},{
 passive:true
-}
-);
+});
 
 }
 
+/* =====================================================
+   MOUSE TRAIL
+===================================================== */
 
-/* =========================================================
-   MOUSE STARS
-========================================================= */
-
-const mouseStars =
-[
-"✦",
-"✧",
-"⋆",
-"✨",
-"⭐",
-"💫",
-"✶",
-"🔹"
+const mouseStars=[
+"✦","✧","⋆","✨","⭐","💫","✶","🔹","🌟"
 ];
 
-function createMouseStar(
-x,
-y
-){
+function createMouseStar(x,y){
 
-const s =
-document.createElement("div");
+const s=document.createElement("div");
 
-s.className =
-"mouseStar";
+s.className="mouseStar";
 
-s.textContent =
+s.textContent=
 mouseStars[
-Math.floor(
-Math.random() *
-mouseStars.length
-)
+Math.floor(Math.random()*mouseStars.length)
 ];
 
-const colors =
-[
+const colors=[
 "#ffffff",
 "#00f6ff",
 "#398cff",
@@ -4561,138 +2287,95 @@ const colors =
 "#55ffb0"
 ];
 
-s.style.color =
-colors[
-Math.floor(
-Math.random()*colors.length
-)
-];
+s.style.color=
+colors[Math.floor(Math.random()*colors.length)];
 
-s.style.left =
-x+"px";
-
-s.style.top =
-y+"px";
+s.style.left=x+"px";
+s.style.top=y+"px";
 
 s.style.setProperty(
 "--mx",
-(Math.random()*100-50)+"px"
+(Math.random()*120-60)+"px"
 );
 
 s.style.setProperty(
 "--my",
-(Math.random()*100-50)+"px"
+(Math.random()*120-60)+"px"
 );
 
 document.body.appendChild(s);
 
-setTimeout(
-() => s.remove(),
-900
-);
-
+setTimeout(()=>s.remove(),1000);
 }
 
+/* =====================================================
+   CLICK STAR BURST MAX
+===================================================== */
 
-/* =========================================================
-   CLICK EFFECT
-========================================================= */
-
-const clickStars =
-[
-"⭐",
-"🌟",
-"✨",
-"💫",
-"✦",
-"✧",
-"⋆",
-"🔹",
-"🔸",
-"💜",
-"💙",
-"💚",
-"💛",
-"🩷",
-"🌠"
+const clickStars=[
+"⭐","🌟","✨","💫","✦","✧",
+"⋆","🔹","🔸","💜","💙","💚",
+"💛","🩷","🌠","✶","✹"
 ];
 
-window.addEventListener(
-"pointerdown",
-e => {
+window.addEventListener("pointerdown",e=>{
 
-const ripple =
-document.createElement("div");
+/* FLASH */
 
-ripple.className =
-"ripple";
+const flash=document.createElement("div");
 
-ripple.style.left =
-e.clientX+"px";
+flash.className="clickFlash";
 
-ripple.style.top =
-e.clientY+"px";
+flash.style.left=e.clientX+"px";
+flash.style.top=e.clientY+"px";
 
-document.body.appendChild(
-ripple
-);
+document.body.appendChild(flash);
 
-setTimeout(
-() => ripple.remove(),
-800
-);
+setTimeout(()=>flash.remove(),500);
 
+/* RIPPLE */
 
-for(
-let i=0;
-i<24;
-i++
-){
+const ripple=document.createElement("div");
 
-const star =
-document.createElement("div");
+ripple.className="ripple";
 
-star.className =
-"clickStar";
+ripple.style.left=e.clientX+"px";
+ripple.style.top=e.clientY+"px";
 
-star.textContent =
+document.body.appendChild(ripple);
+
+setTimeout(()=>ripple.remove(),900);
+
+/* STAR BURST */
+
+for(let i=0;i<36;i++){
+
+const star=document.createElement("div");
+
+star.className="clickStar";
+
+star.textContent=
 clickStars[
-Math.floor(
-Math.random() *
-clickStars.length
-)
+Math.floor(Math.random()*clickStars.length)
 ];
 
-const angle =
-Math.random() *
-Math.PI * 2;
+const angle=Math.random()*Math.PI*2;
+const distance=90+Math.random()*280;
 
-const distance =
-70 +
-Math.random()*210;
-
-star.style.left =
-e.clientX+"px";
-
-star.style.top =
-e.clientY+"px";
+star.style.left=e.clientX+"px";
+star.style.top=e.clientY+"px";
 
 star.style.setProperty(
 "--cx",
-Math.cos(angle) *
-distance +
-"px"
+Math.cos(angle)*distance+"px"
 );
 
 star.style.setProperty(
 "--cy",
-Math.sin(angle) *
-distance +
-"px"
+Math.sin(angle)*distance+"px"
 );
 
-star.style.color =
-[
+star.style.color=[
 "#fff",
 "#00f6ff",
 "#398cff",
@@ -4700,975 +2383,455 @@ star.style.color =
 "#ff3cac",
 "#ffe45c",
 "#55ffb0"
-][
-Math.floor(
-Math.random()*7
-)
-];
+][Math.floor(Math.random()*7)];
 
-document.body.appendChild(
-star
-);
+document.body.appendChild(star);
 
-setTimeout(
-() => star.remove(),
-1300
-);
-
+setTimeout(()=>star.remove(),1500);
 }
 
-},
-{
+},{
 passive:true
-}
-);
+});
 
-
-/* =========================================================
+/* =====================================================
    CARD 3D
-========================================================= */
+===================================================== */
 
-document
-.querySelectorAll(".card")
-.forEach(
-card => {
+document.querySelectorAll(".card").forEach(card=>{
 
-card.addEventListener(
-"pointermove",
-e => {
+card.addEventListener("pointermove",e=>{
 
-const r =
-card.getBoundingClientRect();
+const r=card.getBoundingClientRect();
 
-const x =
-e.clientX-r.left;
+const x=e.clientX-r.left;
+const y=e.clientY-r.top;
 
-const y =
-e.clientY-r.top;
+const centerX=r.width/2;
+const centerY=r.height/2;
 
-const centerX =
-r.width/2;
+const rotateY=((x-centerX)/centerX)*12;
+const rotateX=((centerY-y)/centerY)*8;
 
-const centerY =
-r.height/2;
+const moveX=((x-centerX)/centerX)*4;
+const moveY=((y-centerY)/centerY)*4;
 
-const rotateY =
-((x-centerX) /
-centerX) * 12;
-
-const rotateX =
-((centerY-y) /
-centerY) * 8;
-
-const moveX =
-((x-centerX) /
-centerX) * 4;
-
-const moveY =
-((y-centerY) /
-centerY) * 4;
-
-card.style.transform =
-`
+card.style.transform=`
 perspective(1000px)
 rotateX(${rotateX}deg)
 rotateY(${rotateY}deg)
-translate3d(
-${moveX}px,
-${moveY}px,
--5px
-)
+translate3d(${moveX}px,${moveY}px,-5px)
 `;
 
-card.style.boxShadow =
-`
+card.style.boxShadow=`
 ${-rotateY}px
 ${rotateX+15}px
 45px
 rgba(0,0,0,.45),
-
 0 0 35px
 rgba(0,246,255,.25)
 `;
 
-}
-);
+});
 
-card.addEventListener(
-"pointerleave",
-() => {
+card.addEventListener("pointerleave",()=>{
 
-card.style.transform =
-`
+card.style.transform=`
 perspective(1000px)
 rotateX(0deg)
 rotateY(0deg)
 translate3d(0,0,0)
 `;
 
-card.style.boxShadow =
+card.style.boxShadow=
 "0 18px 45px rgba(0,0,0,.3)";
+});
 
-}
-);
+});
 
-}
-);
+/* =====================================================
+   PROFILE 360
+===================================================== */
 
-
-/* =========================================================
-   PROFILE 360 — AUTO + CLICK
-========================================================= */
-
-const profile =
-document.getElementById(
-"profilePic"
-);
+const profile=document.getElementById("profilePic");
 
 if(profile){
 
-/*
-   ทุกครั้งที่คลิก:
-   เปลี่ยนเป็นหมุน 360 แบบเร็ว
-*/
+profile.addEventListener("click",()=>{
 
-profile.addEventListener(
-"click",
-() => {
-
-profile.classList.remove(
-"autoSpin"
-);
-
-profile.classList.remove(
-"spin360"
-);
+profile.classList.remove("autoSpin");
+profile.classList.remove("rotate");
 
 void profile.offsetWidth;
 
-profile.classList.add(
-"spin360"
-);
+profile.classList.add("rotate");
 
-setTimeout(
-() => {
+setTimeout(()=>{
 
-profile.classList.remove(
-"spin360"
-);
+profile.classList.remove("rotate");
+profile.classList.add("autoSpin");
 
-profile.classList.add(
-"autoSpin"
-);
-
-},
-1550
-);
+},1450);
 
 });
 
 }
 
-
-/* =========================================================
+/* =====================================================
    SHOOTING STARS
-========================================================= */
+===================================================== */
 
 function createShootingStar(){
 
-const star =
-document.createElement("div");
+const star=document.createElement("div");
 
-star.className =
-"shootingStar";
+star.className="shootingStar";
 
-if(
-Math.random() > .5
-){
-
-star.classList.add(
-"pink"
-);
-
+if(Math.random()>.5){
+star.classList.add("pink");
 }
 
-star.style.left =
-(
-Math.random()*115
-) + "vw";
+star.style.left=(Math.random()*110+5)+"vw";
+star.style.top=(Math.random()*55-5)+"vh";
 
-star.style.top =
-(
-Math.random()*60-10
-) + "vh";
+const scale=.6+Math.random()*1.1;
 
-const scale =
-.5 +
-Math.random()*1.2;
+star.style.transform=
+`rotate(-35deg) scale(${scale})`;
 
-star.style.transform =
-`
-rotate(-35deg)
-scale(${scale})
-`;
+document.body.appendChild(star);
 
-document.body.appendChild(
-star
-);
-
-setTimeout(
-() => star.remove(),
-1200
-);
-
+setTimeout(()=>star.remove(),1200);
 }
-
-
-/* =========================================================
-   SHOOTING LOOP
-========================================================= */
 
 function shootingLoop(){
 
 createShootingStar();
 
-if(
-Math.random()>.25
-){
-
-setTimeout(
-createShootingStar,
-120
-);
-
+if(Math.random()>.35){
+setTimeout(createShootingStar,160);
 }
 
-if(
-Math.random()>.45
-){
-
-setTimeout(
-createShootingStar,
-300
-);
-
+if(Math.random()>.65){
+setTimeout(createShootingStar,350);
 }
 
 setTimeout(
 shootingLoop,
-450+
-Math.random()*900
+550+Math.random()*1000
 );
-
 }
 
-setTimeout(
-shootingLoop,
-1500
-);
+setTimeout(shootingLoop,1800);
 
-
-/* =========================================================
+/* =====================================================
    TINY STARS
-========================================================= */
+===================================================== */
 
 function createTinyStar(){
 
-const star =
-document.createElement("div");
+const star=document.createElement("div");
 
 Object.assign(
 star.style,
 {
-
 position:"fixed",
-
-left:
-Math.random()*100+"vw",
-
-top:
-Math.random()*100+"vh",
-
-width:
-(Math.random()*4+1)+"px",
-
-height:
-(Math.random()*4+1)+"px",
-
-aspectRatio:"1",
-
+left:Math.random()*100+"vw",
+top:Math.random()*100+"vh",
+width:(Math.random()*4+1)+"px",
+height:(Math.random()*4+1)+"px",
 borderRadius:"50%",
-
-background:
-Math.random()>.5
-?
-"white"
-:
-"#00f6ff",
-
+background:Math.random()>.5?"white":"#00f6ff",
 boxShadow:
 "0 0 5px currentColor,"+
 "0 0 12px currentColor,"+
 "0 0 22px currentColor",
-
 pointerEvents:"none",
-
 zIndex:"4",
-
-opacity:
-Math.random()*.55+.45
-
+opacity:Math.random()*.55+.45
 }
 );
 
-document.body.appendChild(
-star
-);
+document.body.appendChild(star);
 
 star.animate(
-
 [
-{
-opacity:.15,
-transform:"scale(.5)"
-},
-
-{
-opacity:1,
-transform:"scale(1.8)"
-},
-
-{
-opacity:.15,
-transform:"scale(.5)"
-}
-
+{opacity:.15,transform:"scale(.5)"},
+{opacity:1,transform:"scale(1.8)"},
+{opacity:.15,transform:"scale(.5)"}
 ],
-
 {
-
-duration:
-1500+
-Math.random()*3000,
-
+duration:1500+Math.random()*3000,
 iterations:Infinity
-
 }
-
 );
-
 }
 
-
-/* 200 ดาว */
-
-for(
-let i=0;
-i<200;
-i++
-){
-
+for(let i=0;i<170;i++){
 createTinyStar();
-
 }
 
-
-/* =========================================================
+/* =====================================================
    METEOR
-========================================================= */
+===================================================== */
 
 function createMeteor(){
 
-const m =
-document.createElement("div");
+const m=document.createElement("div");
 
-m.className =
-"meteor";
+m.className="meteor";
 
-m.style.left =
-(
-5+
-Math.random()*110
-) + "vw";
+m.style.left=
+(10+Math.random()*100)+"vw";
 
-m.style.top =
-(
--200-
-Math.random()*400
-) + "px";
+m.style.top=
+(-150-Math.random()*500)+"px";
 
-const scale =
-.45+
-Math.random()*1.5;
+const scale=.5+Math.random()*1.3;
 
-m.style.transform =
-`
-rotate(-25deg)
-scale(${scale})
-`;
+m.style.transform=
+`rotate(-25deg) scale(${scale})`;
 
 document.body.appendChild(m);
 
-setTimeout(
-() => m.remove(),
-1900
-);
-
+setTimeout(()=>m.remove(),1800);
 }
 
-
-/* =========================================================
-   METEOR HEAD
-========================================================= */
-
-function createMeteorHead(){
-
-const h =
-document.createElement("div");
-
-h.className =
-"meteorHead";
-
-h.style.left =
-(
-Math.random()*110
-) + "vw";
-
-h.style.top =
-(
--100+
-Math.random()*20
-) + "px";
-
-document.body.appendChild(h);
-
-setTimeout(
-() => h.remove(),
-1700
-);
-
-}
-
-
-/* =========================================================
-   ALIEN
-========================================================= */
+/* =====================================================
+   ALIENS
+===================================================== */
 
 function createAlien(){
 
-const a =
-document.createElement("div");
+const a=document.createElement("div");
 
-a.className =
-"alien";
+a.className="alien";
 
-a.textContent =
-"👽";
+a.textContent="👽";
 
-a.style.left =
-Math.random()*100+"vw";
+a.style.position="fixed";
+a.style.left=Math.random()*100+"vw";
+a.style.top="-100px";
+a.style.fontSize=(30+Math.random()*30)+"px";
+a.style.zIndex="9996";
+a.style.pointerEvents="none";
+a.style.filter=
+"drop-shadow(0 0 8px #55ff55) drop-shadow(0 0 25px #00ff55)";
 
-a.style.animationDuration =
-(
-2+
-Math.random()*2
-)+"s";
+a.animate(
+[
+{
+transform:"translate(0,0) rotate(0) scale(.5)",
+opacity:0
+},
+{
+opacity:1
+},
+{
+transform:
+`translate(${Math.random()*250-125}px,110vh)
+rotate(${500+Math.random()*500}deg)
+scale(1)`,
+opacity:0
+}
+],
+{
+duration:2500+Math.random()*1800,
+easing:"linear"
+}
+).onfinish=()=>a.remove();
 
 document.body.appendChild(a);
-
-setTimeout(
-() => a.remove(),
-4500
-);
-
 }
 
+/* =====================================================
+   OPENING MOVIE — F5
+===================================================== */
 
-/* =========================================================
-   WARP LINES
-========================================================= */
+let openingPlayed=false;
 
-function createWarpLine(){
+function launchOpeningShow(){
 
-const line =
-document.createElement("div");
+if(openingPlayed)return;
 
-line.className =
-"warpLine";
+openingPlayed=true;
 
-line.style.left =
-"50vw";
+const flash=document.getElementById("openingFlash");
+const cinematic=document.getElementById("cinematic");
 
-line.style.top =
-"50vh";
+flash.classList.add("active");
+cinematic.classList.add("active");
 
-const angle =
-Math.random()*Math.PI*2;
+/* METEOR STORM */
 
-const distance =
-500+
-Math.random()*700;
-
-line.style.setProperty(
-"--wx",
-Math.cos(angle)*distance+"px"
-);
-
-line.style.setProperty(
-"--wy",
-Math.sin(angle)*distance+"px"
-);
-
-document.body.appendChild(line);
-
-setTimeout(
-() => line.remove(),
-1400
-);
-
-}
-
-
-/* =========================================================
-   CINEMATIC OPENING
-========================================================= */
-
-function launchCinematicOpening(){
-
-const topBar =
-document.querySelector(".cinemaTop");
-
-const bottomBar =
-document.querySelector(".cinemaBottom");
-
-const title =
-document.getElementById("openingTitle");
-
-const flash =
-document.getElementById("cinematicFlash");
-
-const warp =
-document.getElementById("warp");
-
-
-/* Cinema bars */
-
-topBar.classList.add("show");
-bottomBar.classList.add("show");
-
-
-/* Warp */
-
-warp.classList.add("active");
-
-
-/* ดาวพุ่งเข้า */
-
-for(
-let i=0;
-i<90;
-i++
-){
-
-setTimeout(
-createWarpLine,
-i*18+
-Math.random()*300
-);
-
-}
-
-
-/* METEOR WAVE 1 */
-
-for(
-let i=0;
-i<45;
-i++
-){
+for(let i=0;i<65;i++){
 
 setTimeout(
 createMeteor,
-i*35+
-Math.random()*350
+i*35+Math.random()*500
 );
 
 }
 
+/* SHOOTING STAR STORM */
 
-/* METEOR WAVE 2 */
-
-for(
-let i=0;
-i<35;
-i++
-){
-
-setTimeout(
-createMeteor,
-1800+
-i*45+
-Math.random()*500
-);
-
-}
-
-
-/* หัวดาว */
-
-for(
-let i=0;
-i<25;
-i++
-){
-
-setTimeout(
-createMeteorHead,
-i*55+
-Math.random()*400
-);
-
-}
-
-
-/* Shooting stars */
-
-for(
-let i=0;
-i<30;
-i++
-){
+for(let i=0;i<25;i++){
 
 setTimeout(
 createShootingStar,
-i*80+
-Math.random()*500
+i*80+Math.random()*900
 );
 
 }
 
+/* ALIENS */
 
-/* Aliens */
-
-for(
-let i=0;
-i<8;
-i++
-){
+for(let i=0;i<10;i++){
 
 setTimeout(
 createAlien,
-900+
-i*250+
-Math.random()*400
+i*180+Math.random()*700
 );
 
 }
 
+/* CINEMATIC LIGHT BEAMS */
 
-/* FLASH */
+for(let i=0;i<6;i++){
 
-setTimeout(
-() => {
+setTimeout(()=>{
 
-flash.classList.remove(
-"active"
-);
+const beam=document.createElement("div");
 
-void flash.offsetWidth;
+beam.className="cinemaBeam active";
 
-flash.classList.add(
-"active"
-);
+beam.style.transform=
+`rotate(${-20+Math.random()*40}deg)`;
 
-},
-500
-);
+document.body.appendChild(beam);
 
+setTimeout(()=>beam.remove(),1500);
 
-/* TITLE */
-
-setTimeout(
-() => {
-
-title.classList.add(
-"show"
-);
-
-},
-900
-);
-
-
-/* เปิดฉากเต็ม */
-
-setTimeout(
-() => {
-
-flash.classList.remove(
-"active"
-);
-
-void flash.offsetWidth;
-
-flash.classList.add(
-"active"
-);
-
-},
-2500
-);
-
-
-/* ปิด cinematic */
-
-setTimeout(
-() => {
-
-topBar.classList.remove("show");
-bottomBar.classList.remove("show");
-
-},
-4700
-);
+},i*300);
+}
 
 }
 
-
-/* =========================================================
-   LOADER
-========================================================= */
-
-const loader =
-document.getElementById(
-"loader"
-);
-
-let loaderClosed =
-false;
-
-function closeLoader(){
-
-if(
-loaderClosed ||
-!loader
-)
-return;
-
-loaderClosed =
-true;
-
-loader.classList.add(
-"hide"
-);
-
-setTimeout(
-() => {
-
-if(loader){
-
-loader.style.display =
-"none";
-
-}
-
-},
-900
-);
-
-}
-
-
-/* =========================================================
-   START
-========================================================= */
-
-window.addEventListener(
-"load",
-() => {
-
-/*
-   รอ Loader เล็กน้อย
-   แล้วเปิดฉากหนังไซไฟ
-*/
-
-setTimeout(
-closeLoader,
-1000
-);
-
-setTimeout(
-launchCinematicOpening,
-1050
-);
-
-});
-
-
-/* =========================================================
-   SPACE PARTICLES
-========================================================= */
+/* =====================================================
+   EXTRA SPACE PARTICLES
+===================================================== */
 
 function spaceParticle(){
 
-const p =
-document.createElement("div");
+const p=document.createElement("div");
 
-const symbols =
-[
-"✦",
-"✧",
-"⋆",
-"·",
-"✶",
-"✨"
+const symbols=[
+"✦","✧","⋆","·","✶","✨","⭐"
 ];
 
-p.textContent =
+p.textContent=
 symbols[
-Math.floor(
-Math.random()*
-symbols.length
-)
+Math.floor(Math.random()*symbols.length)
 ];
 
 Object.assign(
 p.style,
 {
-
 position:"fixed",
-
-left:
-Math.random()*100+"vw",
-
+left:Math.random()*100+"vw",
 top:"105vh",
-
 pointerEvents:"none",
-
 zIndex:"3",
-
-fontSize:
-(8+Math.random()*14)+"px",
-
-color:
-[
+fontSize:(8+Math.random()*14)+"px",
+color:[
 "#fff",
 "#00f6ff",
 "#9147ff",
 "#ff3cac",
 "#ffe45c"
-][
-Math.floor(
-Math.random()*5
-)
-],
-
-textShadow:
-"0 0 10px currentColor"
-
+][Math.floor(Math.random()*5)],
+textShadow:"0 0 10px currentColor"
 }
 );
 
 document.body.appendChild(p);
 
-const x =
-Math.random()*240-120;
+const x=Math.random()*240-120;
 
 p.animate(
-
 [
 {
-transform:
-"translateY(0) rotate(0)",
-
+transform:"translateY(0) rotate(0)",
 opacity:0
 },
-
 {
 opacity:1
 },
-
 {
 transform:
-`
-translate(${x}px,-120vh)
-rotate(${Math.random()*720}deg)
-`,
-
+`translate(${x}px,-120vh)
+rotate(${Math.random()*720}deg)`,
 opacity:0
 }
-
 ],
-
 {
-
-duration:
-4000+
-Math.random()*7000,
-
+duration:5000+Math.random()*7000,
 easing:"linear"
-
+}
+).onfinish=()=>p.remove();
 }
 
-).onfinish =
-() => p.remove();
+setInterval(spaceParticle,500);
 
+/* =====================================================
+   LOADER + F5 TRIGGER
+===================================================== */
+
+const loader=document.getElementById("loader");
+
+let loaderClosed=false;
+
+function closeLoader(){
+
+if(loaderClosed||!loader)return;
+
+loaderClosed=true;
+
+loader.classList.add("hide");
+
+setTimeout(()=>{
+if(loader)loader.style.display="none";
+},550);
 }
 
-setInterval(
-spaceParticle,
-500
-);
+/*
+   ฉากเปิดจะเริ่มหลังโหลดหน้า
+   เพื่อให้กด F5 แล้วเห็นเอฟเฟกต์แน่นอน
+*/
 
+window.addEventListener("load",()=>{
 
-/* =========================================================
-   EXTRA RANDOM METEOR
-========================================================= */
+setTimeout(()=>{
+launchOpeningShow();
+},250);
 
-setInterval(
-() => {
+setTimeout(()=>{
+closeLoader();
+},850);
 
-if(
-Math.random()>.35
-){
+});
 
-createMeteor();
+/* fallback สำหรับบาง browser */
 
+setTimeout(()=>{
+if(!openingPlayed){
+launchOpeningShow();
 }
+},1600);
 
-},
-1800
-);
-
-
-/* =========================================================
-   EXTRA CAT APPEARANCES
-========================================================= */
-
-setInterval(
-() => {
-
-const cat =
-document.querySelector(".spaceCat");
-
-if(cat){
-
-cat.style.animation =
-"none";
-
-void cat.offsetWidth;
-
-cat.style.animation =
-"catFly 13s linear";
-
-}
-
-},
-13000
-);
+setTimeout(closeLoader,2200);
 
 })();
-
 </script>
 
 </body>
