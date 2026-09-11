@@ -397,7 +397,19 @@ scale(.05);
    CLICK EFFECT  
 ========================================================= */  
   
-.clickStar{display:none !important;}  
+.clickStar{  
+position:fixed;  
+pointer-events:none;  
+z-index:10001;  
+font-size:28px;  
+font-weight:900;  
+filter:  
+drop-shadow(0 0 7px #fff)  
+drop-shadow(0 0 16px currentColor)  
+drop-shadow(0 0 32px currentColor)  
+drop-shadow(0 0 55px currentColor);  
+animation:clickStarFly 1.5s cubic-bezier(.1,.8,.2,1) forwards;  
+}  
   
 @keyframes clickStarFly{  
 0%{  
@@ -2085,49 +2097,44 @@ outline-offset:4px;
 }  
 </style>  
 
-<style id="performance-music-css">
-#clickFX{
+/* =========================================================
+   BACKGROUND MUSIC
+========================================================= */
+#musicControl{
   position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:99998;
-}
-#musicBtn{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:100000;
-  border:1px solid rgba(0,246,255,.55);
+  left:18px;
+  bottom:18px;
+  z-index:1000000;
+  border:1px solid rgba(0,246,255,.65);
   border-radius:999px;
-  padding:10px 16px;
-  color:#dffcff;
-  background:rgba(3,8,25,.78);
-  box-shadow:0 0 18px rgba(0,246,255,.25), inset 0 0 15px rgba(145,71,255,.08);
-  backdrop-filter:blur(10px);
+  padding:11px 16px;
+  color:#fff;
+  background:rgba(4,7,25,.82);
+  box-shadow:0 0 18px rgba(0,246,255,.25), inset 0 0 18px rgba(145,71,255,.08);
+  backdrop-filter:blur(14px);
   cursor:pointer;
-  font:600 14px "Noto Sans Thai","Segoe UI",Arial,sans-serif;
-  transition:transform .2s ease, box-shadow .2s ease;
+  font:900 14px "Noto Sans Thai","Segoe UI",Arial,sans-serif;
+  transition:.25s ease;
 }
-#musicBtn:hover{
-  transform:translateY(-2px) scale(1.03);
-  box-shadow:0 0 25px rgba(0,246,255,.45), inset 0 0 20px rgba(145,71,255,.12);
+#musicControl:hover{
+  transform:translateY(-3px) scale(1.03);
+  border-color:var(--cyan);
+  box-shadow:0 0 28px rgba(0,246,255,.45),0 0 45px rgba(145,71,255,.18);
 }
-#musicBtn:active{transform:scale(.96);}
-</style>
+#musicControl:active{transform:scale(.97)}
+@media(max-width:600px){
+  #musicControl{left:10px;bottom:10px;padding:9px 13px;font-size:12px}
+}
 
 </head>  
   
 <body>
-<!-- BACKGROUND MUSIC -->
-<audio id="bgMusic"
-       src="KATSEYE (캣츠아이) Animal Official MV - HYBE LABELS (youtube).mp3"
-       preload="metadata"
-       loop></audio>
 
-<button id="musicBtn" type="button" aria-label="เปิดหรือปิดเพลง">🔇 เพลง</button>
-<canvas id="clickFX"></canvas>
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" preload="auto" loop playsinline>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<button id="musicControl" type="button" aria-label="เปิดหรือปิดเพลง">🔇 เพลง OFF</button>
   
   
 <!-- =====================================================  
@@ -3250,7 +3257,7 @@ window.addEventListener("pointermove",e=>{
 glow.style.left=e.clientX+"px";  
 glow.style.top=e.clientY+"px";  
   
-if(Date.now()-lastStar>55){  
+if(Date.now()-lastStar>35){  
   
 lastStar=Date.now();  
   
@@ -4022,182 +4029,76 @@ card.style.transform=
 })();  
 </script>  
   
-<script id="optimized-effects-js">
 
-/* =========================
-   OPTIMIZED CLICK FX
-   Same visual density, much less DOM work
-========================= */
-(() => {
-  const canvas = document.getElementById("clickFX");
-  if (!canvas) return;
+<script>
+/* =========================================================
+   AIMAAM GALAXY MAX — ROBUST BACKGROUND MUSIC
+   Keep music.mp3 in the SAME folder as index.html.
+   Browsers block autoplay until the user interacts with the page.
+========================================================= */
+(function(){
+  const audio = document.getElementById("bgMusic");
+  const button = document.getElementById("musicControl");
+  if(!audio || !button) return;
 
-  const ctx = canvas.getContext("2d", { alpha:true });
-  let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-  let W = 0, H = 0;
-  let particles = [];
-  let ripples = [];
-  let raf = 0;
+  audio.loop = true;
+  audio.preload = "auto";
+  audio.volume = 0.35;
 
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    W = innerWidth;
-    H = innerHeight;
-    canvas.width = Math.floor(W*dpr);
-    canvas.height = Math.floor(H*dpr);
-    canvas.style.width = W + "px";
-    canvas.style.height = H + "px";
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  addEventListener("resize", resize, {passive:true});
-  resize();
-
-  function burst(x,y){
-    // 36 particles, but all rendered on ONE canvas.
-    for(let i=0;i<36;i++){
-      const a = Math.random()*Math.PI*2;
-      const speed = 1.8 + Math.random()*4.2;
-      particles.push({
-        x,y,
-        vx:Math.cos(a)*speed,
-        vy:Math.sin(a)*speed,
-        life:1,
-        size:1.2+Math.random()*2.5,
-        spin:Math.random()*Math.PI*2
-      });
-    }
-
-    ripples.push({x,y,r:8,life:1});
-    if(particles.length > 320) particles.splice(0, particles.length-320);
-    if(ripples.length > 8) ripples.splice(0, ripples.length-8);
-    if(!raf) raf=requestAnimationFrame(draw);
-  }
-
-  function draw(){
-    raf=0;
-    ctx.clearRect(0,0,W,H);
-
-    let alive=false;
-
-    for(let i=particles.length-1;i>=0;i--){
-      const p=particles[i];
-      p.x+=p.vx;
-      p.y+=p.vy;
-      p.vx*=.975;
-      p.vy*=.975;
-      p.vy+=.035;
-      p.life-=.032;
-
-      if(p.life<=0){
-        particles.splice(i,1);
-        continue;
-      }
-
-      alive=true;
-      ctx.save();
-      ctx.globalAlpha=Math.max(0,p.life);
-      ctx.translate(p.x,p.y);
-      ctx.rotate(p.spin);
-      ctx.shadowBlur=10;
-      ctx.shadowColor="rgba(0,246,255,.9)";
-      ctx.fillStyle="rgba(255,255,255,.95)";
-      ctx.beginPath();
-      ctx.moveTo(0,-p.size*2.4);
-      ctx.lineTo(p.size*.75,0);
-      ctx.lineTo(0,p.size*2.4);
-      ctx.lineTo(-p.size*.75,0);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    }
-
-    for(let i=ripples.length-1;i>=0;i--){
-      const r=ripples[i];
-      r.r+=6;
-      r.life-=.045;
-      if(r.life<=0){
-        ripples.splice(i,1);
-        continue;
-      }
-      alive=true;
-      ctx.save();
-      ctx.globalAlpha=r.life*.55;
-      ctx.strokeStyle="rgba(0,246,255,.9)";
-      ctx.shadowBlur=16;
-      ctx.shadowColor="rgba(0,246,255,.8)";
-      ctx.lineWidth=2;
-      ctx.beginPath();
-      ctx.arc(r.x,r.y,r.r,0,Math.PI*2);
-      ctx.stroke();
-      ctx.restore();
-    }
-
-    if(alive) raf=requestAnimationFrame(draw);
-  }
-
-  addEventListener("pointerdown", e=>{
-    burst(e.clientX,e.clientY);
-  }, {passive:true});
-})();
-
-/* =========================
-   BACKGROUND MUSIC
-========================= */
-(() => {
-  const music = document.getElementById("bgMusic");
-  const btn = document.getElementById("musicBtn");
-  if(!music || !btn) return;
-
-  music.volume = 0.32;
-  let playing = false;
+  let musicStarted = false;
 
   function updateButton(){
-    btn.textContent = playing ? "🔊 เพลง" : "🔇 เพลง";
-    btn.title = playing ? "ปิดเพลง" : "เปิดเพลง";
+    if(!audio.paused){
+      button.textContent = "🔊 เพลง ON";
+      button.setAttribute("aria-label","ปิดเพลง");
+    }else{
+      button.textContent = "🔇 เพลง OFF";
+      button.setAttribute("aria-label","เปิดเพลง");
+    }
   }
 
   async function startMusic(){
     try{
-      await music.play();
-      playing = true;
+      audio.muted = false;
+      audio.volume = 0.35;
+      await audio.play();
+      musicStarted = true;
       updateButton();
     }catch(err){
-      // Browser autoplay policy may require a user gesture.
-      playing = false;
       updateButton();
+      console.log("Music waiting for user interaction:", err);
     }
   }
 
-  btn.addEventListener("click", async e=>{
+  button.addEventListener("click", async function(e){
     e.stopPropagation();
-    if(music.paused){
+    if(audio.paused){
       await startMusic();
     }else{
-      music.pause();
-      playing = false;
+      audio.pause();
       updateButton();
     }
-  }, {passive:false});
-
-  // First user interaction starts the music when browser policy allows it.
-  const firstInteraction = async ()=>{
-    await startMusic();
-    removeEventListener("pointerdown", firstInteraction);
-  };
-  addEventListener("pointerdown", firstInteraction, {passive:true});
-
-  music.addEventListener("play", ()=>{
-    playing=true;
-    updateButton();
   });
-  music.addEventListener("pause", ()=>{
-    playing=false;
-    updateButton();
+
+  /* First real user interaction: attempt playback. */
+  function firstInteraction(){
+    if(!musicStarted) startMusic();
+  }
+
+  window.addEventListener("pointerdown", firstInteraction, {once:true, passive:true});
+  window.addEventListener("keydown", firstInteraction, {once:true, passive:true});
+  window.addEventListener("touchstart", firstInteraction, {once:true, passive:true});
+
+  audio.addEventListener("play", updateButton);
+  audio.addEventListener("pause", updateButton);
+  audio.addEventListener("error", function(){
+    button.textContent = "⚠️ ไม่พบไฟล์เพลง";
+    console.warn("ไม่พบ music.mp3 — ต้องวาง music.mp3 ไว้โฟลเดอร์เดียวกับ index.html");
   });
 
   updateButton();
 })();
-
 </script>
+
 </body>  
    </html>  
