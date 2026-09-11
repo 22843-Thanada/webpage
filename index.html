@@ -2090,6 +2090,9 @@ outline-offset:4px;
    MUSIC PLAYER — BOTTOM RIGHT
 ========================================================= */
 #musicBtn{
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
   position:fixed;
   right:20px;
   bottom:20px;
@@ -4210,18 +4213,36 @@ card.style.transform=
     btn.setAttribute("aria-label", isPlaying ? "ปิดเพลง" : "เปิดเพลง");
   }
 
-  // ป้องกันปุ่มเพลงไปกระตุ้นระบบนำทาง/เลื่อนหน้า และไม่ให้ browser
-  // เลื่อนตำแหน่งเพราะการ focus ปุ่มขณะกำลังอ่านเนื้อหาอยู่
-  btn.addEventListener("mousedown", (e) => {
+  /* =========================================================
+     MUSIC BUTTON — ล็อกตำแหน่งหน้าไม่ให้กระโดดขึ้นหัวข้อ
+     ปุ่มนี้จะทำงานเฉพาะเปิด/ปิดเพลง ไม่ยุ่งกับระบบเปลี่ยนหน้า
+  ========================================================= */
+  let musicScrollY = window.scrollY;
+
+  function restoreMusicScroll(y){
+    // คืนตำแหน่งทันที + ซ้ำอีก 2 เฟรม กัน browser/focus/animation พยายามเลื่อนหน้า
+    window.scrollTo(0, y);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, y);
+      requestAnimationFrame(() => window.scrollTo(0, y));
+    });
+  }
+
+  btn.addEventListener("pointerdown", (e) => {
+    musicScrollY = window.scrollY;
     e.preventDefault();
     e.stopPropagation();
   }, {passive:false});
 
-  btn.addEventListener("pointerdown", (e) => {
+  btn.addEventListener("mousedown", (e) => {
+    musicScrollY = window.scrollY;
+    e.preventDefault();
     e.stopPropagation();
-  }, {passive:true});
+  }, {passive:false});
 
   btn.addEventListener("click", async (e) => {
+    // จำตำแหน่งก่อนกดทุกครั้ง
+    const keepY = musicScrollY = window.scrollY;
     e.preventDefault();
     e.stopPropagation();
 
@@ -4235,13 +4256,18 @@ card.style.transform=
       console.warn("ไม่สามารถเปิดเพลงได้:", err);
       updateButton();
     }
-  });
 
+    // ไม่ให้ปุ่มที่ถูกกดพา viewport ไปยังตำแหน่งปุ่ม/หัวข้อ
+    restoreMusicScroll(keepY);
+    setTimeout(() => restoreMusicScroll(keepY), 0);
+    setTimeout(() => restoreMusicScroll(keepY), 80);
+  }, false);
+
+  // ถ้า browser พยายาม focus ปุ่ม ให้ focus แบบไม่ scroll
   btn.addEventListener("focus", () => {
-    // รักษาตำแหน่ง scroll เดิมเมื่อปุ่มได้รับ focus
-    requestAnimationFrame(() => {
-      try { btn.focus({preventScroll:true}); } catch(e) {}
-    });
+    const keepY = musicScrollY;
+    try { btn.focus({preventScroll:true}); } catch(e) {}
+    restoreMusicScroll(keepY);
   });
 
   music.addEventListener("play", updateButton);
