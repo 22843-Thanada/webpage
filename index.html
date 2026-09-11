@@ -4214,37 +4214,53 @@ card.style.transform=
   }
 
   /* =========================================================
-     MUSIC BUTTON — ล็อกตำแหน่งหน้าไม่ให้กระโดดขึ้นหัวข้อ
-     ปุ่มนี้จะทำงานเฉพาะเปิด/ปิดเพลง ไม่ยุ่งกับระบบเปลี่ยนหน้า
+     MUSIC BUTTON — HARD SCROLL LOCK
+     ป้องกัน browser focus / bubbling / page navigation
   ========================================================= */
   let musicScrollY = window.scrollY;
+  let scrollLockTimer = null;
 
   function restoreMusicScroll(y){
-    // คืนตำแหน่งทันที + ซ้ำอีก 2 เฟรม กัน browser/focus/animation พยายามเลื่อนหน้า
+    musicScrollY = y;
     window.scrollTo(0, y);
-    requestAnimationFrame(() => {
-      window.scrollTo(0, y);
-      requestAnimationFrame(() => window.scrollTo(0, y));
-    });
+    requestAnimationFrame(() => window.scrollTo(0, y));
+    requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, y)));
   }
 
+  function lockScroll(y){
+    musicScrollY = y;
+    restoreMusicScroll(y);
+    clearTimeout(scrollLockTimer);
+    scrollLockTimer = setTimeout(() => {
+      restoreMusicScroll(y);
+    }, 180);
+  }
+
+  /* ไม่ให้ปุ่มรับ focus แล้วพา viewport ไปหา element */
+  btn.setAttribute("tabindex", "-1");
+
+  /* สำคัญ: ใช้ capture ที่ตัวปุ่ม เพื่อกัน event ไหลไปถึงระบบเปลี่ยนหน้า */
   btn.addEventListener("pointerdown", (e) => {
     musicScrollY = window.scrollY;
     e.preventDefault();
     e.stopPropagation();
-  }, {passive:false});
+  }, {capture:true, passive:false});
 
   btn.addEventListener("mousedown", (e) => {
     musicScrollY = window.scrollY;
     e.preventDefault();
     e.stopPropagation();
-  }, {passive:false});
+  }, {capture:true, passive:false});
 
   btn.addEventListener("click", async (e) => {
-    // จำตำแหน่งก่อนกดทุกครั้ง
-    const keepY = musicScrollY = window.scrollY;
+    const keepY = window.scrollY;
+
+    /* กันทุกพฤติกรรมของปุ่มที่อาจทำให้หน้าเปลี่ยน/เลื่อน */
     e.preventDefault();
     e.stopPropagation();
+    e.stopImmediatePropagation();
+
+    lockScroll(keepY);
 
     try{
       if(music.paused){
@@ -4257,16 +4273,19 @@ card.style.transform=
       updateButton();
     }
 
-    // ไม่ให้ปุ่มที่ถูกกดพา viewport ไปยังตำแหน่งปุ่ม/หัวข้อ
+    /* คืน scroll หลัง browser จัดการ focus/click เสร็จ */
     restoreMusicScroll(keepY);
     setTimeout(() => restoreMusicScroll(keepY), 0);
-    setTimeout(() => restoreMusicScroll(keepY), 80);
-  }, false);
+    setTimeout(() => restoreMusicScroll(keepY), 50);
+    setTimeout(() => restoreMusicScroll(keepY), 150);
 
-  // ถ้า browser พยายาม focus ปุ่ม ให้ focus แบบไม่ scroll
-  btn.addEventListener("focus", () => {
+    try{ btn.blur(); }catch(err){}
+  }, {capture:true, passive:false});
+
+  /* ถ้า browser พยายาม focus ให้ยกเลิกทันที */
+  btn.addEventListener("focus", (e) => {
     const keepY = musicScrollY;
-    try { btn.focus({preventScroll:true}); } catch(e) {}
+    try{ btn.blur(); }catch(err){}
     restoreMusicScroll(keepY);
   });
 
